@@ -1,8 +1,11 @@
 
-/*
- * GET home page.
- */
+module.exports = function(app){
+    app.get('/', function(req, res){
+        res.render('index', { title: 'SmsSnd' });
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
+    });
+
+//    app.get('*', function(req, res){
+//        res.render('404', { title: 'SmsSnd' });
+//    });
+}
