@@ -9,16 +9,24 @@
         <%- include navigation %>
     </header>
     <article >
-        <h1>Snd</h1>
-        <form class="form-horizontal" style="margin: 5px 5px;padding: 5px">
-            <div class="input-group">
-                <span class="input-group-addon">Input the project URL </span>
-                <input type="url" class="form-control" name="url" />
-            </div>
-            </br>
-            <input type="submit" class="btn btn-info" id="urlsubmit"/>
+        <h1 style="margin: 10px auto;text-align: center">Software Maintenance System Based on Social Networking for Developers</h1>
+        <form class="form-horizontal">
+	        <div class="input-group" style="margin: 20px auto">
+		        <input type="text" class="form-control" name="url" placeholder="Input the project changeset URL here" style="min-width:300px;height: 45px;border-top:0;border-left:0;border-right: 0">
+	        </div>
+	        <div class="input-group" style="margin: 25px auto">
+		        <input type="submit" class="btn" style="background-color: #79C454;height: 45px;width: 275px;color: white;font-weight: bold;font-size: 20px" value="Changeset Analyse" id="changeset_analyse"/>
+	        </div>
+	        <div class="input-group" style="margin: 20px auto">
+		        <input type="text" class="form-control" name="url" placeholder="Input the project ticket URL here" style="min-width:300px;height: 45px;border-top:0;border-left:0;border-right: 0">
+	        </div>
+	        <div class="input-group" style="margin: 25px auto">
+		        <input type="submit" class="btn" style="background-color: #79C454;height: 45px;width: 275px;color: white;font-weight: bold;font-size: 20px" value="Ticket Analyse" id="ticket_analyse"/>
+	        </div>
         </form>
     </article>
-    <%- include footer %>
+    <footer>
+        <%- include footer %>
+	</footer>
 </body>
 </html>
