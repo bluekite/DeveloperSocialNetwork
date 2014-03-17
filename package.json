@@ -10,6 +10,11 @@
     "ejs": "*",
     "less-middleware": "*",
     "jsdom": "*",
-    "cheerio": "*"
+    "cheerio": "*",
+    "request": "*",
+    "mongodb": "*",
+    "connect-mongodb": "*",
+    "connect-flash": "*",
+    "mongoose": "*"
   }
 }
