@@ -5,6 +5,11 @@
 
 var express = require('express');
 
+
+//Server function control
+var webcrawler = require('./controllers/webcrawler.js');
+
+//Web routes control
 var routes = require('./routes');
 var user = require('./routes/user');
 
@@ -32,6 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+
+webcrawler(app);
 
 routes(app);
 
