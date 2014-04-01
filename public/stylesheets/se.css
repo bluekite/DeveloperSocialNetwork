@@ -1,0 +1,50 @@
+.se-message{
+    color: #3b5998;
+    text-align: center;
+}
+
+.se-footer{
+    padding: 0;
+    margin-top: 200px;
+    color: #777;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    position: relative;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+.se-input-group{
+    margin: 20px auto;
+}
+.se-input{
+    min-width:300px;
+    height: 45px;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+}
+.se-table{
+    max-width:360px;
+    margin: 0 auto;
+    text-align: center;
+}
+.se-btn{
+    margin-top: 20px;
+    background-color: #79C454;
+    height: 45px;
+    width: 275px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+.se-btn-label{
+    width: 60px;
+    float: left;
+}
+.se-select{
+    width:60px !important;
+}
+.se-result-box{
+    margin-top: 50px;
+}
