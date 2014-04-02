@@ -7,15 +7,15 @@ var express = require('express');
 
 
 //Server function control
-var webcrawler = require('./controllers/webcrawler.js');
+var webcrawler = require('./app/controllers/webcrawler.js');
 
 //Web routes control
-var routes = require('./routes');
-var user = require('./routes/user');
+var routes = require('./app/routes');
+var user = require('./app/routes/user');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/smssnd');
+mongoose.connect('mongodb://localhost/smssnd', {native_parser:true});
 
 var http = require('http');
 var path = require('path');
@@ -26,7 +26,7 @@ var flash = require('connect-flash');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8888);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
