@@ -15,7 +15,7 @@ var user = require('./app/routes/user');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/smssnd', {native_parser:true});
+mongoose.connect('mongodb://localhost/smssnd');
 
 var http = require('http');
 var path = require('path');
