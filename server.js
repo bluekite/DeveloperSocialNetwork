@@ -15,7 +15,7 @@ var user = require('./app/routes/user');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/smssnd');
+mongoose.connect('mongodb://heroku_app23799987:rihamjd7tgdbf4q817gdrq2pr0@ds049237.mongolab.com:49237/heroku_app23799987');
 
 var http = require('http');
 var path = require('path');
