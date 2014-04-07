@@ -1,21 +1,24 @@
 doctype html
-html
+html(lang=en)
   head
     title= title
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/se.css')
   body
-    header
-      h1.se-message= title
-      .se-message
-        if success
-            =success
-        if error
-            =error
-    article
-        block content
-    footer.se-footer
-        p © 2014 jtgao | All Rights Reserved.
+    div.site-wrapper
+      div.site-wrapper-inner
+        div.cover-container
+            header.masthead.clearfix
+                div.inner
+                h3.masthead-brand Senior Project By jtGao
+
+            article.inner.cover
+                block content
+            footer.mastfoot
+                div.inner
+                    p © 2014 jtGao | All Rights Reserved.
     script(src="/javascripts/jquery-2.1.0.min.js")
     script(src="/javascripts/bootstrap.min.js")

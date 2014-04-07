@@ -4,11 +4,23 @@
 
 
 module.exports = function(app){
+
     app.get('/', function(req, res){
-    	console.log('index');
         res.render('index', { title: 'SmsSnd' });
 
     });
+
+    app.get('/project', function(req, res){
+        res.render('demo', { title: 'demo' });
+
+    });
+
+    app.get('/project/crawler', function(req, res){
+        res.render('crawler', { title: 'crawler' });
+
+    });
+
+
 
     app.get('/test', function(req, res){
     	console.log('test');

@@ -1,0 +1,31 @@
+extends project
+
+block content
+	h1.page-header Crawler
+	div.placeholder
+	div.row.placeholders
+		div.col-xs-12.col-sm-6.col-md-4.placeholder
+			form.form-horizontal(action="post",url="/changesetcrawl")
+				div.input-group.se-input-group
+					label Project changeset URL base
+					input.form-control.se-input(type="text",name="url",placeholder="Project changeset URL base",disabled)
+				div.input-group.se-input-group
+					label Regex for author
+					input.form-control.se-input(type="text",name="url",disabled)
+				div.input-group.se-input-group
+					input.btn.se-btn(type="submit" ,value="Changeset Crawl")
+		div.col-xs-12.col-sm-4.col-md-4.placeholder
+			form.form-horizontal
+				div.input-group.se-input-group
+					label Project changeset URL base
+					input.form-control.se-input(type="text",name="url",placeholder="Project ticket URL base",disabled)
+				div.input-group.se-input-group
+					input.btn.se-btn(type="submit" ,value="Ticket Crawl")
+		div.col-xs-12.col-sm-4.col-md-4.placeholder
+			form.form-horizontal
+				div.input-group.se-input-group
+					label Project changeset URL base
+					input.form-control.se-input(type="text",name="url",placeholder="Project comment URL base",disabled)
+				div.input-group.se-input-group
+					input.btn.se-btn(type="submit" ,value="Comment Crawl")
+

@@ -15,7 +15,8 @@ var user = require('./app/routes/user');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://heroku_app23799987:rihamjd7tgdbf4q817gdrq2pr0@ds049237.mongolab.com:49237/heroku_app23799987');
+//mongoose.connect('mongodb://heroku_app23799987:rihamjd7tgdbf4q817gdrq2pr0@ds049237.mongolab.com:49237/heroku_app23799987');
+mongoose.connect('mongodb://localhost/db');
 
 var http = require('http');
 var path = require('path');
@@ -61,6 +62,8 @@ webcrawler(app);
 
 routes(app);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+
+server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
