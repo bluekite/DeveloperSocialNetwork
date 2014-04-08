@@ -15,8 +15,8 @@ var user = require('./app/routes/user');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://heroku_app23838631:92u82m6320u932rmbk6ebl404h@ds045897.mongolab.com:45897/heroku_app23838631');
-//mongoose.connect('mongodb://localhost/db');
+//mongoose.connect('mongodb://heroku_app23838631:92u82m6320u932rmbk6ebl404h@ds045897.mongolab.com:45897/heroku_app23838631');
+mongoose.connect('mongodb://localhost/db');
 
 var http = require('http');
 var path = require('path');
@@ -70,9 +70,21 @@ server.listen(app.get('port'), function(){
 
 var io = require('socket.io').listen(server);
 
+exports.sio = io;
+
+
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
+
+
+    socket.on('my other event', function (data) {
+        console.log(data);
+    });
+
+  	socket.on('say', function (data) {
+	    socket.broadcast.emit('broadcast_say',{
+	        text: data.text
+	    });
+        socket.emit('sayhi', { hello: 'world' });
+	});
+
 });

@@ -5,26 +5,30 @@ block content
 	div.placeholder
 	div.row.placeholders
 		div.col-xs-12.col-sm-6.col-md-4.placeholder
-			form.form-horizontal(action="post",url="/changesetcrawl")
+			form.form-horizontal(action="post",id="changeset-form")
 				div.input-group.se-input-group
 					label Project changeset URL base
-					input.form-control.se-input(type="text",name="url",placeholder="Project changeset URL base",disabled)
-				div.input-group.se-input-group
-					label Regex for author
-					input.form-control.se-input(type="text",name="url",disabled)
+					input.form-control.se-input(type="text",name="url",placeholder="Project changeset URL base",disabled,value="http://trac.edgewall.org/changeset/")
+				div.input-group.se-input-group.row
+					div.col-xs-12.col-sm-6.col-md-4(style="float:left")
+						label Start Page
+						input.form-control.se-input(type="number",name="start",disabled,value="7560")
+					div.col-xs-12.col-sm-6.col-md-4(style="float:right")
+						label End Page
+						input.form-control.se-input(type="number",name="end",disabled,value="7580")					
 				div.input-group.se-input-group
 					input.btn.se-btn(type="submit" ,value="Changeset Crawl")
 		div.col-xs-12.col-sm-4.col-md-4.placeholder
-			form.form-horizontal
+			form.form-horizontal(action="post",id="ticket-form")
 				div.input-group.se-input-group
-					label Project changeset URL base
+					label Project ticket URL base
 					input.form-control.se-input(type="text",name="url",placeholder="Project ticket URL base",disabled)
 				div.input-group.se-input-group
 					input.btn.se-btn(type="submit" ,value="Ticket Crawl")
 		div.col-xs-12.col-sm-4.col-md-4.placeholder
 			form.form-horizontal
 				div.input-group.se-input-group
-					label Project changeset URL base
+					label Project comment URL base
 					input.form-control.se-input(type="text",name="url",placeholder="Project comment URL base",disabled)
 				div.input-group.se-input-group
 					input.btn.se-btn(type="submit" ,value="Comment Crawl")
