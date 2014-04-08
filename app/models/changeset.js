@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var ChangesetSchema = new Schema({
-    changeset_id: { type: String, default:''},
+    changeset: { type: String, default:''},
     author: { type: String, default:''},
     ticket: { type: String, default:''},
     version: { type: String, default:''},
