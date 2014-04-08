@@ -25,6 +25,14 @@ module.exports = function(app){
 
     });
 
+    app.get('/project/relations', function(req, res){
+        res.render('relations', { title: 'crawler' });
+    });
+
+    app.get('/project/diagram', function(req, res){
+        res.render('diagram', { title: 'crawler' });
+    });
+
 
 
     app.get('/test', function(req, res){
