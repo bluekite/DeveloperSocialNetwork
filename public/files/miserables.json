@@ -75,8 +75,7 @@
     {"name":"Toussaint","group":5},
     {"name":"Child1","group":10},
     {"name":"Child2","group":10},
-    {"name":"Brujon","group":4},
-    {"name":"Mme.Hucheloup","group":8}
+    {"name":"Brujon","group":4}
   ],
   "links":[
     {"source":1,"target":0,"value":1},
@@ -325,13 +324,6 @@
     {"source":75,"target":48,"value":1},
     {"source":75,"target":41,"value":1},
     {"source":75,"target":70,"value":1},
-    {"source":75,"target":71,"value":1},
-    {"source":76,"target":64,"value":1},
-    {"source":76,"target":65,"value":1},
-    {"source":76,"target":66,"value":1},
-    {"source":76,"target":63,"value":1},
-    {"source":76,"target":62,"value":1},
-    {"source":76,"target":48,"value":1},
-    {"source":76,"target":58,"value":1}
+    {"source":75,"target":71,"value":1}
   ]
 }

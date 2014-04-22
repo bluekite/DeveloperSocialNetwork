@@ -8,7 +8,7 @@ var express = require('express');
 
 //Server function control
 var webcrawler = require('./app/routes/webcrawler.js');
-var test = require('./app/routes/test');
+var mysqlnetwork = require('./app/routes/mysqlnetwork');
 
 
 //Web routes control
@@ -61,7 +61,7 @@ if ('development' == app.get('env')) {
 
 
 webcrawler(app);
-test(app);
+mysqlnetwork(app);
 
 routes(app);
 
