@@ -7,7 +7,9 @@ var express = require('express');
 
 
 //Server function control
-var webcrawler = require('./app/controllers/webcrawler.js');
+var webcrawler = require('./app/routes/webcrawler.js');
+var test = require('./app/routes/test');
+
 
 //Web routes control
 var routes = require('./app/routes');
@@ -59,6 +61,7 @@ if ('development' == app.get('env')) {
 
 
 webcrawler(app);
+test(app);
 
 routes(app);
 

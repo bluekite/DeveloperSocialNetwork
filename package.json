@@ -16,6 +16,8 @@
     "mongodb": "*",
     "connect-mongodb": "*",
     "connect-flash": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "mysql": "*",
+    "d3":"*"
   }
 }
