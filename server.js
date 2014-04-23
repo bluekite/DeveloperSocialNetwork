@@ -8,7 +8,10 @@ var express = require('express');
 
 //Server function control
 var webcrawler = require('./app/routes/webcrawler.js');
-var mysqlnetwork = require('./app/routes/mysqlnetwork');
+var mysqlToJson = require('./app/routes/mysqlToJson');
+var jsonToGraph = require('./app/routes/jsonToGraph');
+var jsonAnalysis = require('./app/routes/jsonAnalysis');
+var demo = require('./app/routes/demo');
 
 
 //Web routes control
@@ -18,7 +21,7 @@ var user = require('./app/routes/user');
 
 var mongoose = require('mongoose');
 //mongoose.connect('mongodb://root:root@ds063287.mongolab.com:63287/seiorproject');
-mongoose.connect('mongodb://localhost/sellmore3');
+//mongoose.connect('mongodb://localhost/sellmore3');
 
 var http = require('http');
 var path = require('path');
@@ -41,17 +44,17 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 
-app.use(express.cookieParser('cold_smssnd'));
-app.use(express.session({
-    secret: 'cold_smssnd',
-    cookie: { expire: false },
-    store: new MongoStore({
-        mongoose_connection : mongoose.connections[0]
-    })
-}));
+//app.use(express.cookieParser('cold_smssnd'));
+//app.use(express.session({
+//    secret: 'cold_smssnd',
+//    cookie: { expire: false },
+//    store: new MongoStore({
+//        mongoose_connection : mongoose.connections[0]
+//    })
+//}));
 
 app.use(app.router);
-app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
+//app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
@@ -61,7 +64,10 @@ if ('development' == app.get('env')) {
 
 
 webcrawler(app);
-mysqlnetwork(app);
+mysqlToJson(app);
+jsonToGraph(app);
+jsonAnalysis(app);
+demo(app);
 
 routes(app);
 

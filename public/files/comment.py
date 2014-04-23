@@ -1,4 +1,4 @@
-import MySQLdb
+#import MySQLdb
 import urllib2
 import string
 #import re
@@ -34,7 +34,7 @@ class getID(SGMLParser):
 			self.ID = text.split(" ")
 
 	def printID(self):
-		print self.ID[1]
+		print self.ID
 
 class getComment(SGMLParser):
 	def reset(self):
@@ -118,13 +118,13 @@ class getComment(SGMLParser):
 		print len(self.Contents)
 
 
-###
-conn = MySQLdb.connect(host='localhost',user='root',db='wordpress',passwd='')
-cursor = conn.cursor()
+# ###
+# conn = MySQLdb.connect(host='localhost',user='root',db='wordpress',passwd='')
+# cursor = conn.cursor()
 
-###ScrawlInfo
-originURL = "http://core.trac.wordpress.org/ticket/"
-for o in range(12348,13000) : 
+# ###ScrawlInfo
+originURL = "https://core.trac.wordpress.org/ticket/"
+for o in range(12348,13050) : 
 	URL = originURL+str(o)	
 	content = urllib2.urlopen(URL).read()
 
@@ -133,31 +133,25 @@ for o in range(12348,13000) :
 	putID.feed(content)
 	putID.printID()
 
-
-
 	putComment = getComment()
 	putComment.feed(content)
 	putComment.printComment()
 
+# 	for i in range(0,len(putComment.CommentNum)):
+# 		value = [putID.ID[1],putComment.CommentNum[i],putComment.Author[i]," to be continued ",putComment.CommentTime[i]]
+# 		cursor.execute("insert into comment(ticketID,commentNum,author,content,commentTime) values(%s,%s,%s,%s,%s)",value)
 
 
-
-
-	for i in range(0,len(putComment.CommentNum)):
-		value = [putID.ID[1],putComment.CommentNum[i],putComment.Author[i]," to be continued ",putComment.CommentTime[i]]
-		cursor.execute("insert into comment(ticketID,commentNum,author,content,commentTime) values(%s,%s,%s,%s,%s)",value)
-
-
-	cursor.execute('select * from comment');
-	print 'result'
-	cursor.scroll(0,mode='absolute')
-	results=cursor.fetchall()
-	for r in results:
-		print r
-	conn.commit()
-####
-cursor.close()
-conn.close()
+# 	cursor.execute('select * from comment');
+# 	print 'result'
+# 	cursor.scroll(0,mode='absolute')
+# 	results=cursor.fetchall()
+# 	for r in results:
+# 		print r
+# 	conn.commit()
+# ####
+# cursor.close()
+# conn.close()
 
 
 

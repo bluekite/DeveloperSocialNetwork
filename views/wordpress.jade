@@ -1,0 +1,42 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		title= title
+		link(rel="stylesheet",href="/stylesheets/graph.css")
+		link(rel="stylesheet",href="/stylesheets/bootstrap.min.css")
+	body
+		div(style="margin:10px auto")
+			lable(style="padding:0 10px")= "Choose Version"
+			select(id="version-selector")
+				option= "15"
+				option= "20"
+		div.row(style="margin:10px")
+			table.table(id="TT-analysis")
+		div.row(style="margin:10px")
+			div.col-md-4(id="TT-logic",style="border:1px solid #000000;margin:10px 0px")
+				lable= "TT-logic-network" 
+			div.col-md-4(id="TT-syntax",style="border:1px solid #000000;margin:10px 0px")
+				lable= "TT-syntax-network" 
+			div.col-md-4(id="TT-work",style="border:1px solid #000000;margin:10px 0px") 
+				lable= "TT-work-network" 
+		div.row(style="margin:10px")
+			div.col-md-4(id="developer-comment",style="border:1px solid #000000;margin:10px 0px")
+				lable= "developer-comment-network" 
+			div.col-md-4(id="developer-commit",style="border:1px solid #000000;margin:10px 0px")
+				lable= "developer-commit-network" 
+			div.col-md-4(id="developer-work",style="border:1px solid #000000;margin:10px 0px") 
+				lable= "developer-work-network"        		
+		div.row(style="margin:10px")
+			div.col-md-4(id="file-logic",style="border:1px solid #000000;margin:10px 0px")
+				lable= "file-logic-network" 
+			div.col-md-4(id="file-syntax",style="border:1px solid #000000;margin:10px 0px")
+				lable= "file-syntax-network" 
+			div.col-md-4(id="file-work",style="border:1px solid #000000;margin:10px 0px") 
+				lable= "file-work-network"        
+        
+		script(src="/javascripts/jquery-1.11.0.min.js")
+		script(src="/javascripts/bootstrap.min.js")        	
+		script(src="/javascripts/d3.v3.min.js")
+		script(src="/javascripts/demo-wordpress-graph.js")
+		script(src="/javascripts/demo-wordpress-analysis.js")
