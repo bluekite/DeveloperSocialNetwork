@@ -30,40 +30,40 @@ module.exports = function(app){
         });
     });
 
-    app.get('/tss/numbers',function(req, res){
-
-        fs.readFile('/Users/gaojintian/workspace/SmsSnd/public/files/tss.html', 'utf8' ,function(err, html){
-            if(err){
-                var result = {
-                    'status' : 0,
-                    'result' : err.message
-                }
-                res.send(result);
-            }else{
-                var address = [];
-                jsdom.env(
-                    html,
-                    ["http://code.jquery.com/jquery.js"],
-                    function(errors, window){
-                        window.$("a").filter(function() {
-                            return this.href.match(/^mailto:/);
-                        }).each(function(){
-                            address.push(window.$(this).attr('href').split(':')[1]);
-                            console.log(window.$(this).attr('href').split(':')[1]);
-                        });
-
-                    var result = {
-                        'status' : 1,
-                        'address': address.join(',')
-                    }
-                    res.send(result);
-                });
-            }
-        });
-
-
-
-    });
+//    app.get('/tss/numbers',function(req, res){
+//
+//        fs.readFile('/Users/gaojintian/workspace/SmsSnd/public/files/tss.html', 'utf8' ,function(err, html){
+//            if(err){
+//                var result = {
+//                    'status' : 0,
+//                    'result' : err.message
+//                }
+//                res.send(result);
+//            }else{
+//                var address = [];
+//                jsdom.env(
+//                    html,
+//                    ["http://code.jquery.com/jquery.js"],
+//                    function(errors, window){
+//                        window.$("a").filter(function() {
+//                            return this.href.match(/^mailto:/);
+//                        }).each(function(){
+//                            address.push(window.$(this).attr('href').split(':')[1]);
+//                            console.log(window.$(this).attr('href').split(':')[1]);
+//                        });
+//
+//                    var result = {
+//                        'status' : 1,
+//                        'address': address.join(',')
+//                    }
+//                    res.send(result);
+//                });
+//            }
+//        });
+//
+//
+//
+//    });
 
     app.get('/toycrawler',function(req, res){
 

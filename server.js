@@ -17,8 +17,8 @@ var user = require('./app/routes/user');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://root:root@ds063287.mongolab.com:63287/seiorproject');
-//mongoose.connect('mongodb://localhost/db');
+//mongoose.connect('mongodb://root:root@ds063287.mongolab.com:63287/seiorproject');
+mongoose.connect('mongodb://localhost/sellmore3');
 
 var http = require('http');
 var path = require('path');
