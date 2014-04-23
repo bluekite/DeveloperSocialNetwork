@@ -2,7 +2,6 @@ var cheerio = require('cheerio');
 var request = require('request');
 var async = require('async');
 var fs = require('fs');
-var jsdom = require('jsdom');
 
 
 module.exports = function(app){
