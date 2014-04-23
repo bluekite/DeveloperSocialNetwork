@@ -76,24 +76,24 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-
-var io = require('socket.io').listen(server);
-
-exports.sio = io;
-
-
-io.sockets.on('connection', function (socket) {
-
-
-    socket.on('my other event', function (data) {
-        console.log(data);
-    });
-
-  	socket.on('say', function (data) {
-	    socket.broadcast.emit('broadcast_say',{
-	        text: data.text
-	    });
-        socket.emit('sayhi', { hello: 'world' });
-	});
-
-});
+//
+//var io = require('socket.io').listen(server);
+//
+//exports.sio = io;
+//
+//
+//io.sockets.on('connection', function (socket) {
+//
+//
+//    socket.on('my other event', function (data) {
+//        console.log(data);
+//    });
+//
+//  	socket.on('say', function (data) {
+//	    socket.broadcast.emit('broadcast_say',{
+//	        text: data.text
+//	    });
+//        socket.emit('sayhi', { hello: 'world' });
+//	});
+//
+//});
