@@ -1,0 +1,213 @@
+{
+    "nodes": [
+        {
+            "name": "anonymous",
+            "group": 1
+        },
+        {
+            "name": "azaozz",
+            "group": 1
+        },
+        {
+            "name": "dd32",
+            "group": 1
+        },
+        {
+            "name": "markjaquith",
+            "group": 1
+        },
+        {
+            "name": "matt",
+            "group": 1
+        },
+        {
+            "name": "nacin",
+            "group": 1
+        },
+        {
+            "name": "ryan",
+            "group": 1
+        },
+        {
+            "name": "westi",
+            "group": 1
+        },
+        {
+            "name": "mikelittle",
+            "group": 1
+        },
+        {
+            "name": "nbachiyski",
+            "group": 1
+        },
+        {
+            "name": "rboren",
+            "group": 1
+        },
+        {
+            "name": "saxmatt",
+            "group": 1
+        },
+        {
+            "name": "wpmuguru",
+            "group": 1
+        },
+        {
+            "name": "iandstewart",
+            "group": 1
+        },
+        {
+            "name": "lancewillett",
+            "group": 1
+        },
+        {
+            "name": "duck_",
+            "group": 1
+        },
+        {
+            "name": "koopersmith",
+            "group": 1
+        },
+        {
+            "name": "scribu",
+            "group": 1
+        },
+        {
+            "name": "emc3",
+            "group": 1
+        },
+        {
+            "name": "jverber",
+            "group": 1
+        },
+        {
+            "name": "rob1n",
+            "group": 1
+        },
+        {
+            "name": "michelvaldrighi",
+            "group": 1
+        },
+        {
+            "name": "iammattthomas",
+            "group": 1
+        },
+        {
+            "name": "alex_t_king",
+            "group": 1
+        },
+        {
+            "name": "donncha",
+            "group": 1
+        },
+        {
+            "name": "SergeyBiryukov",
+            "group": 1
+        },
+        {
+            "name": "PeteMall",
+            "group": 1
+        },
+        {
+            "name": "bumpbot",
+            "group": 1
+        },
+        {
+            "name": "helen",
+            "group": 1
+        },
+        {
+            "name": "uid26904",
+            "group": 1
+        },
+        {
+            "name": "josephscott",
+            "group": 1
+        },
+        {
+            "name": "dougal",
+            "group": 1
+        },
+        {
+            "name": "potbot",
+            "group": 1
+        }
+    ],
+    "links": [
+        {
+            "source": 1,
+            "target": 6,
+            "value": 17472
+        },
+        {
+            "source": 1,
+            "target": 3,
+            "value": 13534
+        },
+        {
+            "source": 3,
+            "target": 6,
+            "value": 16073
+        },
+        {
+            "source": 1,
+            "target": 7,
+            "value": 5971
+        },
+        {
+            "source": 6,
+            "target": 7,
+            "value": 6909
+        },
+        {
+            "source": 3,
+            "target": 7,
+            "value": 5999
+        },
+        {
+            "source": 4,
+            "target": 6,
+            "value": 726
+        },
+        {
+            "source": 4,
+            "target": 7,
+            "value": 245
+        },
+        {
+            "source": 1,
+            "target": 4,
+            "value": 933
+        },
+        {
+            "source": 3,
+            "target": 4,
+            "value": 603
+        },
+        {
+            "source": 1,
+            "target": 5,
+            "value": 121
+        },
+        {
+            "source": 3,
+            "target": 5,
+            "value": 75
+        },
+        {
+            "source": 4,
+            "target": 5,
+            "value": 5
+        },
+        {
+            "source": 5,
+            "target": 6,
+            "value": 86
+        },
+        {
+            "source": 5,
+            "target": 7,
+            "value": 30
+        }
+    ]
+}
