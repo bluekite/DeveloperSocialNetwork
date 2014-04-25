@@ -1,4 +1,6 @@
 document.getElementById('version-selector').addEventListener('change', selectVersion);  
+
+
 function selectVersion(){
     console.log(this.options[this.selectedIndex].value);
     renderCircleGraph("/wordpress/circle_developer_comment_" + this.options[this.selectedIndex].value + ".json","developer-comment",100);

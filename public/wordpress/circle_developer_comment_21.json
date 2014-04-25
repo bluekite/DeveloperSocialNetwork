@@ -134,10 +134,10 @@
         }
     ],
     "links": [
-        {
-            "source": 4,
-            "value": 21
-        },
+        // {
+        //     "source": 4,
+        //     "value": 21
+        // },
         {
             "source": 4,
             "target": 6,
