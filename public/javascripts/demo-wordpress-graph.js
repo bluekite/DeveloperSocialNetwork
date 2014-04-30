@@ -18,9 +18,7 @@ function selectVersion(){
 
 
 var renderCircleGraph = function( jsonFile, divId, distance){
-    // if( document.getElementById(divId).hasChildNodes("svg")){
-    //     document.getElementById(divId).remove("svg");
-    // }
+
     var width = 500,
         height = 500;
 
@@ -31,6 +29,9 @@ var renderCircleGraph = function( jsonFile, divId, distance){
         .linkDistance(distance)
         .size([width, height]);
 
+    /*clear the graph out*/
+    d3.select(document.getElementById(divId)).html("<label>"+divId+"-netwrok</label>");
+
     var svg = d3.select(document.getElementById(divId)).append("svg")
         .attr("width", width)
         .attr("height", height);
@@ -40,6 +41,7 @@ var renderCircleGraph = function( jsonFile, divId, distance){
         force
             .nodes(graph.nodes)
             .links(graph.links)
+            //.text(graph.nodes)
             .start();
 
         var link = svg.selectAll(".link")
@@ -56,8 +58,22 @@ var renderCircleGraph = function( jsonFile, divId, distance){
             .style("fill", function(d) { return color(d.group); })
             .call(force.drag);
 
-        node.append("title")
-            .text(function(d) { return d.name; });
+        // node.append("title")
+        //     .text(function(d) { return d.name; });
+
+        // var g = svg.selectAll("g")
+        //     .data(graph.nodes)
+        //     .enter().append('text')
+        //     .text(function(d) {
+        //         return d.name;
+        //     });
+        var text = svg.selectAll(".text")
+            .data(graph.nodes)
+            .enter().append("text")
+            //.attr("class", "node")
+            //.attr("r", 5)
+            .text(function(d) { return d.name})
+            .call(force.drag);
 
 
         force.on("tick", function() {
@@ -68,6 +84,10 @@ var renderCircleGraph = function( jsonFile, divId, distance){
 
             node.attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; });
+
+            text.attr("x", function(d) { return d.x; })
+                .attr("y", function(d) { return d.y; });
+            
         });
     });
 }

@@ -118,16 +118,19 @@ module.exports = function(app){
         var developers = JSON.parse(developers_row);
         var graph = { "nodes":[],"links":[]};
         for( var i = 0; i< developers.length; i++){
-            graph.nodes.push({"name":developers[i]['developer'],"group":1});
+            graph.nodes.push({"name":developers[i]['developer'],"group":developers[i]['number']});
         }
         for( var i = 0; i< network.length; i++){
+            source = -1;
+            target = -1;
             for( var j = 0; j< developers.length; j++){
                 if( network[i]['developer1'] == developers[j]['developer'])
                     source = developers[j]['number'];
                 if( network[i]['developer2'] == developers[j]['developer'])
                     target = developers[j]['number'];
             }
-            graph.links.push({"source":source,"target":target,"value":network[i]['count']});
+            if( source != -1 && target != -1)
+                graph.links.push({"source":source,"target":target,"value":network[i]['count']});
         }
         fs.writeFile('public/wordpress/circle_developer_comment_'+req.params.version+'.json',JSON.stringify(graph,null,4), function(err){
             if(err){
@@ -151,7 +154,7 @@ module.exports = function(app){
         var developers = JSON.parse(developers_row);
         var graph = { "nodes":[],"links":[]};
         for( var i = 0; i< developers.length; i++){
-            graph.nodes.push({"name":developers[i]['developer'],"group":1});
+            graph.nodes.push({"name":developers[i]['developer'],"group":developers[i]['number']});
         }
         for( var i = 0; i< network.length; i++){
             for( var j = 0; j< developers.length; j++){
@@ -184,7 +187,7 @@ module.exports = function(app){
         var developers = JSON.parse(developers_row);
         var graph = { "nodes":[],"links":[]};
         for( var i = 0; i< developers.length; i++){
-            graph.nodes.push({"name":developers[i]['developer'],"group":1});
+            graph.nodes.push({"name":developers[i]['developer'],"group":developers[i]['number']});
         }
         for( var i = 0; i< network.length; i++){
             for( var j = 0; j< developers.length; j++){
@@ -218,7 +221,7 @@ module.exports = function(app){
         var developers = JSON.parse(developers_row);
         var graph = { "nodes":[],"links":[]};
         for( var i = 0; i< developers.length; i++){
-            graph.nodes.push({"name":developers[i]['developer'],"group":1});
+            graph.nodes.push({"name":developers[i]['developer'],"group":developers[i]['number']});
         }
         for( var i = 0; i< network.length; i++){
             for( var j = 0; j< developers.length; j++){
@@ -251,7 +254,7 @@ module.exports = function(app){
         var developers = JSON.parse(developers_row);
         var graph = { "nodes":[],"links":[]};
         for( var i = 0; i< developers.length; i++){
-            graph.nodes.push({"name":developers[i]['developer'],"group":1});
+            graph.nodes.push({"name":developers[i]['developer'],"group":developers[i]['number']});
         }
         for( var i = 0; i< network.length; i++){
             for( var j = 0; j< developers.length; j++){
@@ -284,7 +287,7 @@ module.exports = function(app){
         var developers = JSON.parse(developers_row);
         var graph = { "nodes":[],"links":[]};
         for( var i = 0; i< developers.length; i++){
-            graph.nodes.push({"name":developers[i]['developer'],"group":1});
+            graph.nodes.push({"name":developers[i]['developer'],"group":developers[i]['number']});
         }
         for( var i = 0; i< network.length; i++){
             for( var j = 0; j< developers.length; j++){

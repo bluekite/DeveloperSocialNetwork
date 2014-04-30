@@ -5,9 +5,9 @@ html
 		title= title
 		link(rel="stylesheet",href="/stylesheets/graph.css")
 		link(rel="stylesheet",href="/stylesheets/bootstrap.min.css")
-	body
+	body(style="background-color:#eee")
 		div(style="margin:10px auto")
-			lable(style="padding:0 10px")= "Choose Version"
+			lable(style="padding:0 10px;")= "Choose Version"
 			select(id="version-selector")
 				option= "15"
 				option= "20"
@@ -27,7 +27,7 @@ html
 				option= "35"
 				option= "36"
 		div.row(style="margin:10px")
-			table.table(id="TT-analysis")
+			table.table(id="TT-analysis",style="display:none")
 		div.row(style="margin:10px")
 			div.col-md-4(id="TT-logic",style="border:1px solid #000000;margin:10px 0px")
 				lable= "TT-logic-network" 

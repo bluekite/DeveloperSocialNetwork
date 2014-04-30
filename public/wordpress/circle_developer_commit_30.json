@@ -2,7 +2,7 @@
     "nodes": [
         {
             "name": "anonymous",
-            "group": 1
+            "group": 0
         },
         {
             "name": "azaozz",
@@ -10,127 +10,127 @@
         },
         {
             "name": "dd32",
-            "group": 1
+            "group": 2
         },
         {
             "name": "markjaquith",
-            "group": 1
+            "group": 3
         },
         {
             "name": "matt",
-            "group": 1
+            "group": 4
         },
         {
             "name": "nacin",
-            "group": 1
+            "group": 5
         },
         {
             "name": "ryan",
-            "group": 1
+            "group": 6
         },
         {
             "name": "westi",
-            "group": 1
+            "group": 7
         },
         {
             "name": "mikelittle",
-            "group": 1
+            "group": 8
         },
         {
             "name": "nbachiyski",
-            "group": 1
+            "group": 9
         },
         {
             "name": "rboren",
-            "group": 1
+            "group": 10
         },
         {
             "name": "saxmatt",
-            "group": 1
+            "group": 11
         },
         {
             "name": "wpmuguru",
-            "group": 1
+            "group": 12
         },
         {
             "name": "iandstewart",
-            "group": 1
+            "group": 13
         },
         {
             "name": "lancewillett",
-            "group": 1
+            "group": 14
         },
         {
             "name": "duck_",
-            "group": 1
+            "group": 15
         },
         {
             "name": "koopersmith",
-            "group": 1
+            "group": 16
         },
         {
             "name": "scribu",
-            "group": 1
+            "group": 17
         },
         {
             "name": "emc3",
-            "group": 1
+            "group": 18
         },
         {
             "name": "jverber",
-            "group": 1
+            "group": 19
         },
         {
             "name": "rob1n",
-            "group": 1
+            "group": 20
         },
         {
             "name": "michelvaldrighi",
-            "group": 1
+            "group": 21
         },
         {
             "name": "iammattthomas",
-            "group": 1
+            "group": 22
         },
         {
             "name": "alex_t_king",
-            "group": 1
+            "group": 23
         },
         {
             "name": "donncha",
-            "group": 1
+            "group": 24
         },
         {
             "name": "SergeyBiryukov",
-            "group": 1
+            "group": 25
         },
         {
             "name": "PeteMall",
-            "group": 1
+            "group": 26
         },
         {
             "name": "bumpbot",
-            "group": 1
+            "group": 27
         },
         {
             "name": "helen",
-            "group": 1
+            "group": 28
         },
         {
             "name": "uid26904",
-            "group": 1
+            "group": 29
         },
         {
             "name": "josephscott",
-            "group": 1
+            "group": 30
         },
         {
             "name": "dougal",
-            "group": 1
+            "group": 31
         },
         {
             "name": "potbot",
-            "group": 1
+            "group": 32
         }
     ],
     "links": [
