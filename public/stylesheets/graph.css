@@ -29,3 +29,6 @@
 .docs {
 	padding: 8px;
 }
+.inactive {
+	opacity: 0.2
+}

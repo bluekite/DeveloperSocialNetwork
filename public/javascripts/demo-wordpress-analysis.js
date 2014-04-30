@@ -37,16 +37,16 @@ $(document).ready(function(){
 	});
 
 	$('label.version').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",100);
+		renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",500);
 		console.log($(this).html().split("<")[0]);
 	});
 
 	$('label.TT').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",100);
+		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",500);
 		console.log($(this).html().split("<")[0]);
 	});
 	$('label.developer').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",100);
+		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",500);
 		console.log($(this).html().split("<")[0]);
 	});
 
