@@ -6,3 +6,26 @@
     stroke: #999;
     stroke-opacity: .6;
 }
+.docs-container {
+	width: 100%;
+	height: 300px;
+	position: relative;
+	border-top: 3px solid #ccc;
+	overflow-y: scroll;
+}
+.docs-close {
+	display: block;
+	position: fixed;
+	font-size: 1.4em;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	right: 8px;
+	background: white;
+	color: #333;
+	text-align: center;
+	text-decoration: none;
+}
+.docs {
+	padding: 8px;
+}

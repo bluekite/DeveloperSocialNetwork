@@ -6,50 +6,113 @@ html
 		link(rel="stylesheet",href="/stylesheets/graph.css")
 		link(rel="stylesheet",href="/stylesheets/bootstrap.min.css")
 	body(style="background-color:#eee")
-		div(style="margin:10px auto")
-			lable(style="padding:0 10px;")= "Choose Version"
-			select(id="version-selector")
-				option= "15"
-				option= "20"
-				option= "21"
-				option= "22"
-				option= "23"
-				option= "25"
-				option= "26"
-				option= "27"
-				option= "28"
-				option= "29"
-				option= "30"
-				option= "31"
-				option= "32"
-				option= "33"
-				option= "34"
-				option= "35"
-				option= "36"
+		table
+			tr(style="margin:10px auto")
+				td
+					lable(style="padding:0 10px;")= "Choose Version"
+				td
+					select(id="version-selector",style="form-control")
+						option= "15"
+						option= "20"
+						option= "21"
+						option= "22"
+						option= "23"
+						option= "25"
+						option= "26"
+						option= "27"
+						option= "28"
+						option= "29"
+						option= "30"
+						option= "31"
+						option= "32"
+						option= "33"
+						option= "34"
+						option= "35"
+						option= "36"
+			tr(style="margin:10px auto")
+				td
+					lable(style="padding:0 10px;")= "Version Multiple Choice"
+				td
+					div.btn-group(data-toggle="buttons")
+						label.btn.version(style="border:1px solid #fff") 15
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 20
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 21
+							input(type="radio")
+						label.btn.version(style="border:1px solid #fff") 22
+							input(type="radio")
+						label.btn.version(style="border:1px solid #fff") 23
+							input(type="radio")
+						label.btn.version(style="border:1px solid #fff") 25
+							input(type="radio")
+						label.btn.version(style="border:1px solid #fff") 26
+							input(type="radio")
+						label.btn.version(style="border:1px solid #fff") 27
+							input(type="radio")
+						label.btn.version(style="border:1px solid #fff") 28
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 29
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 30
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 31
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 32
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 33
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 34
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 35
+							input(type="radio") 
+						label.btn.version(style="border:1px solid #fff") 36
+							input(type="radio") 
+			tr(style="margin:10px auto")
+				td
+					lable(style="padding:0 10px;")= "TT network Multiple Choice"
+				td
+					div.btn-group(data-toggle="buttons")
+						label.btn.TT(style="border:1px solid #fff") TT_logic
+							input(type="radio") 
+						label.btn.TT(style="border:1px solid #fff") TT_syntax
+							input(type="radio") 
+						label.btn.TT(style="border:1px solid #fff") TT_work
+							input(type="radio") 
+			tr(style="margin:10px auto")
+				td
+					lable(style="padding:0 10px;")= "developer network Multiple Choice"
+				td
+					div.btn-group(data-toggle="buttons")
+						label.btn.developer(style="border:1px solid #fff") developer_comment
+							input(type="radio") 
+						label.btn.developer(style="border:1px solid #fff") developer_commit
+							input(type="radio") 
+						label.btn.developer(style="border:1px solid #fff") developer_work
+							input(type="radio") 
 		div.row(style="margin:10px")
 			table.table(id="TT-analysis",style="display:none")
-		div.row(style="margin:10px")
-			div.col-md-4(id="TT-logic",style="border:1px solid #000000;margin:10px 0px")
-				lable= "TT-logic-network" 
-			div.col-md-4(id="TT-syntax",style="border:1px solid #000000;margin:10px 0px")
-				lable= "TT-syntax-network" 
-			div.col-md-4(id="TT-work",style="border:1px solid #000000;margin:10px 0px") 
-				lable= "TT-work-network" 
-		div.row(style="margin:10px")
-			div.col-md-4(id="developer-comment",style="border:1px solid #000000;margin:10px 0px")
-				lable= "developer-comment-network" 
-			div.col-md-4(id="developer-commit",style="border:1px solid #000000;margin:10px 0px")
-				lable= "developer-commit-network" 
-			div.col-md-4(id="developer-work",style="border:1px solid #000000;margin:10px 0px") 
-				lable= "developer-work-network"        		
-		div.row(style="margin:10px")
-			div.col-md-4(id="file-logic",style="border:1px solid #000000;margin:10px 0px")
-				lable= "file-logic-network" 
-			div.col-md-4(id="file-syntax",style="border:1px solid #000000;margin:10px 0px")
-				lable= "file-syntax-network" 
-			div.col-md-4(id="file-work",style="border:1px solid #000000;margin:10px 0px") 
-				lable= "file-work-network"        
-        
+			div(id="graph")
+			div.row(style="margin:10px")
+				div.col-md-4(id="TT-logic",style="border:1px solid #000000;margin:10px 0px")
+					lable= "TT-logic-network" 
+				div.col-md-4(id="TT-syntax",style="border:1px solid #000000;margin:10px 0px")
+					lable= "TT-syntax-network" 
+				div.col-md-4(id="TT-work",style="border:1px solid #000000;margin:10px 0px") 
+					lable= "TT-work-network" 
+			div.row(style="margin:10px")
+				div.col-md-4(id="developer-comment",style="border:1px solid #000000;margin:10px 0px")
+					lable= "developer-comment-network" 
+				div.col-md-4(id="developer-commit",style="border:1px solid #000000;margin:10px 0px")
+					lable= "developer-commit-network" 
+				div.col-md-4(id="developer-work",style="border:1px solid #000000;margin:10px 0px") 
+					lable= "developer-work-network"        		
+			div.row(style="margin:10px")		
+		div.docs-container(id="docs-container",style="display: block;")
+			a.docs-close(id="docs-close",href="#",style="right: 8px;") x
+			div.docs(id="docs")
+				h2 Specific 
+
 		script(src="/javascripts/jquery-1.11.0.min.js")
 		script(src="/javascripts/bootstrap.min.js")        	
 		script(src="/javascripts/d3.v3.min.js")
