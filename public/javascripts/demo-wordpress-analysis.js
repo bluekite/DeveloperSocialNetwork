@@ -37,17 +37,25 @@ $(document).ready(function(){
 	});
 
 	$('label.version').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",500);
+		renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
 		console.log($(this).html().split("<")[0]);
 	});
 
 	$('label.TT').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",500);
+		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
 		console.log($(this).html().split("<")[0]);
 	});
 	$('label.developer').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",500);
+		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
 		console.log($(this).html().split("<")[0]);
+	});
+
+	$('#popovertest').on('mouseover',function(){
+		$(this).popover();
+	});
+
+	$('#popovertest').on('mouseout',function(){
+		$(this).popover();
 	});
 
 

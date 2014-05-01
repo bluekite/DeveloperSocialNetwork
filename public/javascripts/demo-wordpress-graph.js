@@ -1,5 +1,14 @@
 document.getElementById('version-selector').addEventListener('change', selectVersion);  
 
+var developer_list = null;
+d3.json("/wordpress/developer.json",function(error,data){
+    developer_list = data;
+});
+
+var file_list = null;
+d3.json("/wordpress/file.json",function(error,data){
+    file_list = data;
+});
 
 function selectVersion(){
     console.log(this.options[this.selectedIndex].value);
@@ -16,96 +25,10 @@ function selectVersion(){
     renderCircleGraph("/wordpress/circle_TT_work_" + this.options[this.selectedIndex].value + ".json","TT-work",100);
 };
 
-var highlighted = null;
 
-function highlightObject(obj) {
-    if (obj) {
-        if (obj !== highlighted) {
-            graph.node.classed('inactive', function(d) {
-                return (obj !== d
-                     && d.depends.indexOf(obj.name) == -1
-                     && d.dependedOnBy.indexOf(obj.name) == -1);
-            });
-            graph.line.classed('inactive', function(d) {
-                return (obj !== d.source && obj !== d.target);
-            });
-        }
-        highlighted = obj;
-    } else {
-        if (highlighted) {
-            graph.node.classed('inactive', false);
-            graph.line.classed('inactive', false);
-        }
-        highlighted = null;
-    }
-}
-
-function deselectObject(doResize) {
-    if (doResize || typeof doResize == 'undefined') {
-        resize(false);
-    }
-    graph.node.classed('selected', false);
-    selected = {};
-    highlightObject(null);
-}
-
-function selectObject(obj, el) {
-    var node;
-    if (el) {
-        node = d3.select(el);
-    } else {
-        graph.node.each(function(d) {
-            if (d === obj) {
-                node = d3.select(el = this);
-            }
-        });
-    }
-    if (!node) return;
-
-    if (node.classed('selected')) {
-        deselectObject();
-        return;
-    }
-    deselectObject(false);
-
-    selected = {
-        obj : obj,
-        el  : el
-    };
-
-    highlightObject(obj);
-
-    node.classed('selected', true);
-    //$('#docs').html(obj.docs);
-    //$('#docs-container').scrollTop(0);
-    resize(true);
-
-    var $graph   = $('#graph'),
-        nodeRect = {
-            left   : obj.x + obj.extent.left + graph.margin.left,
-            top    : obj.y + obj.extent.top  + graph.margin.top,
-            width  : obj.extent.right  - obj.extent.left,
-            height : obj.extent.bottom - obj.extent.top
-        },
-        graphRect = {
-            left   : $graph.scrollLeft(),
-            top    : $graph.scrollTop(),
-            width  : $graph.width(),
-            height : $graph.height()
-        };
-    if (nodeRect.left < graphRect.left ||
-        nodeRect.top  < graphRect.top  ||
-        nodeRect.left + nodeRect.width  > graphRect.left + graphRect.width ||
-        nodeRect.top  + nodeRect.height > graphRect.top  + graphRect.height) {
-
-        $graph.animate({
-            scrollLeft : nodeRect.left + nodeRect.width  / 2 - graphRect.width  / 2,
-            scrollTop  : nodeRect.top  + nodeRect.height / 2 - graphRect.height / 2
-        }, 500);
-    }
-}
 
 var renderMainGraph = function( jsonFile, divId, distance){
+    //console.log("123124"+developer_list[2].developer);
 
     var width = 1000,
         height = 800;
@@ -113,7 +36,7 @@ var renderMainGraph = function( jsonFile, divId, distance){
     var color = d3.scale.category20();
 
     var force = d3.layout.force()
-        .charge(-300)
+        .charge(-500)
         .linkDistance(distance)
         .size([width, height]);
 
@@ -142,28 +65,8 @@ var renderMainGraph = function( jsonFile, divId, distance){
             .data(graph.nodes)
             .enter().append("circle")
             .attr("class", "node")
-            .attr("r", 5)
+            .attr("r", 8)
             .style("fill", function(d) { return color(d.group); })
-            .on('mouseover', function(d) {
-                if (!selected.obj) {
-                    if (graph.mouseoutTimeout) {
-                        clearTimeout(graph.mouseoutTimeout);
-                        graph.mouseoutTimeout = null;
-                    }
-                    highlightObject(d);
-                }
-            })
-            .on('mouseout', function() {
-                if (!selected.obj) {
-                    if (graph.mouseoutTimeout) {
-                        clearTimeout(graph.mouseoutTimeout);
-                        graph.mouseoutTimeout = null;
-                    }
-                    graph.mouseoutTimeout = setTimeout(function() {
-                        highlightObject(null);
-                    }, 300);
-                }
-            })
             .call(force.drag);
 
         // node.append("title")
@@ -180,10 +83,19 @@ var renderMainGraph = function( jsonFile, divId, distance){
             .enter().append("text")
             .style("fill", function(d) { return color(d.group); })
             .text(function(d) { return d.name ; })
-            .on("click", function(d){ console.log(d.name); alert(d.name + 
-                "Degree Centrality:"+500*Math.random()+
-                "; Closeness Centrality:"+100*Math.random()+
-                "; Betweeness Centrality:"+1000*Math.random());})
+            .attr("data-container","body")
+            .attr("data-toggle","popover")
+            .attr("data-placement","top")
+            .attr("data-html",true)
+            .attr("data-content",function(d){ return "<h3>"+d.name+"</h3><legend></legend><h5>ct</h5>"})
+            .on("mouseover", function(d){ 
+                console.log(d.name+" over"); 
+                $(this).popover('show');
+            })
+            .on("mouseout", function(d){ 
+                console.log(d.name+" out"); 
+                $(this).popover('hide');
+            })
             .call(force.drag);
 
 
