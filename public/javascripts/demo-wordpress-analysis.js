@@ -15,11 +15,11 @@ $(document).ready(function(){
 
 	var table_base = '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
 
-	$.getJSON('/analysis/wordpress/15', function(ANS) {
+	$.getJSON('/analysis/wordpress/15/degreecentrality', function(ANS) {
 		renderTabel(ANS);
 	});
 	$('#version-selector').on('change',function(){
-		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value, function(ANS) {
+		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/degreecentrality', function(ANS) {
 			var table_html = '';
 			table_html += '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
 			for( var i=0;i < ANS.DegreeCentrality.length; i++){
