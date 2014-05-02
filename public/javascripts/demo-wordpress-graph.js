@@ -30,8 +30,8 @@ function selectVersion(){
 var renderMainGraph = function( jsonFile, divId, distance){
     //console.log("123124"+developer_list[2].developer);
 
-    var width = 1000,
-        height = 800;
+    var width = 868,
+        height = 868;
 
     var color = d3.scale.category20();
 
@@ -41,7 +41,7 @@ var renderMainGraph = function( jsonFile, divId, distance){
         .size([width, height]);
 
     /*clear the graph out*/
-    d3.select(document.getElementById(divId)).html("<label>"+divId+"-netwrok</label>");
+    d3.select(document.getElementById(divId)).html("<label>"+divId+"-network</label>");
 
     var svg = d3.select(document.getElementById(divId)).append("svg")
         .attr("width", width)
@@ -83,11 +83,16 @@ var renderMainGraph = function( jsonFile, divId, distance){
             .enter().append("text")
             .style("fill", function(d) { return color(d.group); })
             .text(function(d) { return d.name ; })
+            .attr("id", function(d){return "name-"+d.name;})
             .attr("data-container","body")
             .attr("data-toggle","popover")
             .attr("data-placement","top")
             .attr("data-html",true)
-            .attr("data-content",function(d){ return "<h3>"+d.name+"</h3><legend></legend><h5>ct</h5>"})
+            .attr("data-content",function(d){ 
+                return "<div style='boder:5px solid blue'>"+
+                "<h3 style='color:"+color(d.group)+"'>"+d.name+
+                "</h3><legend></legend><h5>ct</h5></div>"
+            })
             .on("mouseover", function(d){ 
                 console.log(d.name+" over"); 
                 $(this).popover('show');
@@ -108,8 +113,8 @@ var renderMainGraph = function( jsonFile, divId, distance){
             node.attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; });
 
-            text.attr("x", function(d) { return d.x; })
-                .attr("y", function(d) { return d.y; });
+            text.attr("x", function(d) { return (d.x+10); })
+                .attr("y", function(d) { return (d.y+10); });
             
         });
     });

@@ -16,20 +16,18 @@ $(document).ready(function(){
 	var table_base = '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
 
 	$.getJSON('/analysis/wordpress/15', function(ANS) {
-		var table_html = '';
-		table_html += table_base;
-		for( var i=0;i < ANS.DegreeCentrality.length; i++){
-			table_html += '<tr><td>'+ ANS.DegreeCentrality[i].name +'</td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ ANS.DegreeCentrality[i].syntax +'</td><td>'+ ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
-		}
-
-		$('#TT-analysis').append(table_html);
+		renderTabel(ANS);
 	});
 	$('#version-selector').on('change',function(){
 		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value, function(ANS) {
 			var table_html = '';
 			table_html += '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
 			for( var i=0;i < ANS.DegreeCentrality.length; i++){
-				table_html += '<tr><td>'+ ANS.DegreeCentrality[i].name +'</td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ ANS.DegreeCentrality[i].syntax +'</td><td>'+ ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
+				table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
+				'"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +
+				'</a></td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ 
+				ANS.DegreeCentrality[i].syntax +'</td><td>'+ 
+				ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
 			}
 
 			$('#TT-analysis').html(table_html);
@@ -50,13 +48,41 @@ $(document).ready(function(){
 		console.log($(this).html().split("<")[0]);
 	});
 
-	$('#popovertest').on('mouseover',function(){
-		$(this).popover();
-	});
-
-	$('#popovertest').on('mouseout',function(){
-		$(this).popover();
+	$('a.developer').on('click', function(event){
+		console.log('#'+$(this).id);
 	});
 
 
-})
+});
+
+(function ( $ ) {
+
+    $.fn.renderTabel = function(ANS){
+		var table_html = '';
+		table_html += '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
+		for( var i=0;i < ANS.DegreeCentrality.length; i++){
+			table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
+			'"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +
+			'</a></td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ 
+			ANS.DegreeCentrality[i].syntax +'</td><td>'+ 
+			ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
+		}
+
+		$('#TT-analysis').html(table_html);
+	}
+ 
+}( jQuery ));
+
+function renderTabel(ANS){
+		var table_html = '';
+		table_html += '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
+		for( var i=0;i < ANS.DegreeCentrality.length; i++){
+			table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
+			'"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +
+			'</a></td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ 
+			ANS.DegreeCentrality[i].syntax +'</td><td>'+ 
+			ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
+		}
+
+		$('#TT-analysis').html(table_html);
+	}

@@ -2,7 +2,7 @@ var fs = require('fs');
 
 module.exports = function(app){
 
-    app.get('/analysis/wordpress/:version', function(req, res){
+    app.get('/analysis/wordpress/:version/degreeCentrality', function(req, res){
         var logic_row = fs.readFileSync('public/wordpress/network_TT_logic_'+ req.params.version +'.json', 'utf-8');
         var syntax_row = fs.readFileSync('public/wordpress/network_TT_syntax_'+ req.params.version +'.json', 'utf-8');
         var work_row = fs.readFileSync('public/wordpress/network_TT_work_'+ req.params.version +'.json', 'utf-8');

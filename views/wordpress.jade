@@ -5,116 +5,119 @@ html
 		title= title
 		link(rel="stylesheet",href="/stylesheets/graph.css")
 		link(rel="stylesheet",href="/stylesheets/bootstrap.min.css")
-	body(style="background-color:#eee")
-		table
-			tr(style="margin:10px auto")
-				td(style="padding:30px 30px")
-					button.btn.btn-default(type="button",id="popovertest",data-container="body",data-toggle="popover",data-placement="right",data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.") Popover on top
-			tr(style="margin:10px auto")
-				td
-					lable(style="padding:0 10px;")= "Choose Version"
-				td
-					select(id="version-selector",style="form-control")
-						option= "15"
-						option= "20"
-						option= "21"
-						option= "22"
-						option= "23"
-						option= "25"
-						option= "26"
-						option= "27"
-						option= "28"
-						option= "29"
-						option= "30"
-						option= "31"
-						option= "32"
-						option= "33"
-						option= "34"
-						option= "35"
-						option= "36"
-			tr(style="margin:10px auto")
-				td
-					lable(style="padding:0 10px;")= "Version Multiple Choice"
-				td
-					div.btn-group(data-toggle="buttons")
-						label.btn.version(style="border:1px solid #fff") 15
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 20
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 21
-							input(type="radio")
-						label.btn.version(style="border:1px solid #fff") 22
-							input(type="radio")
-						label.btn.version(style="border:1px solid #fff") 23
-							input(type="radio")
-						label.btn.version(style="border:1px solid #fff") 25
-							input(type="radio")
-						label.btn.version(style="border:1px solid #fff") 26
-							input(type="radio")
-						label.btn.version(style="border:1px solid #fff") 27
-							input(type="radio")
-						label.btn.version(style="border:1px solid #fff") 28
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 29
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 30
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 31
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 32
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 33
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 34
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 35
-							input(type="radio") 
-						label.btn.version(style="border:1px solid #fff") 36
-							input(type="radio") 
-			tr(style="margin:10px auto")
-				td
-					lable(style="padding:0 10px;")= "TT network Multiple Choice"
-				td
-					div.btn-group(data-toggle="buttons")
-						label.btn.TT(style="border:1px solid #fff") TT_logic
-							input(type="radio") 
-						label.btn.TT(style="border:1px solid #fff") TT_syntax
-							input(type="radio") 
-						label.btn.TT(style="border:1px solid #fff") TT_work
-							input(type="radio") 
-			tr(style="margin:10px auto")
-				td
-					lable(style="padding:0 10px;")= "developer network Multiple Choice"
-				td
-					div.btn-group(data-toggle="buttons")
-						label.btn.developer(style="border:1px solid #fff") developer_comment
-							input(type="radio") 
-						label.btn.developer(style="border:1px solid #fff") developer_commit
-							input(type="radio") 
-						label.btn.developer(style="border:1px solid #fff") developer_work
-							input(type="radio") 
-		div.row(style="margin:10px")
-			table.table(id="TT-analysis",style="display:none")
+	body(style="backgound-color:#fff;color:#006699")
+		section(style="border:3px solid #d7f0dd;")
+			table(style="padding:5px 5px;color: #006699;")
+				tr(style="margin:10px auto")
+					p(style="padding:5px 5px;color: #006699;") @ 通过选择项目的开发版本和开发者网络以来类型，来查看开发者社交网络不同版本的迭代，演化关系网络图。
+					p(style="padding:5px 5px;color: #006699;") @ 如果进行版本的多重选择，则生成项目演化关系网络图，如果多种版本比较，则是项目不同关系网络的合成图。
+				tr(style="margin:10px auto")
+					td
+						lable(style="padding:0 10px;")= "项目版本选择"
+					td
+						div.btn-group(data-toggle="buttons")
+							label.btn.version.btn-choice(style="border:1px solid #fff") 15
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 20
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 21
+								input(type="radio")
+							label.btn.version.btn-choice(style="border:1px solid #fff") 22
+								input(type="radio")
+							label.btn.version.btn-choice(style="border:1px solid #fff") 23
+								input(type="radio")
+							label.btn.version.btn-choice(style="border:1px solid #fff") 25
+								input(type="radio")
+							label.btn.version.btn-choice(style="border:1px solid #fff") 26
+								input(type="radio")
+							label.btn.version.btn-choice(style="border:1px solid #fff") 27
+								input(type="radio")
+							label.btn.version.btn-choice(style="border:1px solid #fff") 28
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 29
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 30
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 31
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 32
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 33
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 34
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 35
+								input(type="radio") 
+							label.btn.version.btn-choice(style="border:1px solid #fff") 36
+								input(type="radio") 
+				tr(style="margin:10px auto")
+					td
+						lable(style="padding:0 10px;")= "TT network Multiple Choice"
+					td
+						div.btn-group(data-toggle="buttons")
+							label.btn.TT.btn-choice(style="border:1px solid #fff") TT_logic
+								input(type="radio") 
+							label.btn.TT.btn-choice(style="border:1px solid #fff") TT_syntax
+								input(type="radio") 
+							label.btn.TT.btn-choice(style="border:1px solid #fff") TT_work
+								input(type="radio") 
+				tr(style="margin:10px auto")
+					td
+						lable(style="padding:0 10px;")= "developer network Multiple Choice"
+					td
+						div.btn-group(data-toggle="buttons")
+							label.btn.developer.btn-choice(style="border:1px solid #fff") developer_comment
+								input(type="radio") 
+							label.btn.developer.btn-choice(style="border:1px solid #fff") developer_commit
+								input(type="radio") 
+							label.btn.developer.btn-choice(style="border:1px solid #fff") developer_work
+								input(type="radio") 
+		section(id="graph",style="border:3px solid #ddd7f0;min-height:500px")
 			div(id="graph")
-			div.row(style="margin:10px")
-				div.col-md-4(id="TT-logic",style="border:1px solid #000000;margin:10px 0px")
-					lable= "TT-logic-network" 
-				div.col-md-4(id="TT-syntax",style="border:1px solid #000000;margin:10px 0px")
-					lable= "TT-syntax-network" 
-				div.col-md-4(id="TT-work",style="border:1px solid #000000;margin:10px 0px") 
-					lable= "TT-work-network" 
-			div.row(style="margin:10px")
-				div.col-md-4(id="developer-comment",style="border:1px solid #000000;margin:10px 0px")
-					lable= "developer-comment-network" 
-				div.col-md-4(id="developer-commit",style="border:1px solid #000000;margin:10px 0px")
-					lable= "developer-commit-network" 
-				div.col-md-4(id="developer-work",style="border:1px solid #000000;margin:10px 0px") 
-					lable= "developer-work-network"        		
-			div.row(style="margin:10px")		
-		div.docs-container(id="docs-container",style="display: block;")
-			a.docs-close(id="docs-close",href="#",style="right: 8px;") x
-			div.docs(id="docs")
-				h2 Specific 
+				p(style="padding:5px 5px") 开发者社交网络关系图及数据分析
+		section(id="table")
+			div(style="border:3px solid #f0ddd7;margin:10px")
+				table
+					tr(style="margin:10px auto")
+						td
+							lable(style="padding:0 10px;")= "Choose Version"
+						td
+							select(id="version-selector",style="form-control")
+								option= "15"
+								option= "20"
+								option= "21"
+								option= "22"
+								option= "23"
+								option= "25"
+								option= "26"
+								option= "27"
+								option= "28"
+								option= "29"
+								option= "30"
+								option= "31"
+								option= "32"
+								option= "33"
+								option= "34"
+								option= "35"
+								option= "36"
+				tr(style="margin:10px auto")
+					td
+						div.row(style="margin:10px;")
+							table.table(id="TT-analysis",style="display:block")
+							div.row(style="margin:10px")
+								div.col-md-12(id="TT-logic",style="border:1px solid #000000;margin:10px 0px")
+									lable= "TT-logic-network" 
+								div.col-md-12(id="TT-syntax",style="border:1px solid #000000;margin:10px 0px")
+									lable= "TT-syntax-network" 
+								div.col-md-12(id="TT-work",style="border:1px solid #000000;margin:10px 0px") 
+									lable= "TT-work-network" 
+							div.row(style="margin:10px")
+								div.col-md-12(id="developer-comment",style="border:1px solid #000000;margin:10px 0px")
+									lable= "developer-comment-network" 
+								div.col-md-12(id="developer-commit",style="border:1px solid #000000;margin:10px 0px")
+									lable= "developer-commit-network" 
+								div.col-md-12(id="developer-work",style="border:1px solid #000000;margin:10px 0px") 
+									lable= "developer-work-network"        		
 
 		script(src="/javascripts/jquery-1.11.0.min.js")
 		script(src="/javascripts/bootstrap.min.js")        	
