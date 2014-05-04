@@ -1,0 +1,2529 @@
+000010	深华新
+000045	深纺织A
+000426	兴业矿业
+000429	粤高速A
+000518	四环生物
+000519	江南红箭
+000529	广弘控股
+000538	云南白药
+000544	中原环保
+000545	金浦钛业
+000546	光华控股
+000581	威孚高科
+000587	金叶珠宝
+000607	华智控股
+000628	高新发展
+000635	英力特
+000638	万方发展
+000656	金科股份
+000683	远兴能源
+000733	振华科技
+000735	罗牛山
+000785	武汉中商
+000803	金宇车城
+000917	电广传媒
+002014	永新股份
+002035	华帝股份
+002036	宜科科技
+002048	宁波华翔
+002065	东华软件
+002085	万丰奥威
+002092	中泰化学
+002111	威海广泰
+002132	恒星科技
+002172	澳洋科技
+002184	海得控制
+002201	九鼎新材
+002202	金风科技
+002221	东华能源
+002236	大华股份
+002286	保龄宝
+002299	圣农发展
+002334	英威腾
+002338	奥普光电
+002356	浩宁达
+002369	卓翼科技
+002377	国创高新
+002401	中海科技
+002404	嘉欣丝绸
+002433	太安堂
+002474	榕基软件
+002476	宝莫股份
+002550	千红制药
+002567	唐人神
+002572	索菲亚
+002590	万安科技
+002592	八菱科技
+002600	江粉磁材
+002634	棒杰股份
+002646	青青稞酒
+002652	扬子新材
+002670	华声股份
+300003	乐普医疗
+300030	阳普医疗
+300035	中科电气
+300066	三川股份
+300074	华平股份
+300080	新大新材
+300080	新大新材
+300136	信维通信
+300155	安居宝
+300156	天立环保
+300164	通源石油
+300194	福安药业
+300202	聚龙股份
+300221	银禧科技
+300251	光线传媒
+300292	吴通通讯
+300301	长方照明
+300310	宜通世纪
+300333	兆日科技
+300344	太空板业
+300346	南大光电
+300350	华鹏飞
+300355	蒙草抗旱
+300357	我武生物
+300359	全通教育
+300369	绿盟科技
+600082	海泰发展
+600084	中葡股份
+600105	永鼎股份
+600107	美尔雅
+600115	东方航空
+600121	郑州煤电
+600137	浪莎股份
+600152	维科精华
+600157	永泰能源
+600187	国中水务
+600242	中昌海运
+600243	青海华鼎
+600259	广晟有色
+600307	酒钢宏兴
+600310	桂东电力
+600317	营口港
+600325	华发股份
+600363	联创光电
+600410	华胜天成
+600418	江淮汽车
+600438	通威股份
+600477	杭萧钢构
+600493	凤竹纺织
+600500	中化国际
+600508	上海能源
+600519	贵州茅台
+600569	安阳钢铁
+600576	万好万家
+600577	精达股份
+600578	京能电力
+600594	益佰制药
+600601	方正科技
+600604	市北高新
+600616	金枫酒业
+600702	沱牌舍得
+600796	钱江生化
+600809	山西汾酒
+600820	隧道股份
+600822	上海物贸
+600829	三精制药
+600889	南京化纤
+600896	中海海盛
+601018	宁波港
+601139	深圳燃气
+601688	华泰证券
+601999	出版传媒
+603008	喜临门
+603333	明星电缆
+900953	凯马B
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	AKGF
+	HZGF
+	XTDQ
+	YJKJ
+	PLGF
+	YST
+	YSS
+	DJRJ
+	DFT
+	ASXX
+	YDL
+	SLK
+	GHXW
+	PFYH
+	HDGT
+	QLSH
+	BYJC
+	WGGF
+	DFQC
+	ZGGM
+	SCGF
+	SHJC
+	BGGF
+	HNGJ
+	WTGS
+	HXYH
+	MSYH
+	RZG
+	SGJT
+	BGGF
+	ZYGS
+	SHDL
+	SDGT
+
+	ZHFZ
+	HDGJ
+	ZGSH
+	NFHK
+	ZXZQ
+	SYZG
+	FJGS
+	CTGS
+	ZSYH
+	GHYX
+	HFGF
+	SCLQ
+	BLDC
+	ZGLT
+	NBLH
+	ZJGS
+	ZJDC
+	HSLY
+	HRWD
+	ZGYY
+	XYGF
+	WKFZ
+	GYLS
+	HXDQ
+	ZFTZ
+	HRSH
+	WWGX
+	NJGK
+	YTKC
+	GCDT
+	GZB
+	YGTZ
+	ZJFR
+	FHGX
+	GGGC
+	SHML
+	XJTY
+	QNHG
+	SDGF
+	CXGF
+	RFYY
+	JHGF
+	DFKJ
+	HTFZ
+	BXGF
+	ZPGF
+	TRT
+	DFJY
+	ZSCM
+	TBDG
+	PJH
+	JMGF
+	HJGF
+	DMC
+	HGK
+	YTH
+	KCGJ
+	GZFZ
+	LHGF
+	TFGF
+	MXDL
+	LGGF
+	QSZY
+	SQJT
+	YDGF
+	CQLQ
+	MEY
+	YSJT
+	GJZQ
+	ZKYH
+	BGXT
+	TCKG
+	ZJDR
+	DMGF
+	DFHK
+	SXSL
+	XNTG
+	ZGWX
+	CJTZ
+	ZJDF
+	ZZMD
+	HTGK
+	LHKC
+	TLWL
+	HGGF
+	JJMY
+	HYGF
+	TJJT
+	BDGF
+	MJSD
+	CQPJ
+	DHGX
+	LKJP
+	DBGF
+	LSGF
+	ZQL
+	XBZY
+	XFJT
+	JFKJ
+	GCNY
+	DYGF
+	CCYD
+	LFFZ
+	ZGCB
+	HTJD
+	WKJH
+	JFGF
+	HSGF
+	YTNY
+	ZTCY
+	DLDC
+	JHGF
+	TTSW
+	XJKG
+	FJNZ
+	XRHL
+	FTQC
+	LMKG
+	WHKG
+	TYZG
+	SHJG
+	SHBL
+	HHXF
+	WLDC
+	MDKG
+	ZGBX
+	YGE
+	DADL
+	HHGF
+	RMT
+	S JT
+	SYKJ
+	GDGF
+	GLDC
+	LHWJ
+	GZSW
+	YZMY
+	JLSG
+	JZG
+	HZSY
+	CCDG
+	CXZY
+	ZMGF
+	FXYY
+	YLT
+	DTDX
+	JZZJ
+	JSWZ
+	JYJT
+	HKT
+	FRDZ
+	SDLY
+	YYGG
+	ACGK
+	XHZB
+	LDFZ
+	ZJQY
+	XZYY
+	JQSY
+	YXKC
+	CCJK
+	ZJYY
+	QLSN
+	QCDL
+	NSLY
+	JSYG
+	HNHK
+	TLYY
+	LSZY
+	TJSJ
+	SHBK
+	CTH
+	CJSH
+	QDJY
+	CZDH
+	LGGF
+	JYGF
+	DYCS
+	MFTZ
+	GGDL
+	TFDZ
+	HNYD
+	YNCT
+	HYDC
+	SDWH
+	ZCHY
+	QHHD
+	WTDC
+	CCGF
+	YCHJ
+	LMZ
+	NFGF
+	GNGF
+	ZHJT
+	TFYY
+	XKCL
+	GHNY
+	DHGF
+	SLJD
+	GSYS
+	KLKJ
+	YGZM
+	BFGF
+	LQJS
+	BJCJ
+	HZYY
+	GDNZ
+	GYGS
+	WYFZ
+	HTXX
+	KKSY
+	HFFZ
+	WCY
+	HRYY
+	YLNY
+	DFCY
+	CQGJ
+	ZYSC
+	THGF
+	NGGF
+	QJSL
+	PDJS
+	LRZY
+	JSST
+	DHKJ
+	YYXT
+	HYDQ
+	XSGF
+	ZDYD
+	SXXC
+	EEDS
+	LZLY
+	MLYY
+	AQJM
+	LXXC
+	WWGF
+	BZGF
+	SGGF
+	HSCY
+	SYC
+	JGHX
+	HTGF
+	WHHX
+	GDDL
+	RHSY
+	PGDQ
+	ZNZY
+	SHJH
+	HDHK
+	YKG
+	CDGF
+	ZHZG
+	GDJS
+	TFFZ
+	HLHJ
+	HFGF
+	XZTL
+	DDF
+	LTSY
+	ZXYY
+	TTGF
+	HDGF
+	BYS
+	CCRQ
+	GJQC
+	AKM
+	MKGF
+	XZZF
+	TLGX
+	HXXF
+	HTDL
+	CJTX
+	DXS
+	YQMY
+	SDGS
+	YBYY
+	ZJLS
+	XGGF
+	DHZY
+	JLDZ
+	HFZY
+	CDFT
+	XNKF
+	HWDZ
+	HLZC
+	JXTY
+	LCGD
+	TPGF
+	NBYS
+	HXFZ
+	WZJT
+	XNZQ
+	SFX
+	WXDN
+	ZHDZ
+	ZWCM
+	HLXM
+	SKGF
+	NHGS
+	TKGF
+	BGGF
+	JKY
+	GDMZ
+	JDJT
+	BBCM
+	HYGF
+	LJHB
+	JSGF
+	JRKJ
+	CFKJ
+	SHZY
+	DHSY
+	PJGF
+	JSGF
+	AYMY
+	KNKJ
+	FSTG
+	HDGF
+	HRGF
+	DYNY
+	DLY
+	GDNR
+	ATJT
+	SYHG
+	HSTC
+	XSPC
+	XDGF
+	JHQC
+	XJTH
+	XDZY
+	KMZY
+	LHGF
+	QSJH
+	HLHS
+	ZYHY
+	SYGF
+	JENY
+	GHGX
+	BFDH
+	PZH
+	TWGF
+	RBK
+	JZGF
+	HFGF
+	NXJC
+	FLDL
+	BTGF
+	BTGF
+	SDXC
+	GYBY
+	SLW
+	HCSY
+	SXZY
+	KGGF
+	DKYY
+	HDJ
+	BLDQ
+	FSGF
+	LGHG
+	BTLY
+	HGGF
+	XYKJ
+	HXGG
+	KLY
+	QJYY
+	LYGF
+	SLJN
+	FFGF
+	FJNF
+	ZCXC
+	YNHG
+	HTGD
+	TYGF
+	ZJHJ
+	PXZY
+	LYJS
+	FZFZ
+	JXCZ
+	JGGG
+	CHXZ
+	FHTX
+	KDJD
+	ZHGJ
+	HTCG
+	AHSL
+	HLJZ
+	XCDL
+	XLGF
+	FDTG
+	SHNY
+	TFRD
+	HMD
+	GYGF
+	TDJS
+	LHYY
+	HDJS
+	FDTS
+	ZXDQ
+	KMYY
+	GZMT
+	ZFKJ
+	HHYY
+	ZTKJ
+	GHGF
+	CYJT
+	FDHB
+	JNGX
+	ZTEJ
+	SDYB
+	JDAL
+	YGJQ
+	HDKY
+	QXJS
+	TSL
+	ZGRJ
+	YJGD
+	XSGF
+	MGGF
+	XJCJ
+	SMGJ
+	SDHJ
+	SGS
+	XMWY
+	TWBB
+	SDCB
+	FXKJ
+	THSN
+	KYYY
+	DXY
+	LBGJ
+	JZTZ
+	JXCY
+	GRKJ
+	FLDZ
+	DMGF
+	HCGF
+	SYZY
+	ZZKG
+	AYGT
+	HSDZ
+	XYD
+	KEB
+	HQPJ
+	WHG
+	WHWJ
+	JDGF
+	JNDL
+	WLDQ
+	BYGT
+	TDKJ
+	HYGC
+	CDKJ
+	HLSN
+	JJKJ
+	XHYL
+	YYRJ
+	GDRT
+	THKJ
+	SHHK
+	LXGF
+	DLSY
+	YBZY
+	ZFSY
+	XAGF
+	GMRY
+	BDH
+	XMYH
+	QDPJ
+	FZKJ
+	YDDZ
+	SBGX
+	HTNY
+	JFTZ
+	SSYY
+	SHKJ
+	JBQC
+	S ZFJ
+	DZJT
+	LFX
+	SQZY
+	DLGF
+	FHGF
+	JFJY
+	LJHG
+	HLGF
+	TCGF
+	HXGF
+	JBJT
+	SQGF
+	FDFH
+	PT SX
+	SDGF
+	SDGF
+	XSJ
+	LGSY
+	LTGF
+	BLGF
+	HLSX
+	ZBCM
+	DZGY
+	SAF
+	BST
+	XHP
+	PDJQ
+	HBKG
+	WYQY
+	SNGF
+	AJGF
+	LSDL
+	ZYXH
+	GJSY
+	TDCY
+	WGQ
+	CTKG
+	JJTZ
+	FLYX
+	ASGF
+	SHKG
+	FLGF
+	YYSC
+	BYTZ
+	XDDC
+	DZC
+	MYHD
+	FYBL
+	XNY
+	QSKG
+	LJZ
+	HYGF
+	TDY
+	XNYY
+	TJSY
+	JFJT
+	TMYY
+	DYGL
+	CTNY
+	ZHQY
+	JYGF
+	HTTX
+	SCJD
+	JSKF
+	SHPT
+	WHJT
+	NJXB
+	JTYT
+	ZJSY
+	GCGJ
+	JLQC
+	GTKG
+	SHSH
+	SHSM
+	QDHE
+	YMHG
+	YTGF
+	DBJT
+	DSGF
+	DJGF
+	DLGF
+	OYJT
+	JSDZ
+	GDGX
+	TPSD
+	SAGD
+	WCZD
+	ZHTZ
+	QJWL
+	HBGF
+	CLGF
+	CTKY
+	NNBH
+	NJYY
+	JRKY
+	SLQC
+	FHGF
+	TJG
+	DRJT
+	DLRD
+	QLS
+	BHC
+	JNHG
+	SSGF
+	NBFD
+	YWGF
+	HDNY
+	LBHG
+	JDXT
+	CQBH
+	ZGGK
+	HNHL
+	SHXM
+	S QF
+	SDJT
+	XHJ
+	SZGX
+	ZLTH
+	LZMB
+	LNCD
+	SXJH
+	HYQC
+	YQFW
+	HYDC
+	HYDL
+	ZYGF
+	JSSP
+	DLKG
+	SSFZ
+	XZLY
+	JZYY
+	TJHY
+	DFYX
+	JJGF
+	XMGM
+	LCRJ
+	CJCM
+	HYNY
+	ZHGF
+	AHHL
+	TCYL
+	ZDGT
+	ZHZJ
+	YCHJ
+	YSSY
+	NBFB
+	ZYGF
+	GYY
+	SYLC
+	XZCT
+	HSJT
+	NJXM
+	DFTX
+	XCSY
+	YHJT
+	SJF
+	TBNY
+	SHFR
+	XGGF
+	LXCT
+	LYTZ
+	XHBH
+	DFGL
+	ZCGF
+	DEM
+	LKYY
+	QFC
+	JNZY
+	YMNY
+	BSKJ
+	GDDL
+	QJSH
+	ZDWX
+	NBHY
+	HXSN
+	FJSN
+	WYSH
+	PBS
+	YDTZ
+	KMJC
+	TYGF
+	MGGF
+	SXFJ
+	SMGF
+	DFJT
+	HBZY
+	HBZY
+	HZJB
+	XGGF
+	AXXT
+	ST HS
+	ZLGF
+	YPBL
+	SDGF
+	JQY
+	SHWM
+	SMGF
+	YMJT
+	XHCM
+	LSGF
+	YYGF
+	CSJT
+	SJZY
+	XYRT
+	GDWL
+	DFMZ
+	DYYY
+	STDT
+	SHJD
+	JLSY
+	HTZQ
+	SHJB
+	SCCH
+	XHCY
+	SCGF
+	ZXYY
+	SGSB
+	DHKJ
+	BXRJ
+	TJKJ
+	WLGF
+	ZYGF
+	SHYY
+	HDDN
+	HXGF
+	*ST ZC
+	LJGF
+	CLGF
+	HTCF
+	CBJT
+	GDSC
+	YZGF
+	WFJ
+	BRGF
+	BJCX
+	NTKJ
+	NMHD
+	HTGF
+	BDJT
+	XHKJ
+	THDB
+	MYJX
+	YDDL
+	XHDZ
+	YZHX
+	ZJGX
+	MHJT
+	CYHB
+	DFDQ
+	LYBL
+	ZGJL
+	*ST BK
+	HTDZ
+	BRCB
+	YTJT
+	HLKY
+	BWKJ
+	SSGF
+	HFGF
+	GTDL
+	YLGF
+	XJZH
+	NJHX
+	ZFGF
+	QLJT
+	BCGF
+	HKDL
+	GRGF
+	ZJGK
+	ZHHS
+	XMKG
+	SLSS
+	*ST XL
+	CJDL
+	BHHS
+	*ST ZY
+	GTZL
+	YYLZ
+	FCWF
+	BHZY
+	BFCY
+	CDGJ
+	ZCGJ
+	HYMD
+	BSGF
+	XWF
+	WHJM
+	YHMY
+	GAAZ
+	*ST BC
+	HHGF
+	NBRD
+	HFSY
+	JSJX
+	LMKH
+	KDGF
+	HMGF
+	CFHJ
+	SCDZ
+	GQCF
+	GSGF
+	MYL
+	WSDL
+	KLGF
+	JZT
+	ZSZQ
+	TSG
+	DTMY
+	JYSY
+	LGGF
+	CQGT
+	DQTL
+	JLFD
+	LYG
+	NJYH
+	WFGF
+	BTL
+	LJGF
+	NBG
+	YLGF
+	YTGF
+	SLGF
+	ZGSH
+	ZNCM
+	TPY
+	HLYG
+	HHNY
+	ZGYZ
+	SCCY
+	ZGGH
+	HDGF
+	SJGW
+	ZGHX
+	HNXJ
+	SFGF
+	BWHJ
+	SZRQ
+	CQSW
+	XYYH
+	XBKY
+	BJYH
+	HCQJ
+	ZGXD
+	ZGTJ
+	LJJT
+	JNSW
+	DCKJ
+	NMJZ
+	JXKJ
+	LYDZ
+	SXMY
+	HXDZ
+	TKGF
+	GQJT
+	PDJT
+	*ST EZ
+	NYYH
+	ZGBC
+	LTGF
+	JNJJ
+	ZGPA
+	JTYH
+	GSTL
+	XHBX
+	BLDF
+	SGDL
+	XYZQ
+	YQZY
+	ZGZT
+	GSYH
+	DFGF
+	JLGS
+	DZH
+	DWZQ
+	HRFD
+	JMW
+	SXDQ
+	BCSY
+	LGKJ
+	ZGLY
+	ZGTB
+	SHYY
+	ZXZG
+	GDDQ
+	ZGZY
+	ZGRS
+	CCQC
+	QBJT
+	PMGF
+	ZGJZ
+	ZGSD
+	MTLY
+	BHGF
+	HTZQ
+	LAHN
+	FFGF
+	ZMJ
+	JHJT
+	SHDQ
+	ZGNC
+	LFGF
+	GDZQ
+	NBJG
+	LKGX
+	XYGF
+	ZGJJ
+	WXCM
+	ZHYF
+	GDYH
+	ZGSY
+	ZHJY
+	ZSLC
+	ZTDQ
+	DLG
+	JHCJ
+	ZGGL
+	YXML
+	ZMNY
+	ZJKY
+	FZZQ
+	JYT
+	GTXJ
+	*ST YY
+	FHCM
+	JSCM
+	YHCS
+	JSYH
+	JMGF
+	ZGQY
+	ZGYH
+	ZGZG
+	DTFD
+	JYGF
+	FLJT
+	ZXYH
+	CBCM
+	RMW
+	AKGJ
+	HCDZ
+	LYRY
+	JFKJ
+	XLM
+	HBGF
+	CWGF
+	HMWL
+	BHLD
+
+	YLGF
+	MXDL
+	RCDF
+	XHL
+	GRN
+	NWGF
+	LXTY
+	LYMY
+	JLBG
+	YCBG
+	HLB
+	YTBG
+	DDBG
+	XCBG
+	DHBG
+	KMB
+	DBBG
+	LYBG

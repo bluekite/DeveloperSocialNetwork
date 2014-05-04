@@ -2,6 +2,9 @@ var cheerio = require('cheerio');
 var request = require('request');
 var async = require('async');
 var fs = require('fs');
+var iconv = require('iconv-lite');
+var BufferHelper = require('bufferhelper');
+var http = require('http');
 
 
 module.exports = function(app){
@@ -100,6 +103,42 @@ module.exports = function(app){
 
     var toy_callback = function(text,res){
         res.send(text);
+    }
+
+    app.get('/stocks/jrj',function(req, res){
+        var url_header = 'http://stock.jrj.com.cn/share,';
+        var url_article = ',zyyw';
+        var url_footer = '.shtml';
+
+        single_stock_year('http://stock.jrj.com.cn/share,601918,zyyw_3.shtml', res);
+
+
+    });
+
+    var single_stock_year = function(url, res){
+
+        http.get(url, function(html){
+
+            html.setEncoding('binary');
+            var source = "";
+            html.on('data', function(data) {
+                source += data;
+            });
+            html.on('end', function() {
+                var buf = new Buffer(source, 'binary');
+                var str = iconv.decode(buf, 'GBK');
+                var $ = cheerio.load(str);
+                var tabel = $('table[class=tab1]').next().html().split('按行业分类')[1].split('按产品分类')[0];
+                //var matchString = '/^<tr><th rowspan=\"/d\">按行业分类</th>*<th rowspan=\"/d\">按产品分类</th>$/';
+                res.send('<table>'+tabel+'</tabel>');
+            }).on("error", function() {
+                    res.send('error');
+                });
+
+
+
+        });
+
     }
 
 }

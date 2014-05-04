@@ -17,6 +17,8 @@
     "connect-flash": "*",
     "mongoose": "*",
     "mysql": "*",
-    "d3":"*"
+    "d3":"*",
+    "iconv-lite":"*",
+    "bufferhelper":"*"
   }
 }
