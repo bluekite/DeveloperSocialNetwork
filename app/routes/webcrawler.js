@@ -105,18 +105,60 @@ module.exports = function(app){
         res.send(text);
     }
 
+    app.get('/stocks/show', function(req, res){
+        var html = fs.readFileSync('/Users/gaojintian/workspace/seniorproject/public/stock/table.html');
+        res.send('<table>'+html+'</table>');
+    });
+
     app.get('/stocks/jrj',function(req, res){
         var url_header = 'http://stock.jrj.com.cn/share,';
         var url_article = ',zyyw';
         var url_footer = '.shtml';
+        var text;
 
-        single_stock_year('http://stock.jrj.com.cn/share,601918,zyyw_3.shtml', res);
+        var list = fs.readFileSync('/Users/gaojintian/workspace/seniorproject/public/stock/selectedstock.txt');
+        list = list.toString().split('\n');
+        var selectedlist = [];
+        var selectedname = [];
 
+        for(var i = 0;i<136;i++){
+            selectedlist.push(list[i].split('\t')[0]);
+            selectedname.push(list[i].split('\t')[1]);
+        }
+
+
+        var q = async.queue(function (task, callback){
+            single_stock_year(task.url,task.year,task.code,task.name);
+            callback(null,stock_year_callback(text,res));
+        }, 1);
+
+        //q.push({url:'http://stock.jrj.com.cn/share,601918,zyyw_7.shtml'});
+        //q.push({url:'http://stock.jrj.com.cn/share,601918,zyyw_5.shtml'});
+        //q.push({url:'http://stock.jrj.com.cn/share,000656,zyyw_3.shtml'});
+        //q.push({url:'http://stock.jrj.com.cn/share,601918,zyyw.shtml'});
+
+        for( var i = 0; i<133;i++){
+            q.push({url:url_header+selectedlist[i]+url_article+url_footer,year:2013,code:selectedlist[i],name:selectedname[i]});
+            q.push({url:url_header+selectedlist[i]+url_article+'_3'+url_footer,year:2012,code:selectedlist[i],name:selectedname[i]});
+            q.push({url:url_header+selectedlist[i]+url_article+'_5'+url_footer,year:2011,code:selectedlist[i],name:selectedname[i]});
+            q.push({url:url_header+selectedlist[i]+url_article+'_7'+url_footer,year:2010,code:selectedlist[i],name:selectedname[i]});
+
+        }
+
+//        for ( var i =min ; i<=7800 ; i++){
+//            q.push( { url: url_base+i});
+//        };
 
     });
 
-    var single_stock_year = function(url, res){
+    var single_stock_year = function(url,year,code,name){
 
+        if( (Number(code) >= 300344 && Number(code) < 600082 ) || ( Number(code) == 603008 ) || ( Number(code) == 603333 ) && year =='2011' ){
+            url = 'http://stock.jrj.com.cn/share,'+code+',zyyw_4.shtml';
+        }
+        if( (Number(code) >= 300344 && Number(code) < 600082 ) || ( Number(code) == 603008 ) || ( Number(code) == 603333 ) && year =='2010' ){
+            url = 'http://stock.jrj.com.cn/share,'+code+',zyyw_5.shtml';
+        }
         http.get(url, function(html){
 
             html.setEncoding('binary');
@@ -125,20 +167,28 @@ module.exports = function(app){
                 source += data;
             });
             html.on('end', function() {
+                console.log(url+' start');
                 var buf = new Buffer(source, 'binary');
                 var str = iconv.decode(buf, 'GBK');
                 var $ = cheerio.load(str);
-                var tabel = $('table[class=tab1]').next().html().split('按行业分类')[1].split('按产品分类')[0];
-                //var matchString = '/^<tr><th rowspan=\"/d\">按行业分类</th>*<th rowspan=\"/d\">按产品分类</th>$/';
-                res.send('<table>'+tabel+'</tabel>');
+                //console.log($('table[class=tab1]').next().html());
+                var table = $('table[class=tab1]').next().html().split(/<th rowspan="[0-9]{1,2}">按行业分类<\/th>/)[1].split(/<th rowspan="[0-9]{1,2}">按产品分类<\/th>/)[0];
+                table.replace(/<\/tr>\s{0,}<td/,'</tr><td></td><td');
+                fs.appendFileSync('public/stock/table.html','<th>'+code+'</th>'+'<th>'+year+'</th>'+'<th>'+name+'</th></tr>'+table);
+                console.log(url+' success');
             }).on("error", function() {
-                    res.send('error');
+                    console.log(rul+' error');
+                    //res.send(' error');
                 });
 
 
 
         });
 
+    }
+
+    var stock_year_callback = function(text, res){
+        res.send(text);
     }
 
 }
