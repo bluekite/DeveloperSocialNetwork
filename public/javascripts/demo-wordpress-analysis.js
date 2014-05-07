@@ -1,3 +1,6 @@
+var table_base = '<tr><th>开发者姓名</th><th>逻辑依赖关系-DegreeCentrality</th><th>语法依赖关系-DegreeCentrality</th><th>工作依赖关系-DegreeCentrality</th></tr>';
+
+
 $(document).ready(function(){
 
 	renderCircleGraph("/wordpress/circle_developer_comment_15.json","developer-comment",100);
@@ -13,7 +16,8 @@ $(document).ready(function(){
 	renderCircleGraph("/wordpress/circle_TT_work_15.json","TT-work",100);
 
 
-	var table_base = '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
+	renderMainGraph("/wordpress/circle_TT_logic_15.json","graph",300);
+
 
 	$.getJSON('/analysis/wordpress/15/degreecentrality', function(ANS) {
 		renderTabel(ANS);
@@ -21,7 +25,7 @@ $(document).ready(function(){
 	$('#version-selector').on('change',function(){
 		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/degreecentrality', function(ANS) {
 			var table_html = '';
-			table_html += '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
+			table_html += table_base;
 			for( var i=0;i < ANS.DegreeCentrality.length; i++){
 				table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
 				'"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +
@@ -52,30 +56,15 @@ $(document).ready(function(){
 		console.log('#'+$(this).id);
 	});
 
+	$('#graph-tab a:first').tab('show');
 
 });
 
-(function ( $ ) {
 
-    $.fn.renderTabel = function(ANS){
-		var table_html = '';
-		table_html += '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
-		for( var i=0;i < ANS.DegreeCentrality.length; i++){
-			table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
-			'"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +
-			'</a></td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ 
-			ANS.DegreeCentrality[i].syntax +'</td><td>'+ 
-			ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
-		}
-
-		$('#TT-analysis').html(table_html);
-	}
- 
-}( jQuery ));
 
 function renderTabel(ANS){
 		var table_html = '';
-		table_html += '<tr><th>Developer Name</th><th>logic.DegreeCentrality</th><th>syntax.DegreeCentrality</th><th>work.DegreeCentrality</th></tr>';
+		table_html += table_base;
 		for( var i=0;i < ANS.DegreeCentrality.length; i++){
 			table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
 			'"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +

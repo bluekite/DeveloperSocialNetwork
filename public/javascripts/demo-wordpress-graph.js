@@ -41,7 +41,7 @@ var renderMainGraph = function( jsonFile, divId, distance){
         .size([width, height]);
 
     /*clear the graph out*/
-    d3.select(document.getElementById(divId)).html("<label>"+divId+"-network</label>");
+    d3.select(document.getElementById(divId)).html("");
 
     var svg = d3.select(document.getElementById(divId)).append("svg")
         .attr("width", width)
@@ -69,15 +69,6 @@ var renderMainGraph = function( jsonFile, divId, distance){
             .style("fill", function(d) { return color(d.group); })
             .call(force.drag);
 
-        // node.append("title")
-        //     .text(function(d) { return d.name; });
-
-        // var g = svg.selectAll("g")
-        //     .data(graph.nodes)
-        //     .enter().append('text')
-        //     .text(function(d) {
-        //         return d.name;
-        //     });
         var text = svg.selectAll(".text")
             .data(graph.nodes)
             .enter().append("text")
@@ -89,7 +80,7 @@ var renderMainGraph = function( jsonFile, divId, distance){
             .attr("data-placement","top")
             .attr("data-html",true)
             .attr("data-content",function(d){ 
-                return "<div style='boder:5px solid blue'>"+
+                return "<div '>"+
                 "<h3 style='color:"+color(d.group)+"'>"+d.name+
                 "</h3><legend></legend><h5>ct</h5></div>"
             })
