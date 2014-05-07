@@ -53,6 +53,12 @@ section.choice-section{
 	min-height: 300px;
 	/*style="border:3px solid #d7f0dd;"*/
 }
+section.parrallel-section{
+	background-color:#ffffff;
+	color:#428bca;
+	min-height: 300px;
+	/*style="border:3px solid #d7f0dd;"*/
+}
 section.table-section{
 	background-color:#428bca;
 	color:#ffffff;

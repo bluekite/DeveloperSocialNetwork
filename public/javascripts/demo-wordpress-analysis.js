@@ -16,7 +16,7 @@ $(document).ready(function(){
 	renderCircleGraph("/wordpress/circle_TT_work_15.json","TT-work",100);
 
 
-	renderMainGraph("/wordpress/circle_TT_logic_15.json","graph",300);
+	renderMainGraph("/wordpress/circle_developer_comment_15.json","graph",300);
 
 
 	$.getJSON('/analysis/wordpress/15/degreecentrality', function(ANS) {
@@ -39,7 +39,11 @@ $(document).ready(function(){
 	});
 
 	$('label.version').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
+		mixedGraphData();
+		if($('label.TT.active').html())
+			renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
+		if($('label.developer.active').html())
+			renderMainGraph("/wordpress/circle_"+($('label.developer.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
 		console.log($(this).html().split("<")[0]);
 	});
 
@@ -60,6 +64,24 @@ $(document).ready(function(){
 
 });
 
+function mixedGraphData(){
+	var activeVersion = [];
+	$('label.version.active').each(function() {
+		activeVersion.push($(this).html().split("<")[0]);
+	});
+	var activeTT = [];
+	$('label.TT.active').each(function() {
+		activeTT.push($(this).html().split("<")[0]);
+	});
+	var activeDeveloper = [];
+	$('label.developer.active').each(function() {
+		activeDeveloper.push($(this).html().split("<")[0]);
+	});
+	console.log(activeVersion);
+	console.log(activeTT);
+	console.log(activeDeveloper);
+
+}
 
 
 function renderTabel(ANS){

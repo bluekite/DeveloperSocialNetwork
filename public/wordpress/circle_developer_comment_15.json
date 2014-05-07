@@ -258,11 +258,6 @@
             "source": 0,
             "target": 9,
             "value": 2
-        },
-        {
-            "source": 24,
-            "target": 6,
-            "value": 1
         }
     ]
 }
