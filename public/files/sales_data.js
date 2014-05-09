@@ -107,15 +107,15 @@ var sales_data=[
 ['Elite','WV',368,3]
 ];
 
-var width = 1100, height = 610, margin ={b:0, t:40, l:170, r:50};
+// var width = 1100, height = 610, margin ={b:50, t:50, l:500, r:0};
 
-var svg = d3.select("#parallel")
-	.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
-	.append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+// var svg = d3.select("#parallel")
+// 	.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+// 	.append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
 
-var data = [ 
-	{data:bP.partData(sales_data,2), id:'SalesAttempts', header:["Channel","State", "Sales Attempts"]},
-	{data:bP.partData(sales_data,3), id:'Sales', header:["Channel","State", "Sales"]}
-];
+// var data = [ 
+// 	{data:bP.partData(sales_data,2), id:'sales', header:["Category","State", "Centrality Analysis"]},
+// 	//{data:bP.partData(sales_data,3), id:'Sales', header:["Channel","State", "Sales"]}
+// ];
 
-bP.draw(data, svg);
+// bP.draw(data, svg);

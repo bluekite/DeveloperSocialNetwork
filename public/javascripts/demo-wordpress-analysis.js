@@ -19,11 +19,16 @@ $(document).ready(function(){
 	renderMainGraph("/wordpress/circle_developer_comment_15.json","graph",300);
 
 
-	$.getJSON('/analysis/wordpress/15/degreecentrality', function(ANS) {
+	$.getJSON('/analysis/wordpress/15/developer/degree', function(ANS) {
+		//parallelData(ANS);
+	});
+
+	$.getJSON('/analysis/wordpress/15/TT/degree', function(ANS) {
+		parallelData(ANS);
 		renderTabel(ANS);
 	});
 	$('#version-selector').on('change',function(){
-		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/degreecentrality', function(ANS) {
+		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/TT/degree', function(ANS) {
 			var table_html = '';
 			table_html += table_base;
 			for( var i=0;i < ANS.DegreeCentrality.length; i++){
@@ -35,7 +40,10 @@ $(document).ready(function(){
 			}
 
 			$('#TT-analysis').html(table_html);
+
+			parallelData(ANS);
 		});
+
 	});
 
 	$('label.version').on('click',function(event) {
@@ -80,7 +88,55 @@ function mixedGraphData(){
 	console.log(activeVersion);
 	console.log(activeTT);
 	console.log(activeDeveloper);
+	var mixedData;
+	mixedData.activeVersion = activeVersion;
+	mixedData.activeDeveloper = activeDeveloper;
 
+}
+
+function mixedParallelData(){
+	
+}
+
+function parallelData(ANS){
+	$("#parallel").html("");
+	var parallel = [];
+	var singleArray;
+	for( var i=0;i < ANS.DegreeCentrality.length; i++){
+		singleArray = new Array(3);
+		singleArray[0] = "logic";
+		singleArray[1] = ANS.DegreeCentrality[i].name;
+		singleArray[2] = ANS.DegreeCentrality[i].logic;
+		singleArray[3] = ANS.DegreeCentrality[i].logic;
+		console.log(singleArray);
+		parallel.push(singleArray);
+		singleArray = new Array(3);
+		singleArray[0] = "syntax";
+		singleArray[1] = ANS.DegreeCentrality[i].name;
+		singleArray[2] = ANS.DegreeCentrality[i].syntax;
+		singleArray[3] = ANS.DegreeCentrality[i].logic;
+		console.log(singleArray);
+		parallel.push(singleArray);
+		singleArray = new Array(3);
+		singleArray[0] = "work";
+		singleArray[1] = ANS.DegreeCentrality[i].name;
+		singleArray[2] = ANS.DegreeCentrality[i].work;
+		singleArray[3] = ANS.DegreeCentrality[i].logic;
+		console.log(singleArray);
+		parallel.push(singleArray);
+	}
+	var width = 1200, height = 610, margin ={b:50, t:50, l:500, r:0};
+
+	var svg = d3.select("#parallel")
+		.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+		.append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+
+	var data = [ 
+		{data:bP.partData(parallel,2), id:'sales', header:["Category","State", "Centrality Analysis"]},
+		//{data:bP.partData(sales_data,3), id:'Sales', header:["Channel","State", "Sales"]}
+	];
+
+	bP.draw(data, svg);
 }
 
 

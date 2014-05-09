@@ -23,6 +23,8 @@ function selectVersion(){
     renderCircleGraph("/wordpress/circle_TT_logic_" + this.options[this.selectedIndex].value + ".json","TT-logic",250);
     renderCircleGraph("/wordpress/circle_TT_syntax_" + this.options[this.selectedIndex].value + ".json","TT-syntax",150);
     renderCircleGraph("/wordpress/circle_TT_work_" + this.options[this.selectedIndex].value + ".json","TT-work",100);
+
+
 };
 
 
@@ -49,6 +51,7 @@ var renderMainGraph = function( jsonFile, divId, distance){
 
 
     d3.json(jsonFile, function(error, graph) {
+        console.log(graph);
         force
             .nodes(graph.nodes)
             .links(graph.links)

@@ -1,7 +1,7 @@
 !function(){
 	var bP={};	
-	var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
-	var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
+	var b=30, bb=350, height=600, buffMargin=1, minHeight=14;
+	var c1=[-120, 40], c2=[-80, 100], c3=[-40, 140]; //Column positions of labels.
 	var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
 	
 	bP.partData = function(data,p){
@@ -12,8 +12,9 @@
 			d3.set(data.map(function(d){ return d[1];})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);})		
 		];
 		
-		sData.data = [	sData.keys[0].map( function(d){ return sData.keys[1].map( function(v){ return 0; }); }),
-						sData.keys[1].map( function(d){ return sData.keys[0].map( function(v){ return 0; }); }) 
+		sData.data = [	
+			sData.keys[0].map( function(d){ return sData.keys[1].map( function(v){ return 0; }); }),
+			sData.keys[1].map( function(d){ return sData.keys[0].map( function(v){ return 0; }); }) 
 		];
 		
 		data.forEach(function(d){ 
@@ -121,15 +122,21 @@
 		mainbar.append("text").attr("class","barlabel")
 			.attr("x", c1[p]).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return data.keys[p][i];})
-			.attr("text-anchor","start" );
+			.attr("text-anchor","start" )
+			.on('click', function(d,i){
+			//图表点到关联图的跳转和数据的弹出			
+				document.location.href = "#graph";
+				$("#name-"+data.keys[p][i]+"").popover("show");
+			});
 			
+		//右边栏数据格式设置
 		mainbar.append("text").attr("class","barvalue")
-			.attr("x", c2[p]).attr("y",function(d){ return d.middle+5;})
+			.attr("x", c2[p]+60).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return d.value ;})
 			.attr("text-anchor","end");
 			
 		mainbar.append("text").attr("class","barpercent")
-			.attr("x", c3[p]).attr("y",function(d){ return d.middle+5;})
+			.attr("x", c3[p]+80).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return "( "+Math.round(100*d.percent)+"%)" ;})
 			.attr("text-anchor","end").style("fill","grey");
 			
@@ -151,18 +158,21 @@
 	}	
 	
 	function drawHeader(header, id){
+
+		//中心标题设置
 		d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
-			.style("font-size","20").attr("x",108).attr("y",-20).style("text-anchor","middle")
-			.style("font-weight","bold");
+			.style("font-size","20").attr("x",200).attr("y",-20).style("text-anchor","middle")
+			.style("font-weight","bold").style("fill","#428bca");
 		
 		[0,1].forEach(function(d){
 			var h = d3.select("#"+id).select(".part"+d).append("g").attr("class","header");
 			
-			h.append("text").text(header[d]).attr("x", (c1[d]-5))
-				.attr("y", -5).style("fill","grey");
+			//标题栏位置和颜色设置
+			h.append("text").text(header[d]).attr("x", (c1[d]))
+				.attr("y", -5).style("fill","#428bca");
 			
-			h.append("text").text("Count").attr("x", (c2[d]-10))
-				.attr("y", -5).style("fill","grey");
+			h.append("text").text("Count").attr("x", (c2[d]+40))
+				.attr("y", -5).style("fill","#428bca");
 			
 			h.append("line").attr("x1",c1[d]-10).attr("y1", -2)
 				.attr("x2",c3[d]+10).attr("y2", -2).style("stroke","black")
