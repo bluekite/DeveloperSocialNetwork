@@ -120,6 +120,91 @@ var renderMainGraph = function( jsonFile, divId, distance){
 
 }
 
+var renderMixedGraph = function( jsonData, divId, distance){
+
+    var width = 868,
+        height = 868;
+
+    var color = d3.scale.category20();
+
+    var force = d3.layout.force()
+        .charge(-500)
+        .linkDistance(distance)
+        .size([width, height]);
+
+    /*clear the graph out*/
+    d3.select(document.getElementById(divId)).html("");
+
+    var svg = d3.select(document.getElementById(divId)).append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    force
+        .nodes(jsonData.nodes)
+        .links(jsonData.links)
+        .start();
+
+    var link = svg.selectAll(".link")
+        .data(jsonData.links)
+        .enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+    var node = svg.selectAll(".node")
+        .data(jsonData.nodes)
+        .enter().append("circle")
+        .attr("class", "node")
+        .attr("r", 8)
+        .style("fill", function(d) { return color(d.group); })
+        .call(force.drag);
+
+    var text = svg.selectAll(".text")
+        .data(jsonData.nodes)
+        .enter().append("text")
+        .style("fill", function(d) { return color(d.group); })
+        .text(function(d) { return d.name ; })
+        .attr("id", function(d){return "name-"+d.name;})
+        .attr("data-container","body")
+        .attr("data-toggle","popover")
+        .attr("data-placement","top")
+        .attr("data-html",true)
+        .attr("data-content",function(d){ 
+            return "<div '>"+
+            "<h3 style='color:"+color(d.group)+"'>"+d.name+
+            "</h3><legend></legend><h5>ct</h5></div>"
+        })
+        .on("mouseover", function(d){ 
+            console.log(d.name+" over"); 
+            $(this).popover('show');
+        })
+        .on("mouseout", function(d){ 
+            console.log(d.name+" out"); 
+            $(this).popover('hide');
+        })
+        .call(force.drag);
+
+
+        force.on("tick", function() {
+            link.attr("x1", function(d) { return d.source.x; })
+                .attr("y1", function(d) { return d.source.y; })
+                .attr("x2", function(d) { return d.target.x; })
+                .attr("y2", function(d) { return d.target.y; });
+
+            node.attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+
+            text.attr("x", function(d) { return (d.x+10); })
+                .attr("y", function(d) { return (d.y+10); });
+            
+        });
+    
+    d3.select(".text")
+        .on("click", function() {
+            console.log(this.value);
+        });
+
+}
+
 
 var renderCircleGraph = function( jsonFile, divId, distance){
 

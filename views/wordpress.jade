@@ -6,7 +6,11 @@ html
 		link(rel="stylesheet",href="/stylesheets/graph.css")
 		link(rel="stylesheet",href="/stylesheets/bootstrap.min.css")
 	body
+		section.intro-section
+			h1(style="text-align:center;color:#428bca") 开发者社交网络分析系统
 		section.title-section
+			h1(style="text-align:center;color:#428bca") 实验项目选择 
+			br
 			a.btn.btn-lg.btn-wordpress.active(style="",href="/demo/wordpress",id="wordpress") Wordpress
 			a.btn.btn-lg.btn-trac(style="",href="/demo/wordpress",id="trac") Trac
 		section.choice-section
@@ -79,8 +83,9 @@ html
 		section.graph-secion(style="min-height:500px;border-bottom:2px solid #428bca")
 			p(style="padding:5px 5px;text-align:center;color:#428bca;font-size:25px") 开发者社交网络关系图
 			div.graph-section-content(id="graph")
-		section.parallel-secion(id="parallel",style="border-top:2px solid #428bca")
+		section.parallel-secion(style="border-top:2px solid #428bca")
 			p(style="padding:5px 5px;text-align:center;color:#428bca;font-size:25px") 开发者社交网络粒度分析平行表
+			div.graph-section-content(id="parallel")
 		section.table-section
 			div.table-section-content
 				table

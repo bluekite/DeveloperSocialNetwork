@@ -123,6 +123,7 @@
 			.attr("x", c1[p]).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return data.keys[p][i];})
 			.attr("text-anchor","start" )
+			.style("fill","#428bca")
 			.on('click', function(d,i){
 			//图表点到关联图的跳转和数据的弹出			
 				document.location.href = "#graph";
@@ -133,7 +134,7 @@
 		mainbar.append("text").attr("class","barvalue")
 			.attr("x", c2[p]+60).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return d.value ;})
-			.attr("text-anchor","end");
+			.attr("text-anchor","end").style("fill","#428bca");
 			
 		mainbar.append("text").attr("class","barpercent")
 			.attr("x", c3[p]+80).attr("y",function(d){ return d.middle+5;})

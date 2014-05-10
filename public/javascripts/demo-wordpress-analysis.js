@@ -7,9 +7,9 @@ $(document).ready(function(){
 	renderCircleGraph("/wordpress/circle_developer_commit_15.json","developer-commit",100);
 	renderCircleGraph("/wordpress/circle_developer_work_15.json","developer-work",100);
 
-	//renderCircleGraph("/wordpress/circle_file_logic_15.json","file-logic",10);
-	//renderCircleGraph("/wordpress/circle_file_syntax_15.json","file-syntax",10);
-	//renderCircleGraph("/wordpress/circle_file_work_15.json","file-work",10);
+	// renderCircleGraph("/wordpress/circle_file_logic_15.json","file-logic",10);
+	// renderCircleGraph("/wordpress/circle_file_syntax_15.json","file-syntax",10);
+	// renderCircleGraph("/wordpress/circle_file_work_15.json","file-work",10);
 
 	renderCircleGraph("/wordpress/circle_TT_logic_15.json","TT-logic",250);
 	renderCircleGraph("/wordpress/circle_TT_syntax_15.json","TT-syntax",150);
@@ -20,15 +20,17 @@ $(document).ready(function(){
 
 
 	$.getJSON('/analysis/wordpress/15/developer/degree', function(ANS) {
-		//parallelData(ANS);
+		parallelData(ANS);
 	});
 
 	$.getJSON('/analysis/wordpress/15/TT/degree', function(ANS) {
-		parallelData(ANS);
+		//parallelData(ANS);
 		renderTabel(ANS);
 	});
+
+	//表格数据图
 	$('#version-selector').on('change',function(){
-		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/TT/degree', function(ANS) {
+		$.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/developer/degree', function(ANS) {
 			var table_html = '';
 			table_html += table_base;
 			for( var i=0;i < ANS.DegreeCentrality.length; i++){
@@ -41,31 +43,37 @@ $(document).ready(function(){
 
 			$('#TT-analysis').html(table_html);
 
-			parallelData(ANS);
 		});
 
 	});
 
+	//平行数据表格和版本迭代关系的融合图
 	$('label.version').on('click',function(event) {
 		mixedGraphData();
-		if($('label.TT.active').html())
-			renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
+		// if($('label.TT.active').html())
+		// 	renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
 		if($('label.developer.active').html())
 			renderMainGraph("/wordpress/circle_"+($('label.developer.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
-		console.log($(this).html().split("<")[0]);
+		$.getJSON('/analysis/wordpress/'+$(this).html().split("<")[0]+'/developer/degree', function(ANS) {
+			document.location.href = "#parallel";
+			parallelData(ANS);
+
+		});
 	});
 
 	$('label.TT').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
-		console.log($(this).html().split("<")[0]);
+		if($('label.version.active').html())
+			renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+		//console.log($(this).html().split("<")[0]);
 	});
 	$('label.developer').on('click',function(event) {
-		renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
-		console.log($(this).html().split("<")[0]);
+		if($('label.version.active').html())
+			renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+		//console.log($(this).html().split("<")[0]);
 	});
 
 	$('a.developer').on('click', function(event){
-		console.log('#'+$(this).id);
+		//console.log('#'+$(this).id);
 	});
 
 	$('#graph-tab a:first').tab('show');
@@ -85,12 +93,12 @@ function mixedGraphData(){
 	$('label.developer.active').each(function() {
 		activeDeveloper.push($(this).html().split("<")[0]);
 	});
-	console.log(activeVersion);
-	console.log(activeTT);
-	console.log(activeDeveloper);
-	var mixedData;
-	mixedData.activeVersion = activeVersion;
-	mixedData.activeDeveloper = activeDeveloper;
+	//console.log(activeVersion);
+	//console.log(activeTT);
+	//console.log(activeDeveloper);
+	//var mixedData;
+	//mixedData.activeVersion = activeVersion;
+	//mixedData.activeDeveloper = activeDeveloper;
 
 }
 
@@ -99,6 +107,7 @@ function mixedParallelData(){
 }
 
 function parallelData(ANS){
+	console.log('hello'+ANS);
 	$("#parallel").html("");
 	var parallel = [];
 	var singleArray;
@@ -108,24 +117,24 @@ function parallelData(ANS){
 		singleArray[1] = ANS.DegreeCentrality[i].name;
 		singleArray[2] = ANS.DegreeCentrality[i].logic;
 		singleArray[3] = ANS.DegreeCentrality[i].logic;
-		console.log(singleArray);
+		//console.log(singleArray);
 		parallel.push(singleArray);
 		singleArray = new Array(3);
 		singleArray[0] = "syntax";
 		singleArray[1] = ANS.DegreeCentrality[i].name;
 		singleArray[2] = ANS.DegreeCentrality[i].syntax;
 		singleArray[3] = ANS.DegreeCentrality[i].logic;
-		console.log(singleArray);
+		//console.log(singleArray);
 		parallel.push(singleArray);
 		singleArray = new Array(3);
 		singleArray[0] = "work";
 		singleArray[1] = ANS.DegreeCentrality[i].name;
 		singleArray[2] = ANS.DegreeCentrality[i].work;
 		singleArray[3] = ANS.DegreeCentrality[i].logic;
-		console.log(singleArray);
+		//console.log(singleArray);
 		parallel.push(singleArray);
 	}
-	var width = 1200, height = 610, margin ={b:50, t:50, l:500, r:0};
+	var width = 1200, height = 610, margin ={b:50, t:50, l:300, r:0};
 
 	var svg = d3.select("#parallel")
 		.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
