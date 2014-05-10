@@ -2,6 +2,40 @@ var fs = require('fs');
 
 module.exports = function(app){
 
+    app.get('/analysis/:project/:version/developer/degree', function(req, res){
+        var comment_row = fs.readFileSync('public/'+req.params.project+'/network_developer_comment_'+ req.params.version +'.json', 'utf-8');
+        var commit_row = fs.readFileSync('public/'+req.params.project+'/network_developer_commit_'+ req.params.version +'.json', 'utf-8');
+        var work_row = fs.readFileSync('public/'+req.params.project+'/network_developer_work_'+ req.params.version +'.json', 'utf-8');
+        var developers_row = fs.readFileSync('public/'+req.params.project+'/developer.json','utf-8');
+        var developer_comment = JSON.parse(comment_row);
+        var developer_commit = JSON.parse(commit_row);
+        var developer_work = JSON.parse(work_row);
+        var developers = JSON.parse(developers_row);
+
+        var SNA = { "DegreeCentrality":[] };
+
+        for(var j = 0; j < developers.length; j++){
+            var comment_count = 0, commit_count = 0, work_count = 0;
+            for(var i =0; i< developer_comment.length; i++){
+                if(developer_comment[i]['developer1'] == developers[j]['developer'] || developer_comment[i]['developer1'] == developers[j]['developer']){
+                    comment_count += developer_comment[i]['count'];
+                }
+            }
+            for(var i =0; i< developer_commit.length; i++){
+                if(developer_commit[i]['developer1'] == developers[j]['developer'] || developer_commit[i]['developer1'] == developers[j]['developer']){
+                    commit_count += developer_commit[i]['count'];
+                }
+            }
+            for(var i =0; i< developer_work.length; i++){
+                if(developer_work[i]['developer1'] == developers[j]['developer'] || developer_work[i]['developer1'] == developers[j]['developer']){
+                    work_count += developer_work[i]['count'];
+                }
+            }
+            SNA.DegreeCentrality.push({'name':developers[j]['developer'],'logic':comment_count,'syntax':commit_count,'work':work_count});
+        }
+        res.json(SNA);
+    });
+
     app.get('/analysis/wordpress/:version/TT/degree', function(req, res){
         var logic_row = fs.readFileSync('public/wordpress/network_TT_logic_'+ req.params.version +'.json', 'utf-8');
         var syntax_row = fs.readFileSync('public/wordpress/network_TT_syntax_'+ req.params.version +'.json', 'utf-8');

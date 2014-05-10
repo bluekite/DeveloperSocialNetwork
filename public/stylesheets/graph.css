@@ -41,6 +41,12 @@ section {
 	
 /*	width: 868px;*/
 }
+section.intro-section{
+	margin: 30px auto;
+	min-height: 500px;
+	max-width: 600px;
+	/*style="border:3px solid #d7f0dd;"*/
+}
 section.title-section{
 	margin: 30px auto;
 	min-height: 50px;
@@ -107,7 +113,7 @@ table.choice-section-table  td{
 .btn.btn-trac.active{
 	background-color:#428bca;
 	color: #ffffff;
-	float: left;
+	float: right;
 }
 .btn-choice {
 	border: 1px solid #ffffff;

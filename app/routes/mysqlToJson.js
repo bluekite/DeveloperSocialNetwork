@@ -11,6 +11,149 @@ var connection = mysql.createConnection({
 
 module.exports = function(app){
 
+    app.post('/mysql/:project/:table', function(req, res){
+
+        var connection = mysql.createConnection({
+            host     : 'localhost',
+            user     : 'root',
+            password : '',
+            database : req.params.project
+        });
+        connection.connect();
+
+        connection.query('SELECT * from '+req.params.table, function(err, rows, fields) {
+            if(err){
+                throw err;
+                res.send({'error':err.message});
+            }else{
+                var data = JSON.stringify(rows,null,4);
+                fs.writeFile('public/'+req.params.project+'/'+req.params.table+'.json', data, function(err){
+                    if(err){
+                        throw err;
+                        res.send({'error':err.message});
+                    }else{
+                        res.send({
+                            'success': true
+                        });
+                    }
+                })
+            }
+        });
+        connection.end();
+
+    });
+
+    app.post('/mysql/:project/filedeveloper/file', function(req, res){
+
+        var connection = mysql.createConnection({
+            host     : 'localhost',
+            user     : 'root',
+            password : '',
+            database : req.params.project
+        });
+        connection.connect();
+
+        connection.query('SELECT distinct file from filedeveloper', function(err, rows, fields) {
+            if(err){
+                throw err;
+                res.send({'error':err.message});
+            }else{
+                for( var i = 0; i < rows.length; i++){
+                    rows[i]["number"] = i;
+                }
+                var data = JSON.stringify(rows,null,4);
+
+                fs.writeFile('public/'+req.params.project+'/file.json', data, function(err){
+                    if(err){
+                        throw err;
+                        res.send({'error':err.message});
+                    }else{
+                        res.send({
+                            'success': true
+
+                        });
+                    }
+                })
+            }
+        });
+        connection.end();
+
+    });
+
+    //filebug中文件没有filedeveloper全
+    app.post('/mysql/:project/filebug/file', function(req, res){
+
+        var connection = mysql.createConnection({
+            host     : 'localhost',
+            user     : 'root',
+            password : '',
+            database : req.params.project
+        });
+        connection.connect();
+
+        connection.query('SELECT distinct file from filebug', function(err, rows, fields) {
+            if(err){
+                throw err;
+                res.send({'error':err.message});
+            }else{
+                for( var i = 0; i < rows.length; i++){
+                    rows[i]["number"] = i;
+                }
+                var data = JSON.stringify(rows,null,4);
+
+                fs.writeFile('public/'+req.params.project+'/file2.json', data, function(err){
+                    if(err){
+                        throw err;
+                        res.send({'error':err.message});
+                    }else{
+                        res.send({
+                            'success': true
+
+                        });
+                    }
+                })
+            }
+        });
+        connection.end();
+
+    });
+
+    app.post('/mysql/:project/filedeveloper/developer', function(req, res){
+
+        var connection = mysql.createConnection({
+            host     : 'localhost',
+            user     : 'root',
+            password : '',
+            database : req.params.project
+        });
+        connection.connect();
+
+        connection.query('SELECT distinct developer from filedeveloper', function(err, rows, fields) {
+            if(err){
+                throw err;
+                res.send({'error':err.message});
+            }else{
+                for( var i = 0; i < rows.length; i++){
+                    rows[i]["number"] = i;
+                }
+                var data = JSON.stringify(rows,null,4);
+
+                fs.writeFile('public/'+req.params.project+'/developer.json', data, function(err){
+                    if(err){
+                        throw err;
+                        res.send({'error':err.message});
+                    }else{
+                        res.send({
+                            'success': true
+
+                        });
+                    }
+                })
+            }
+        });
+        connection.end();
+
+    });
 
 
     app.post('/mysql/wordpress/:table', function(req, res){
