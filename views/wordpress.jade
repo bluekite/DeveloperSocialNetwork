@@ -14,6 +14,9 @@ html
 			a.btn.btn-lg.btn-wordpress.active(style="",href="/demo/wordpress",id="wordpress") Wordpress
 			a.btn.btn-lg.btn-trac(style="",href="/demo/wordpress",id="trac") Trac
 		section.choice-section
+			div(style="padding:10px;margin:0 auto")
+				a.btn.btn-differShow.active(style="",href="/demo/wordpress",id="wordpress") 关系网络演化
+				a.btn.btn-differShow(style="",href="/demo/wordpress",id="trac") 分离关系网络
 			div.choice-section-content
 				table.choice-section-table
 					tr(style="margin:10px auto")
@@ -112,7 +115,7 @@ html
 								option= "35"
 								option= "36"
 				table.table(id="TT-analysis",style="display:block")
-		section(id="detailed-graph-section")
+		section.detailed-graph-section(id="detailed-graph-section")
 			div.row(style="margin:10px auto;max-width:888px")
 				ul.nav.nav-tabs(id="graph-tab")
 					li.active
@@ -139,7 +142,4 @@ html
 		script(src="/javascripts/jquery-1.11.0.min.js")
 		script(src="/javascripts/bootstrap.min.js")        	
 		script(src="/javascripts/d3.v3.min.js")
-		script(src="/javascripts/biPartite.js")
-		script(src="/files/sales_data.js")
 		script(src="/javascripts/demo-wordpress-graph.js")
-		script(src="/javascripts/demo-wordpress-analysis.js")
