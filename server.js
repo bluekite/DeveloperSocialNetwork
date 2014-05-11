@@ -38,7 +38,7 @@ app.set('view engine', 'jade');
 
 app.use(flash());
 
-//app.use(express.favicon());
+app.use(express.favicon('public/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());

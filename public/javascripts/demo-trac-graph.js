@@ -14,7 +14,7 @@ var activeNetworkNode;
 //初始化平行表格需要的方法
 !function(){
     var bP={};  
-    var b=30, bb=350, height=600, buffMargin=1, minHeight=14;
+    var b=30, bb=350, height=800, buffMargin=1, minHeight=14;
     var c1=[-120, 40], c2=[-80, 100], c3=[-40, 140]; //Column positions of labels.
     var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
     
