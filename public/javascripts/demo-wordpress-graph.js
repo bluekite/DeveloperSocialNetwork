@@ -4,8 +4,9 @@ var table_base = '<tr><th>开发者姓名</th><th>逻辑依赖关系-DegreeCentr
 
 //记录平行数据表的data，用于从关系网路向图表跳转
 var currentParallelData;
+//记录关系网络的data，用于从图表向关系网路跳转
 var currentNetworkData;
-//记录跳转过去的平行表格节点的 平行数据下的开发者序列号（为了图的好看重新排列了）
+//记录跳转过去的平行表格节点的 平行数据下的开发者序列号
 var activeParallelNode;
 //记录跳转过去的关系网络图节点的 开发者姓名
 var activeNetworkNode;
@@ -176,7 +177,7 @@ var activeNetworkNode;
     
     function drawHeader(header, id){
 
-        //中心标题设置
+        //中心标题的设置
         d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
             .style("font-size","20").attr("x",200).attr("y",-20).style("text-anchor","middle")
             .style("font-weight","bold").style("fill","#428bca");
@@ -242,8 +243,6 @@ var activeNetworkNode;
     }
     
     bP.draw = function(data, svg){
-                //console.log(data);
-
         data.forEach(function(biP,s){
             svg.append("g")
                 .attr("id", biP.id)
@@ -330,6 +329,7 @@ $(document).ready(function(){
         renderMainGraph("/wordpress/circle_developer_comment_15.json","graph",300);
     });
 
+
     $.getJSON('/analysis/wordpress/15/TT/degree', function(ANS) {
         renderTabel(ANS);
     });
@@ -355,26 +355,89 @@ $(document).ready(function(){
 
     //平行数据表格和版本迭代关系的融合图
     $('label.version').on('click',function(event) {
-        mixedGraphData();
+        var mixedData = mixedGraphData( ($(this).html().split("<")[0]), 'version', $(this).hasClass('active'));
         // if($('label.TT.active').html())
         //  renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
-        if($('label.developer.active').html())
-            renderMainGraph("/wordpress/circle_"+($('label.developer.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
-        $.getJSON('/analysis/wordpress/'+$(this).html().split("<")[0]+'/developer/degree', function(ANS) {
+        if($('label.developer.active').html()){
+            if(mixedData.activeVersion.length == 1){
+                renderMainGraph("/wordpress/circle_"+($('label.developer.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
+            }else{
+                $.ajax({
+                    url: '/wordpress/mixeddata',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { mixedData : mixedData }
+                })
+                .done(function( jsonData) {
+                    console.log("mixed success");
+                    renderMixedGraph(jsonData, "graph",300);
+                })
+                .fail(function() {
+                    console.log("mixed error");
+                })
+                .always(function() {
+                    console.log("mixed complete");
+                });
+            }
+        }
+
+        if( mixedData.activeVersion.length ){
             document.location.href = "#parallel";
-            parallelData(ANS);
+            $.ajax({
+                url: '/analysis/mixed/wordpress/developer/degree',
+                type: 'POST',
+                dataType: 'json',
+                data: {mixedData: mixedData},
+            })
+            .done(function(ANS) {
+                parallelData(ANS);
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });           
+        }
 
-        });
+        
+        // $.getJSON('/analysis/wordpress/'+$(this).html().split("<")[0]+'/developer/degree', function(ANS) {
+        //     
+        //     parallelData(ANS);
+
+        // });
     });
 
-    $('label.TT').on('click',function(event) {
-        if($('label.version.active').html())
-            renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
-        //console.log($(this).html().split("<")[0]);
-    });
+    // $('label.TT').on('click',function(event) {
+    //     if($('label.version.active').html())
+    //         renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+    // });
     $('label.developer').on('click',function(event) {
-        if($('label.version.active').html())
-            renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+        var mixedData = mixedGraphData( ($(this).html().split("<")[0]), 'developer', $(this).hasClass('active'));
+        if($('label.version.active').html()){
+            if(mixedData.activeVersion.length == 1){
+                renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+            }else{
+                $.ajax({
+                    url: '/wordpress/mixeddata',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { mixedData : mixedData }
+                })
+                .done(function( jsonData) {
+                    console.log("mixed success");
+                    renderMixedGraph(jsonData, "graph",300);
+                })
+                .fail(function() {
+                    console.log("mixed error");
+                })
+                .always(function() {
+                    console.log("mixed complete");
+                });
+                
+            }
+        }
     });
 
     $('#graph-tab a:first').tab('show');
@@ -383,32 +446,52 @@ $(document).ready(function(){
 
 
 //复合版本所需要的关系网络数据整合
-function mixedGraphData(){
+function mixedGraphData( clickedButton, type, isActive){
+
+    var mixedData ;
+
     var activeVersion = [];
     $('label.version.active').each(function() {
-        activeVersion.push($(this).html().split("<")[0]);
+        if( $(this).html().split("<")[0] != clickedButton ){
+            activeVersion.push($(this).html().split("<")[0]);
+        }
     });
-    var activeTT = [];
-    $('label.TT.active').each(function() {
-        activeTT.push($(this).html().split("<")[0]);
-    });
+    // var activeTT = [];
+    // $('label.TT.active').each(function() {
+    //     activeTT.push($(this).html().split("<")[0]);
+    // });
     var activeDeveloper = [];
     $('label.developer.active').each(function() {
-        activeDeveloper.push($(this).html().split("<")[0]);
+        if( $(this).html().split("<")[0] != clickedButton ){
+            activeDeveloper.push($(this).html().split("<")[0]);
+        }
     });
-    //console.log(activeVersion);
+
+    console.log(type+isActive);
+
+    if( type == 'developer' && !isActive ){
+        activeDeveloper.push(clickedButton);
+    }
+    if( type == 'version' && !isActive ){
+        activeVersion.push(clickedButton);
+    }
+
+    console.log(activeVersion);
     //console.log(activeTT);
-    //console.log(activeDeveloper);
-    //var mixedData;
-    //mixedData.activeVersion = activeVersion;
-    //mixedData.activeDeveloper = activeDeveloper;
+    console.log(activeDeveloper);
+    var mixedData = { 
+        'activeVersion' : activeVersion,
+        'activeDeveloper' : activeDeveloper
+    };
+    return mixedData;
+
 
 }
 
 //复合版本所需要的平行图表网络数据整合
 function mixedParallelData(){
 
-
+    //并入mixedGraphData
     
 }
 
@@ -423,19 +506,19 @@ function parallelData(ANS){
         singleArray[0] = "logic";
         singleArray[1] = ANS.DegreeCentrality[i].name;
         singleArray[2] = ANS.DegreeCentrality[i].logic;
-        //singleArray[3] = ANS.DegreeCentrality[i].logic;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
         parallel.push(singleArray);
         singleArray = new Array(3);
         singleArray[0] = "syntax";
         singleArray[1] = ANS.DegreeCentrality[i].name;
         singleArray[2] = ANS.DegreeCentrality[i].syntax;
-        //singleArray[3] = ANS.DegreeCentrality[i].logic;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
         parallel.push(singleArray);
         singleArray = new Array(3);
         singleArray[0] = "work";
         singleArray[1] = ANS.DegreeCentrality[i].name;
         singleArray[2] = ANS.DegreeCentrality[i].work;
-        //singleArray[3] = ANS.DegreeCentrality[i].logic;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
         parallel.push(singleArray);
     }
     var width = 1200, height = 610, margin ={b:50, t:50, l:300, r:0};
@@ -446,14 +529,14 @@ function parallelData(ANS){
 
     var data = [ 
         {data:bP.partData(parallel,2), id:'DegreeCentrality', header:["Category","State", "Centrality Analysis"]},
-        //{data:bP.partData(parallel,3), id:'Sales', header:["Channel","State", "Sales"]}
+        //{data:bP.partData(parallel,3), id:'BetweenessCentrality', header:["Category","State", "Centrality Analysis"]}
     ];
 
     currentParallelData = data;
     bP.draw(data, svg);
 }
 
-
+//渲染分离版本的表格数据
 function renderTabel(ANS){
         var table_html = '';
         table_html += table_base;
@@ -482,7 +565,7 @@ d3.json("/wordpress/file.json",function(error,data){
 });
 
 function selectVersion(){
-    console.log(this.options[this.selectedIndex].value);
+
     renderCircleGraph("/wordpress/circle_developer_comment_" + this.options[this.selectedIndex].value + ".json","developer-comment",100);
     renderCircleGraph("/wordpress/circle_developer_commit_" + this.options[this.selectedIndex].value + ".json","developer-commit",100);
     renderCircleGraph("/wordpress/circle_developer_work_" + this.options[this.selectedIndex].value + ".json","developer-work",100);
@@ -499,8 +582,7 @@ function selectVersion(){
 };
 
 
-
-
+//对演化版本直接使用json文件进行渲染
 var renderMainGraph = function( jsonFile, divId, distance){
 
     var width = 868,
@@ -513,7 +595,7 @@ var renderMainGraph = function( jsonFile, divId, distance){
         .linkDistance(distance)
         .size([width, height]);
 
-    /*clear the graph out*/
+    //将矢量图的div区块清空
     d3.select(document.getElementById(divId)).html("");
 
     var svg = d3.select(document.getElementById(divId)).append("svg")
@@ -522,7 +604,6 @@ var renderMainGraph = function( jsonFile, divId, distance){
 
 
     d3.json(jsonFile, function(error, graph) {
-        //console.log(graph);
         force
             .nodes(graph.nodes)
             .links(graph.links)
@@ -595,6 +676,8 @@ var renderMainGraph = function( jsonFile, divId, distance){
 
 }
 
+
+//对演化版本直接使用json数据进行渲染，而不是json文件
 var renderMixedGraph = function( jsonData, divId, distance){
 
     var width = 868,
@@ -646,10 +729,15 @@ var renderMixedGraph = function( jsonData, divId, distance){
         .attr("data-content",function(d){ 
             return "<div '>"+
             "<h3 style='color:"+color(d.group)+"'>"+d.name+
-            "</h3><legend></legend><h5>ct</h5></div>"
+            "</h3><table class='table'><tr><th>Comment Centrality</th><th>Commit Centrality</th><th>Work Centrality</th></tr><tr>"+
+            "<td>"+currentNetworkData.DegreeCentrality[d.group].logic+"</td>"+
+            "<td>"+currentNetworkData.DegreeCentrality[d.group].syntax+"</td>"+
+            "<td>"+currentNetworkData.DegreeCentrality[d.group].work+"</td>"+
+            "</tr></table></div>"
         })
         .on("mouseover", function(d){ 
             console.log(d.name+" over"); 
+            $("#name-"+ activeNetworkNode +"").popover("hide");
             $(this).popover('show');
         })
         .on("mouseout", function(d){ 
@@ -658,7 +746,9 @@ var renderMixedGraph = function( jsonData, divId, distance){
         })
         .on("click", function(d){
             console.log(d.name+' click');
-            $("#parallel-"+d.name+"").mouseover();
+            document.location.href = "#parallel";
+            activeParallelNode = currentParallelData[0].data.keys[1].indexOf(d.name);
+            bP.selectSegment(currentParallelData, 1, activeParallelNode);
         })
         .call(force.drag);
 
@@ -679,7 +769,7 @@ var renderMixedGraph = function( jsonData, divId, distance){
     
 }
 
-
+//分离数据网络使用的基本Circle关系网络渲染
 var renderCircleGraph = function( jsonFile, divId, distance){
 
     var width = 500,
@@ -704,7 +794,6 @@ var renderCircleGraph = function( jsonFile, divId, distance){
         force
             .nodes(graph.nodes)
             .links(graph.links)
-            //.text(graph.nodes)
             .start();
 
         var link = svg.selectAll(".link")
@@ -726,7 +815,6 @@ var renderCircleGraph = function( jsonFile, divId, distance){
             .enter().append("text")
             .style("fill", function(d) { return color(d.group); })
             .text(function(d) { return d.name ; })
-            .on("click", function(d){ console.log(d.name);})
             .call(force.drag);
 
 
@@ -748,6 +836,8 @@ var renderCircleGraph = function( jsonFile, divId, distance){
 
 }
 
+
+//不使用，测试使用的带标签渲染，后直接在renderCircle中添加text节点。
 var renderLabelGraph = function(jsonFile, divId){
     var w = 500, h = 500;
 
@@ -801,7 +891,6 @@ var renderLabelGraph = function(jsonFile, divId){
             });
 
         }
-
 
         force.on("tick", function() {
 

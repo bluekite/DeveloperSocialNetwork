@@ -91,6 +91,7 @@ div.graph-section-content {
 	margin:10px auto;
 	max-width: 1100px; 
 	padding-top: 20px;
+	min-height: 1000px;
 }
 
 table.choice-section-table  td{

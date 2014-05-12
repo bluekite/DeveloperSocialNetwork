@@ -14,7 +14,7 @@ var activeNetworkNode;
 //初始化平行表格需要的方法
 !function(){
     var bP={};  
-    var b=30, bb=350, height=800, buffMargin=1, minHeight=14;
+    var b=30, bb=350, height=1000, buffMargin=1, minHeight=14;
     var c1=[-120, 40], c2=[-80, 100], c3=[-40, 140]; //Column positions of labels.
     var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
     
@@ -348,66 +348,142 @@ $(document).ready(function(){
 
     });
 
+
+
+
     //平行数据表格和版本迭代关系的融合图
     $('label.version').on('click',function(event) {
-        mixedGraphData();
+        var mixedData = mixedGraphData( ($(this).html().split("<")[0]), 'version', $(this).hasClass('active'));
         // if($('label.TT.active').html())
         //  renderMainGraph("/trac/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
-        if($('label.developer.active').html())
-            renderMainGraph("/trac/circle_"+($('label.developer.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
-        $.getJSON('/analysis/trac/'+$(this).html().split("<")[0]+'/developer/degree', function(ANS) {
+        if($('label.developer.active').html()){
+            if(mixedData.activeVersion.length == 1){
+                renderMainGraph("/trac/circle_"+($('label.developer.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
+            }else{
+                $.ajax({
+                    url: '/trac/mixeddata',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { mixedData : mixedData }
+                })
+                .done(function( jsonData) {
+                    console.log("mixed success");
+                    renderMixedGraph(jsonData, "graph",300);
+                })
+                .fail(function() {
+                    console.log("mixed error");
+                })
+                .always(function() {
+                    console.log("mixed complete");
+                });
+            }
+        }
+
+        if( mixedData.activeVersion.length ){
             document.location.href = "#parallel";
-            parallelData(ANS);
+            $.ajax({
+                url: '/analysis/mixed/trac/developer/degree',
+                type: 'POST',
+                dataType: 'json',
+                data: {mixedData: mixedData},
+            })
+            .done(function(ANS) {
+                parallelData(ANS);
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });           
+        }
 
-        });
+        // $.getJSON('/analysis/trac/'+$(this).html().split("<")[0]+'/developer/degree', function(ANS) {
+        //     document.location.href = "#parallel";
+        //     parallelData(ANS);
+
+        // });
     });
 
-    $('label.TT').on('click',function(event) {
-        if($('label.version.active').html())
-            renderMainGraph("/trac/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
-        //console.log($(this).html().split("<")[0]);
-    });
+    // $('label.TT').on('click',function(event) {
+    //     if($('label.version.active').html())
+    //         renderMainGraph("/trac/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+    // });
     $('label.developer').on('click',function(event) {
-        if($('label.version.active').html())
-            renderMainGraph("/trac/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+        var mixedData = mixedGraphData( ($(this).html().split("<")[0]), 'developer', $(this).hasClass('active'));
+        if($('label.version.active').html()){
+            if(mixedData.activeVersion.length == 1){
+                renderMainGraph("/trac/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
+            }else{
+                $.ajax({
+                    url: '/trac/mixeddata',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { mixedData : mixedData }
+                })
+                .done(function( jsonData) {
+                    console.log("mixed success");
+                    renderMixedGraph(jsonData, "graph",300);
+                })
+                .fail(function() {
+                    console.log("mixed error");
+                })
+                .always(function() {
+                    console.log("mixed complete");
+                });
+                
+            }
+        }
     });
 
     $('#graph-tab a:first').tab('show');
-
-    $('#seperate').on('click', function(){
-        // $('section.graph-section').hide();
-        // $('.choice-section').fadeOut();
-        // $('.parallel-section').fadeOut();
-        // $('.table-section').fadeIn();
-        // $('.detailed-graph-section').fadeIn();
-    });
 
 });
 
 
 //复合版本所需要的关系网络数据整合
-function mixedGraphData(){
+function mixedGraphData( clickedButton, type, isActive){
+
+    var mixedData ;
+
     var activeVersion = [];
     $('label.version.active').each(function() {
-        activeVersion.push($(this).html().split("<")[0]);
+        if( $(this).html().split("<")[0] != clickedButton ){
+            activeVersion.push($(this).html().split("<")[0]);
+        }
     });
-    var activeTT = [];
-    $('label.TT.active').each(function() {
-        activeTT.push($(this).html().split("<")[0]);
-    });
+    // var activeTT = [];
+    // $('label.TT.active').each(function() {
+    //     activeTT.push($(this).html().split("<")[0]);
+    // });
     var activeDeveloper = [];
     $('label.developer.active').each(function() {
-        activeDeveloper.push($(this).html().split("<")[0]);
+        if( $(this).html().split("<")[0] != clickedButton ){
+            activeDeveloper.push($(this).html().split("<")[0]);
+        }
     });
-    //console.log(activeVersion);
+
+    console.log(type+isActive);
+
+    if( type == 'developer' && !isActive ){
+        activeDeveloper.push(clickedButton);
+    }
+    if( type == 'version' && !isActive ){
+        activeVersion.push(clickedButton);
+    }
+
+    console.log(activeVersion);
     //console.log(activeTT);
-    //console.log(activeDeveloper);
-    //var mixedData;
-    //mixedData.activeVersion = activeVersion;
-    //mixedData.activeDeveloper = activeDeveloper;
+    console.log(activeDeveloper);
+    var mixedData = { 
+        'activeVersion' : activeVersion,
+        'activeDeveloper' : activeDeveloper
+    };
+    return mixedData;
+
 
 }
-
 //复合版本所需要的平行图表网络数据整合
 function mixedParallelData(){
 
@@ -441,7 +517,7 @@ function parallelData(ANS){
         //singleArray[3] = ANS.DegreeCentrality[i].logic;
         parallel.push(singleArray);
     }
-    var width = 1200, height = 610, margin ={b:50, t:50, l:300, r:0};
+    var width = 1200, height = 1024, margin ={b:50, t:50, l:300, r:0};
 
     var svg = d3.select("#parallel")
         .append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
@@ -649,10 +725,15 @@ var renderMixedGraph = function( jsonData, divId, distance){
         .attr("data-content",function(d){ 
             return "<div '>"+
             "<h3 style='color:"+color(d.group)+"'>"+d.name+
-            "</h3><legend></legend><h5>ct</h5></div>"
+            "</h3><table class='table'><tr><th>Comment Centrality</th><th>Commit Centrality</th><th>Work Centrality</th></tr><tr>"+
+            "<td>"+currentNetworkData.DegreeCentrality[d.group].logic+"</td>"+
+            "<td>"+currentNetworkData.DegreeCentrality[d.group].syntax+"</td>"+
+            "<td>"+currentNetworkData.DegreeCentrality[d.group].work+"</td>"+
+            "</tr></table></div>"
         })
         .on("mouseover", function(d){ 
             console.log(d.name+" over"); 
+            $("#name-"+ activeNetworkNode +"").popover("hide");
             $(this).popover('show');
         })
         .on("mouseout", function(d){ 
@@ -661,7 +742,9 @@ var renderMixedGraph = function( jsonData, divId, distance){
         })
         .on("click", function(d){
             console.log(d.name+' click');
-            $("#parallel-"+d.name+"").mouseover();
+            document.location.href = "#parallel";
+            activeParallelNode = currentParallelData[0].data.keys[1].indexOf(d.name);
+            bP.selectSegment(currentParallelData, 1, activeParallelNode);
         })
         .call(force.drag);
 
