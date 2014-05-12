@@ -109,15 +109,18 @@ module.exports = function(app){
         var jsonData_row = fs.readFileSync('public/'+req.params.project+'/circle_developer.json','utf-8');
         var jsonData = JSON.parse(jsonData_row);
         var tempData, tempData_row;
-        for ( var i =0; i < mixedData.activeVersion.length ;i++){
-            for ( var j =0; j < mixedData.activeDeveloper.length ;j++){
-                tempData_row = fs.readFileSync('public/'+req.params.project+'/circle_'+mixedData.activeDeveloper[j]+'_'+mixedData.activeVersion[i]+'.json','utf-8');
-                tempData = JSON.parse(tempData_row);
-                for( var k = 0; k <tempData.links.length; k++){
-                    jsonData.links.push(tempData.links[k]);
+        if( mixedData.activeVersion.length && mixedData.activeDeveloper.length ){
+            for ( var i =0; i < mixedData.activeVersion.length ;i++){
+                for ( var j =0; j < mixedData.activeDeveloper.length ;j++){
+                    tempData_row = fs.readFileSync('public/'+req.params.project+'/circle_'+mixedData.activeDeveloper[j]+'_'+mixedData.activeVersion[i]+'.json','utf-8');
+                    tempData = JSON.parse(tempData_row);
+                    for( var k = 0; k <tempData.links.length; k++){
+                        jsonData.links.push(tempData.links[k]);
+                    }
                 }
             }
         }
+
         res.send(jsonData);
 
     });
