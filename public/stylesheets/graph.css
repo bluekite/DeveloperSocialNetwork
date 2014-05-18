@@ -39,41 +39,40 @@ background: #fff url('/images/bg.png') repeat;
 }
 section {
 	
-/*	width: 868px;*/
+	background-color: #fff;
+	color:#428bca;
+	width: 980px;
+	margin: 30px auto;
+	box-shadow: 8px 8px 6px #aaa;
+	border-top: 2px solid #eee;
+	border-left: 2px solid #eee;
 }
 section.intro-section{
-	margin: 30px auto;
-	min-height: 500px;
-	max-width: 600px;
+	min-height: 650px;
+	max-width: 800px;
 	/*style="border:3px solid #d7f0dd;"*/
 }
 section.title-section{
-	margin: 30px auto;
 	min-height: 50px;
 	max-width: 252px;
 	/*style="border:3px solid #d7f0dd;"*/
 }
 section.choice-section{
-	background-color:#428bca;
-	color:#ffffff;
+
 	min-height: 300px;
 	/*style="border:3px solid #d7f0dd;"*/
 }
 section.parrallel-section{
-	background-color:#ffffff;
-	color:#428bca;
 	min-height: 300px;
 	/*style="border:3px solid #d7f0dd;"*/
 }
 section.table-section{
-	background-color:#428bca;
-	color:#ffffff;
+
 	min-height: 300px;
 	/*style="border:3px solid #d7f0dd;"*/
 }
 section.graph-section{
-	background-color:#ffffff;
-	color:#428bca;
+
 	min-height: 300px;
 	/*style="border:3px solid #d7f0dd;"*/
 }
@@ -117,8 +116,8 @@ table.choice-section-table  td{
 	float: right;
 }
 .btn-choice {
-	border: 1px solid #ffffff;
-	color: #ffffff;
+	border: 1px solid #ddd;
+	color: #428bca;
 	float: left;
 	padding: 5px;
 	text-decoration: none;

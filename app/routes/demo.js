@@ -22,6 +22,10 @@ module.exports = function(app){
 		}
 	});
 
+	app.get('/demo', function(req, res){
+		res.render('dsn',{title:'Demo'});
+	})
+
     app.get('/demo/wordpress', function(req, res){
         res.render('wordpress',{title:'Demo - wordpress'});
     });

@@ -67,6 +67,13 @@ module.exports = function(app){
         res.send({"result":1});
     })
 
+    app.post('/sqlget', function(req, res){
+        var test = req.body.test;
+        console.log(req.body.test);
+        console.log(test);
+        res.send({'hello':test});
+    });
+
 //    app.get('*', function(req, res){
 //        res.render('404', { title: 'SmsSnd' });
 //    });

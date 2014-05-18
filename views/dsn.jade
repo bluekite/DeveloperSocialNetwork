@@ -1,0 +1,17 @@
+extends layout-demo
+include mixin-menu
+
+block stylesheets
+	link(rel="stylesheet",href="/stylesheets/graph.css")
+
+block sidebar
+	+menuOfActive('demo')
+
+block content
+	section.intro-section
+		h1(style="text-align:center;color:#428bca") 开发者社交网络分析
+		p 开发者网络图的构成：
+		p 将下述三种关系所述矩阵转换为图，则每个节点代表开发者，两点之间的连线代表	依赖关系。
+	section.title-section
+		a.btn.btn-lg.btn-wordpress(style="",href="/demo/wordpress",id="wordpress") Wordpress
+		a.btn.btn-lg.btn-trac.active(style="",href="/demo/trac",id="trac") Trac
