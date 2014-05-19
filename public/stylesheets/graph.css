@@ -47,8 +47,17 @@ section {
 	border-top: 2px solid #eee;
 	border-left: 2px solid #eee;
 }
+section.image-section{
+	padding: 20px 20px;
+	margin: 30px;
+	max-width: 500px;
+	/*style="border:3px solid #d7f0dd;"*/
+}
+section img{
+	margin: 0 auto;
+}
 section.intro-section{
-	min-height: 650px;
+	padding: 20px 20px;
 	max-width: 800px;
 	/*style="border:3px solid #d7f0dd;"*/
 }

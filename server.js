@@ -11,6 +11,8 @@ var webcrawler = require('./app/routes/webcrawler.js');
 var mysqlToJson = require('./app/routes/mysqlToJson');
 var jsonToGraph = require('./app/routes/jsonToGraph');
 var jsonAnalysis = require('./app/routes/jsonAnalysis');
+var scripts = require('./app/routes/scripts');
+
 var demo = require('./app/routes/demo');
 
 
@@ -67,6 +69,7 @@ webcrawler(app);
 mysqlToJson(app);
 jsonToGraph(app);
 jsonAnalysis(app);
+scripts(app);
 demo(app);
 
 routes(app);

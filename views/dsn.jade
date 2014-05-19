@@ -9,19 +9,23 @@ block sidebar
 
 block content
 	section.intro-section
-		h1(style="text-align:center;color:#428bca") 开发者社交网络分析
-		p 开发者网络图的构建：
-		ul 
-			li 1 工作流依赖
-				p 含义：将参与同一次修改（包括添加新功能和对已有代码的修正）的多位开发者视为存在工作流依赖关系，认为较晚提交的开发者依赖于较早提交的开发者，该依赖关系有方向。其度量采用工作流依赖矩阵WD
-				p 参考公式为：
-					img(src="/images/formula-work.png",style="width:300px")
-				p Degree centrality: 𝐷𝐶(𝑛𝑖, 𝑀)=𝑑(𝑛𝑖)     矩阵M中节点𝑛𝑖的连接数，取值在[0, n-1]。
-			li 2 协作关系
-				p 将在同一个版本的开发中修改过同一个文件的多位开发者视为存在协作关系，该关系是对称的，不存在方向。
-			li 3 交流关系
-				p 将参与同一次修改的评论与回复的多位开发者视为存在交流关系，该关系亦是无向的。
-		p 将上述三种关系所述矩阵转换为图，则每个节点代表开发者，两点之间的连线代表	依赖关系。
+		//h1(style="text-align:center;color:#428bca") 开发者社交网络分析
+		h3 1. 开发者网络图的构建：
+		blockquote(style="border-left: 3px solid #D0E5F2;padding: 0 0 0 10px;") 工作流依赖
+		p 含义：将参与同一次修改（包括添加新功能和对已有代码的修正）的多位开发者视为存在工作流依赖关系，认为较晚提交的开发者依赖于较早提交的开发者，该依赖关系有方向。其度量采用工作流依赖矩阵WD
+		p 参考公式为：
+			img(src="/images/formula-work.png",style="width:300px")
+		p Degree centrality: 𝐷𝐶(𝑛𝑖, 𝑀)=𝑑(𝑛𝑖)     矩阵M中节点𝑛𝑖的连接数，取值在[0, n-1]。
+		blockquote(style="border-left: 3px solid #D0E5F2;padding: 0 0 0 10px;") 协作关系
+		p 将在同一个版本的开发中修改过同一个文件的多位开发者视为存在协作关系，该关系是对称的，不存在方向。
+		blockquote(style="border-left: 3px solid #D0E5F2;padding: 0 0 0 10px;") 交流关系
+		p 将参与同一次修改的评论与回复的多位开发者视为存在交流关系，该关系亦是无向的。
+		h3 将上述三种关系所述矩阵转换为图，则每个节点代表开发者，两点之间的连线代表依赖关系。
+	div.row(style="margin: 0 auto")
+		section.image-section.col-md-6
+			img(src="/images/opengraph.png",style="height:300px")
+		section.image-section.col-md-6
+			img(src="/images/weightedgraph.png",style="height:300px")
 	section.title-section
 		a.btn.btn-lg.btn-wordpress(style="",href="/demo/wordpress",id="wordpress") Wordpress
 		a.btn.btn-lg.btn-trac.active(style="",href="/demo/trac",id="trac") Trac

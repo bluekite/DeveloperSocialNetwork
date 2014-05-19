@@ -142,7 +142,8 @@ var activeNetworkNode;
             .attr("id",function(d,i){ return "parallel-"+data.keys[p][i];})
             .on('click', function(d,i){
             //图表点到关联图的跳转和数据的弹出          
-                document.location.href = "#graph";
+                //document.location.href = "#graph";
+                $('#evolution-tab a:first').tab('show');
                 $("#name-"+data.keys[p][i]+"").popover("show");
                 activeNetworkNode = data.keys[p][i];
             });
@@ -440,7 +441,8 @@ $(document).ready(function(){
         }
     });
 
-    $('#graph-tab a:first').tab('show');
+    //$('#graph-tab a:first').tab('show');
+    //$('#evolution-tab a:first').tab('show');
 
 });
 
@@ -651,7 +653,8 @@ var renderMainGraph = function( jsonFile, divId, distance){
             })     
             //关系网络向平行表格的跳转   
             .on("click", function(d){
-                document.location.href = "#parallel";
+                //document.location.href = "#parallel";
+                $('#evolution-tab a:last').tab('show');
                 activeParallelNode = currentParallelData[0].data.keys[1].indexOf(d.name);
                 bP.selectSegment(currentParallelData, 1, activeParallelNode);
             })
@@ -746,7 +749,8 @@ var renderMixedGraph = function( jsonData, divId, distance){
         })
         .on("click", function(d){
             console.log(d.name+' click');
-            document.location.href = "#parallel";
+            //document.location.href = "#parallel";
+            $('#evolution-tab a:first').tab('show');
             activeParallelNode = currentParallelData[0].data.keys[1].indexOf(d.name);
             bP.selectSegment(currentParallelData, 1, activeParallelNode);
         })
