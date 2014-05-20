@@ -15,7 +15,7 @@ var activeNetworkNode;
 //初始化平行表格需要的方法
 !function(){
     var bP={};  
-    var b=30, bb=350, height=600, buffMargin=1, minHeight=14;
+    var b=30, bb=200, height=600, buffMargin=1, minHeight=14;
     var c1=[-120, 40], c2=[-80, 100], c3=[-40, 140]; //Column positions of labels.
     var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
     
@@ -190,7 +190,7 @@ var activeNetworkNode;
             h.append("text").text(header[d]).attr("x", (c1[d]))
                 .attr("y", -5).style("fill","#428bca");
             
-            h.append("text").text("Count").attr("x", (c2[d]+40))
+            h.append("text").text("计算值").attr("x", (c2[d]+40))
                 .attr("y", -5).style("fill","#428bca");
             
             h.append("line").attr("x1",c1[d]-10).attr("y1", -2)
@@ -323,12 +323,17 @@ $(document).ready(function(){
     renderCircleGraph("/wordpress/circle_TT_syntax_15.json","TT-syntax",150);
     renderCircleGraph("/wordpress/circle_TT_work_15.json","TT-work",100);
 
-
-
-    $.getJSON('/analysis/wordpress/15/developer/degree', function(ANS) {
-        parallelData(ANS);
+    $.getJSON('/centrality/wordpress/15/developer/comment', function(ANS) {
+        mixedParallelData(ANS);
         renderMainGraph("/wordpress/circle_developer_comment_15.json","graph",300);
+
     });
+
+
+    // $.getJSON('/analysis/wordpress/15/developer/degree', function(ANS) {
+    //     parallelData(ANS);
+        
+    // });
 
 
     $.getJSON('/analysis/wordpress/15/TT/degree', function(ANS) {
@@ -410,10 +415,7 @@ $(document).ready(function(){
         // });
     });
 
-    // $('label.TT').on('click',function(event) {
-    //     if($('label.version.active').html())
-    //         renderMainGraph("/wordpress/circle_"+($(this).html().split("<")[0])+"_"+$('label.version.active').html().split("<")[0]+".json","graph",300);
-    // });
+
     $('label.developer').on('click',function(event) {
         var mixedData = mixedGraphData( ($(this).html().split("<")[0]), 'developer', $(this).hasClass('active'));
         if($('label.version.active').html()){
@@ -442,7 +444,7 @@ $(document).ready(function(){
     });
 
     //$('#graph-tab a:first').tab('show');
-    //$('#evolution-tab a:first').tab('show');
+    $('#evolution-tab a:last').tab('show');
 
 });
 
@@ -491,11 +493,67 @@ function mixedGraphData( clickedButton, type, isActive){
 }
 
 //复合版本所需要的平行图表网络数据整合
-function mixedParallelData(){
+function mixedParallelData(ANS){
 
-    //并入mixedGraphData
+    $("#parallel").html("");
+    var parallel = [];
+    var singleArray;
+    //ANS.DegreeCentrality = JSON.parse(ANS.DegreeCentrality);
+    currentNetworkData = ANS;
+
+    for( var i=0;i < ANS.DegreeCentrality.length; i++){
+        singleArray = new Array(3);
+        singleArray[0] = "betweenness";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].betweenness;
+        parallel.push(singleArray);
+        singleArray = new Array(3);
+        singleArray[0] = "closeness";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].closeness;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        parallel.push(singleArray);
+        // singleArray = new Array(3);
+        // singleArray[0] = "communicability";
+        // singleArray[1] = ANS.DegreeCentrality[i].name;
+        // singleArray[2] = ANS.DegreeCentrality[i].communicability;
+        // parallel.push(singleArray);
+        singleArray = new Array(3);
+        singleArray[0] = "degree";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].degree;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        parallel.push(singleArray);
+        singleArray = new Array(3);
+        singleArray[0] = "load";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].load;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        parallel.push(singleArray);
+        singleArray = new Array(3);
+        singleArray[0] = "current_flow_betweenness";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].current_flow_betweenness;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        parallel.push(singleArray);
+    }
+
+    var width = 1200, height = 610, margin ={b:50, t:50, l:50, r:0};
+
+    var svg = d3.select("#parallel")
+        .append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+        .append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+
+    var data = [ 
+        {data:bP.partData(parallel,2), id:'DegreeCentrality', header:["中心度类别","开发者", "中心度分析"]},
+        //{data:bP.partData(parallel,3), id:'BetweenessCentrality', header:["Category","State", "Centrality Analysis"]}
+    ];
+
+    currentParallelData = data;
+    bP.draw(data, svg);
     
 }
+
 
 //渲染平行表格的数据
 function parallelData(ANS){
@@ -636,13 +694,14 @@ var renderMainGraph = function( jsonFile, divId, distance){
             .attr("data-placement","top")
             .attr("data-html",true)
             .attr("data-content",function(d){ 
-                return "<div '>"+
-                "<h3 style='color:"+color(d.group)+"'>"+d.name+
-                "</h3><table class='table'><tr><th>Comment Centrality</th><th>Commit Centrality</th><th>Work Centrality</th></tr><tr>"+
-                "<td>"+currentNetworkData.DegreeCentrality[d.group].logic+"</td>"+
-                "<td>"+currentNetworkData.DegreeCentrality[d.group].syntax+"</td>"+
-                "<td>"+currentNetworkData.DegreeCentrality[d.group].work+"</td>"+
-                "</tr></table></div>"
+                // return "<div '>"+
+                // "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
+                // "</h3><table class='table table-responsive' style='text-align:left'>"+
+                // "<tr><th>Centrality</th><th>Degree</th></tr>"+
+                // "<tr class='info'><td>Comment</td><td>"+currentNetworkData.DegreeCentrality[d.group].degree+"</td></tr>"+
+                // "<tr class='success'><td>Commit</td><td>"+currentNetworkData.DegreeCentrality[d.group].degree+"</td></tr>"+
+                // "<tr class='warning'><td>Work</td><td>"+currentNetworkData.DegreeCentrality[d.group].degree+"</td></tr>"+
+                // "</table></div>"
             })
             .on("mouseover", function(d){ 
                 $("#name-"+ activeNetworkNode +"").popover("hide");
@@ -731,12 +790,13 @@ var renderMixedGraph = function( jsonData, divId, distance){
         .attr("data-html",true)
         .attr("data-content",function(d){ 
             return "<div '>"+
-            "<h3 style='color:"+color(d.group)+"'>"+d.name+
-            "</h3><table class='table'><tr><th>Comment Centrality</th><th>Commit Centrality</th><th>Work Centrality</th></tr><tr>"+
-            "<td>"+currentNetworkData.DegreeCentrality[d.group].logic+"</td>"+
-            "<td>"+currentNetworkData.DegreeCentrality[d.group].syntax+"</td>"+
-            "<td>"+currentNetworkData.DegreeCentrality[d.group].work+"</td>"+
-            "</tr></table></div>"
+                "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
+                "</h3><table class='table table-responsive' style='text-align:left'>"+
+                "<tr><th>Centrality</th><th>Degree</th></tr>"+
+                "<tr class='info'><td>Comment</td><td>"+currentNetworkData.DegreeCentrality[d.group].logic+"</td></tr>"+
+                "<tr class='success'><td>Commit</td><td>"+currentNetworkData.DegreeCentrality[d.group].syntax+"</td></tr>"+
+                "<tr class='warning'><td>Work</td><td>"+currentNetworkData.DegreeCentrality[d.group].work+"</td></tr>"+
+                "</table></div>"
         })
         .on("mouseover", function(d){ 
             console.log(d.name+" over"); 
@@ -750,7 +810,7 @@ var renderMixedGraph = function( jsonData, divId, distance){
         .on("click", function(d){
             console.log(d.name+' click');
             //document.location.href = "#parallel";
-            $('#evolution-tab a:first').tab('show');
+            $('#evolution-tab a:last').tab('show');
             activeParallelNode = currentParallelData[0].data.keys[1].indexOf(d.name);
             bP.selectSegment(currentParallelData, 1, activeParallelNode);
         })

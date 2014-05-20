@@ -1,0 +1,29 @@
+[
+    {
+        "betweenness": 1.0, 
+        "closeness": 1.0, 
+        "communicability": 2.1781835566085705, 
+        "current_flow_betweenness": 1.0, 
+        "degree": 1.0, 
+        "load": 1.0, 
+        "name": "saxmatt"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.6666666666666666, 
+        "communicability": 1.589091778304285, 
+        "current_flow_betweenness": 0.0, 
+        "degree": 0.5, 
+        "load": 0.0, 
+        "name": "rboren"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.6666666666666666, 
+        "communicability": 1.5890917783042844, 
+        "current_flow_betweenness": 0.0, 
+        "degree": 0.5, 
+        "load": 0.0, 
+        "name": "matt"
+    }
+]

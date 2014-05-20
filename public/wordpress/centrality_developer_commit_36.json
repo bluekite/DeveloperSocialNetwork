@@ -1,0 +1,101 @@
+[
+    {
+        "betweenness": 0.008888888888888889, 
+        "closeness": 0.7692307692307693, 
+        "communicability": 227.0388361927137, 
+        "current_flow_betweenness": 0.1250840709822378, 
+        "degree": 0.7000000000000001, 
+        "load": 0.008888888888888887, 
+        "name": "westi"
+    }, 
+    {
+        "betweenness": 0.011851851851851853, 
+        "closeness": 0.8333333333333334, 
+        "communicability": 289.5533084583906, 
+        "current_flow_betweenness": 0.20207093611142624, 
+        "degree": 0.8, 
+        "load": 0.011851851851851855, 
+        "name": "ryan"
+    }, 
+    {
+        "betweenness": 0.08555555555555555, 
+        "closeness": 1.0, 
+        "communicability": 363.83964650958205, 
+        "current_flow_betweenness": 0.24296463583305272, 
+        "degree": 1.0, 
+        "load": 0.08555555555555557, 
+        "name": "nacin"
+    }, 
+    {
+        "betweenness": 0.08555555555555555, 
+        "closeness": 1.0, 
+        "communicability": 363.8396465095821, 
+        "current_flow_betweenness": 0.34955219576789065, 
+        "degree": 1.0, 
+        "load": 0.08555555555555557, 
+        "name": "markjaquith"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.7142857142857143, 
+        "communicability": 181.76729995570093, 
+        "current_flow_betweenness": 0.03114291183344462, 
+        "degree": 0.6000000000000001, 
+        "load": 0.0, 
+        "name": "lancewillett"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.5882352941176471, 
+        "communicability": 53.52224688769653, 
+        "current_flow_betweenness": 0.012498221033279695, 
+        "degree": 0.30000000000000004, 
+        "load": 0.0, 
+        "name": "koopersmith"
+    }, 
+    {
+        "betweenness": 0.01814814814814815, 
+        "closeness": 0.8333333333333334, 
+        "communicability": 281.25941947913606, 
+        "current_flow_betweenness": 0.14672587741198923, 
+        "degree": 0.8, 
+        "load": 0.01814814814814815, 
+        "name": "helen"
+    }, 
+    {
+        "betweenness": 0.003703703703703704, 
+        "closeness": 0.7692307692307693, 
+        "communicability": 235.43211776635562, 
+        "current_flow_betweenness": 0.01859386426358035, 
+        "degree": 0.7000000000000001, 
+        "load": 0.0037037037037037056, 
+        "name": "dd32"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.6666666666666666, 
+        "communicability": 127.54671666927887, 
+        "current_flow_betweenness": 0.018392441907548157, 
+        "degree": 0.5, 
+        "load": 0.0, 
+        "name": "bumpbot"
+    }, 
+    {
+        "betweenness": 0.08555555555555555, 
+        "closeness": 1.0, 
+        "communicability": 363.8396465095823, 
+        "current_flow_betweenness": 0.17225185761237555, 
+        "degree": 1.0, 
+        "load": 0.08555555555555557, 
+        "name": "azaozz"
+    }, 
+    {
+        "betweenness": 0.011851851851851853, 
+        "closeness": 0.8333333333333334, 
+        "communicability": 289.55330845839063, 
+        "current_flow_betweenness": 0.154063235629171, 
+        "degree": 0.8, 
+        "load": 0.011851851851851855, 
+        "name": "SergeyBiryukov"
+    }
+]

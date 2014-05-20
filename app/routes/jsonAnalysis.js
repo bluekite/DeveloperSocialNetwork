@@ -2,6 +2,13 @@ var fs = require('fs');
 
 module.exports = function(app){
 
+    app.get('/centrality/:project/:version/developer/:relation', function(req, res){
+        var centrality_row = fs.readFileSync('public/'+req.params.project+'/centrality_developer_'+ req.params.relation +'_'+ req.params.version +'.json', 'utf-8');
+        var centrality = JSON.parse(centrality_row);
+        var SNA = { "DegreeCentrality":centrality };
+        res.json(SNA);
+    });
+
     app.get('/analysis/:project/:version/developer/degree', function(req, res){
         var comment_row = fs.readFileSync('public/'+req.params.project+'/network_developer_comment_'+ req.params.version +'.json', 'utf-8');
         var commit_row = fs.readFileSync('public/'+req.params.project+'/network_developer_commit_'+ req.params.version +'.json', 'utf-8');

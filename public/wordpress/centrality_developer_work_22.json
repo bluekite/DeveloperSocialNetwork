@@ -1,0 +1,56 @@
+[
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.625, 
+        "communicability": 3.468414104556632, 
+        "current_flow_betweenness": 0.021186440677966, 
+        "degree": 0.4, 
+        "load": 0.0, 
+        "name": "westi"
+    }, 
+    {
+        "betweenness": 0.15000000000000002, 
+        "closeness": 0.8333333333333334, 
+        "communicability": 6.39686259073368, 
+        "current_flow_betweenness": 0.5033898305084747, 
+        "degree": 0.8, 
+        "load": 0.15000000000000002, 
+        "name": "ryan"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.625, 
+        "communicability": 3.4684141045566337, 
+        "current_flow_betweenness": 0.11864406779660994, 
+        "degree": 0.4, 
+        "load": 0.0, 
+        "name": "rob1n"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.5555555555555556, 
+        "communicability": 1.8364206821473454, 
+        "current_flow_betweenness": -2.2204460492503132e-17, 
+        "degree": 0.2, 
+        "load": 0.0, 
+        "name": "matt"
+    }, 
+    {
+        "betweenness": 0.55, 
+        "closeness": 1.0, 
+        "communicability": 7.401052452201797, 
+        "current_flow_betweenness": 0.6610169491525422, 
+        "degree": 1.0, 
+        "load": 0.55, 
+        "name": "markjaquith"
+    }, 
+    {
+        "betweenness": 0.0, 
+        "closeness": 0.625, 
+        "communicability": 3.4684141045566337, 
+        "current_flow_betweenness": 0.02118644067796612, 
+        "degree": 0.4, 
+        "load": 0.0, 
+        "name": "azaozz"
+    }
+]
