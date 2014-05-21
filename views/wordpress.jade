@@ -9,9 +9,9 @@ block sidebar
 
 block content
 	section.choice-section(style="margin:0 auto",id="choice-section")
-		div(style="padding:10px")
-			a.btn.btn-differShow.active(style="",href="#choice-section",id="wordpress") 关系网络演化
-			a.btn.btn-differShow(style="",href="#table-section",id="trac") 分离关系网络
+		div(style="padding:10px;")
+			a.btn.btn-differShow.active(style="",href="#choice-section") 融合关系网络
+			a.btn.btn-differShow(style="",href="#table-section") 分离关系网络
 		div.choice-section-content
 			table.choice-section-table
 				tr(style="margin:10px auto")
@@ -68,7 +68,7 @@ block content
 							label.btn.developer.btn-choice developer_work
 								input(type="checkbox") 
 	section.evolution-section
-		div.row(style="margin:10px auto;max-width:888px")
+		div.row(style="margin:10px auto;")
 			ul.nav.nav-tabs(id="evolution-tab")
 				li.active
 					a(href="#graph-tab",data-toggle="tab") 开发者社交网络关系图
@@ -81,23 +81,21 @@ block content
 				div.tab-pane(style="margin:10px",id="parallel-tab")
 					p(style="padding:5px 5px;text-align:left;color:#428bca;font-size:25px") 开发者网络中心度分析图
 					div.graph-section-content(id="parallel")
-	//- section.graph-secion
-	//- 	p(style="padding:5px 5px;text-align:left;color:#428bca;font-size:25px") 开发者社交网络关系图
-	//- 	div.graph-section-content(id="graph")
-	//- section.parallel-secion
-	//- 	p(style="padding:5px 5px;text-align:left;color:#428bca;font-size:25px") 开发者网络中心度分析图
-	//- 	div.graph-section-content(id="parallel")
 	section.table-section(id="table-section")
 		div(style="padding:10px")
-			a.btn.btn-differShow(style="",href="#choice-section",id="wordpress") 关系网络演化
-			a.btn.btn-differShow.active(style="",href="#table-section",id="trac") 分离关系网络			
-		div.table-section-content
-			table
-				tr(style="margin:10px auto")
-					td
-						lable(style="padding:0 10px;")= "选择开发版本"
-					td
-						select(id="version-selector",style="min-height:50px;min-width:100px")
+			a.btn.btn-differShow(style="",href="#choice-section") 融合关系网络
+			a.btn.btn-differShow.active(style="",href="#table-section") 分离关系网络			
+		div.row(style="margin:10px auto;")
+			ul.nav.nav-tabs(id="graph-tab")
+				li
+					a(href="#developer-detailed-graph",data-toggle="tab") 此版本下的开发者网络
+				li.active
+					a(href="#developer-evolution-graph",data-toggle="tab") 网络演化演示
+			div.tab-content
+				div.tab-pane(style="margin:10px;text-align:center",id="developer-detailed-graph")
+					div.col-md-12(style="margin:10px")
+						lable(style="padding:10px 5px")= "选择开发版本"
+						select(id="version-selector",style="min-width:100px")
 							option= "15"
 							option= "20"
 							option= "21"
@@ -115,32 +113,26 @@ block content
 							option= "34"
 							option= "35"
 							option= "36"
-	section.detailed-graph-section(id="detailed-graph-section")
-		div.row(style="margin:10px auto;max-width:888px")
-			ul.nav.nav-tabs(id="graph-tab")
-				li.active
-					a(href="#TT-graph",data-toggle="tab") TT
-				li
-					a(href="#developer-graph",data-toggle="tab") developer
-				li
-					a(href="#file-graph",data-toggle="tab") file
-			div.tab-content
-				div.tab-pane.active(style="margin:10px",id="TT-graph")
-					div.col-md-12(id="TT-logic",style="border:1px solid #000000;margin:10px 0px")
-						lable= "TT-logic-network" 
-					div.col-md-12(id="TT-syntax",style="border:1px solid #000000;margin:10px 0px")
-						lable= "TT-syntax-network" 
-					div.col-md-12(id="TT-work",style="border:1px solid #000000;margin:10px 0px") 
-						lable= "TT-work-network" 
-				div.tab-pane(style="margin:10px",id="developer-graph")
-					div.col-md-12(id="developer-comment",style="border:1px solid #000000;margin:10px 0px")
-						lable= "developer-comment-network" 
-					div.col-md-12(id="developer-commit",style="border:1px solid #000000;margin:10px 0px")
-						lable= "developer-commit-network" 
-					div.col-md-12(id="developer-work",style="border:1px solid #000000;margin:10px 0px") 
-						lable= "developer-work-network"   
-		div(style="margin:0 auto")   
-			table.table(id="TT-analysis",style="display:block")
+					div.col-md-4
+						lable= "交流关系网络"
+						div(id="developer-comment")		
+					div.col-md-4
+						lable= "协作关系网络"
+						div(id="developer-commit")
+					div.col-md-4
+						lable= "工作依赖网络"
+						div(id="developer-work")
+				div.tab-pane.active(style="margin:10px;text-align:center",id="developer-evolution-graph;")
+					div.btn-group(data-toggle="buttons")
+						label.btn.evolution.btn-choice(id="developer-comment-evolution") 交流关系
+							input(type="radio") 
+						label.btn.evolution.btn-choice(id="developer-commit-evolution") 协作关系
+							input(type="radio") 
+						label.btn.evolution.btn-choice(id="developer-work-evolution") 工作关系
+							input(type="radio") 
+					div(id="developer-evolution",style="min-height:420px")
+		//- div(style="margin:0 auto")   
+		//- 	table.table(id="TT-analysis",style="display:block")
 block javascripts 		      	
 	script(src="/javascripts/d3.v3.min.js")
 	script(src="/javascripts/demo-wordpress-graph.js")

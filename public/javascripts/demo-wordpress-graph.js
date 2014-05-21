@@ -16,7 +16,7 @@ var activeNetworkNode;
 !function(){
     var bP={};  
     var b=30, bb=200, height=600, buffMargin=1, minHeight=14;
-    var c1=[-120, 40], c2=[-80, 100], c3=[-40, 140]; //Column positions of labels.
+    var c1=[-120, 40], c2=[-90, 100], c3=[ 140, 140]; //左边栏三列数据的位置
     var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
     
     bP.partData = function(data,p){
@@ -117,9 +117,10 @@ var activeNetworkNode;
         };
     }
     
+    //初始化图
     function drawPart(data, id, p){
         d3.select("#"+id).append("g").attr("class","part"+p)
-            .attr("transform","translate("+( p*(bb+b))+",0)");
+            .attr("transform","translate("+( p%2*(bb+b) )+",0)");
         d3.select("#"+id).select(".part"+p).append("g").attr("class","subbars");
         d3.select("#"+id).select(".part"+p).append("g").attr("class","mainbars");
         
@@ -151,12 +152,12 @@ var activeNetworkNode;
         //右边栏数据格式设置
         mainbar.append("text").attr("class","barvalue")
             .attr("x", c2[p]+60).attr("y",function(d){ return d.middle+5;})
-            .text(function(d,i){ return d.value ;})
+            .text(function(d,i){ return d.value.toExponential(1) ;})
             .attr("text-anchor","end").style("fill","#428bca");
             
         mainbar.append("text").attr("class","barpercent")
-            .attr("x", c3[p]+80).attr("y",function(d){ return d.middle+5;})
-            .text(function(d,i){ return "( "+Math.round(100*d.percent)+"%)" ;})
+            .attr("x", c3[p]-110).attr("y",function(d){ return d.middle+5;})
+            .text(function(d,i){ return Math.round(100*d.percent)+"%" ;})
             .attr("text-anchor","end").style("fill","grey");
             
         d3.select("#"+id).select(".part"+p).select(".subbars")
@@ -180,7 +181,7 @@ var activeNetworkNode;
 
         //中心标题的设置
         d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
-            .style("font-size","20").attr("x",200).attr("y",-20).style("text-anchor","middle")
+            .style("font-size","20").attr("x",150).attr("y",-20).style("text-anchor","middle")
             .style("font-weight","bold").style("fill","#428bca");
         
         [0,1].forEach(function(d){
@@ -190,12 +191,13 @@ var activeNetworkNode;
             h.append("text").text(header[d]).attr("x", (c1[d]))
                 .attr("y", -5).style("fill","#428bca");
             
-            h.append("text").text("计算值").attr("x", (c2[d]+40))
+            h.append("text").text("计算值").attr("x", (c2[d]+15))
                 .attr("y", -5).style("fill","#428bca");
             
-            h.append("line").attr("x1",c1[d]-10).attr("y1", -2)
-                .attr("x2",c3[d]+10).attr("y2", -2).style("stroke","black")
-                .style("stroke-width","1").style("shape-rendering","crispEdges");
+            //标题栏下划线
+            // h.append("line").attr("x1",c1[d]).attr("y1", -2)
+            //     .attr("x2",c3[d]-100).attr("y2", -2).style("stroke","#428bca")
+            //     .style("stroke-width","1").style("shape-rendering","crispEdges");
         });
     }
     
@@ -203,6 +205,7 @@ var activeNetworkNode;
         return [0, d.y1, bb, d.y2, bb, d.y2+d.h2, 0, d.y1+d.h1].join(" ");
     }   
     
+    //选择时的变换
     function transitionPart(data, id, p){
         var mainbar = d3.select("#"+id).select(".part"+p).select(".mainbars")
             .selectAll(".mainbar").data(data.mainBars[p]);
@@ -215,11 +218,11 @@ var activeNetworkNode;
             .attr("y",function(d){ return d.middle+5;});
             
         mainbar.select(".barvalue").transition().duration(500)
-            .attr("y",function(d){ return d.middle+5;}).text(function(d,i){ return d.value ;});
+            .attr("y",function(d){ return d.middle+5;}).text(function(d,i){ return d.value.toExponential(1) ;});
             
         mainbar.select(".barpercent").transition().duration(500)
             .attr("y",function(d){ return d.middle+5;})
-            .text(function(d,i){ return "( "+Math.round(100*d.percent)+"%)" ;});
+            .text(function(d,i){ return Math.round(100*d.percent)+"%" ;});
             
         d3.select("#"+id).select(".part"+p).select(".subbars")
             .selectAll(".subbar").data(data.subBars[p])
@@ -308,62 +311,60 @@ var activeNetworkNode;
     this.bP = bP;
 }();
 
+versions = [ '15', '20', '21', '22', '23', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36']
+
 
 $(document).ready(function(){
 
-    renderCircleGraph("/wordpress/circle_developer_comment_15.json","developer-comment",100);
-    renderCircleGraph("/wordpress/circle_developer_commit_15.json","developer-commit",100);
-    renderCircleGraph("/wordpress/circle_developer_work_15.json","developer-work",100);
+
+    $('#developer-comment-evolution').on('click',function(){
+
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[0] + ".json","developer-evolution",300,868,868)},0);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[1] + ".json","developer-evolution",300,868,868)},2000);
+
+    });
+
 
     // renderCircleGraph("/wordpress/circle_file_logic_15.json","file-logic",10);
     // renderCircleGraph("/wordpress/circle_file_syntax_15.json","file-syntax",10);
     // renderCircleGraph("/wordpress/circle_file_work_15.json","file-work",10);
 
-    renderCircleGraph("/wordpress/circle_TT_logic_15.json","TT-logic",250);
-    renderCircleGraph("/wordpress/circle_TT_syntax_15.json","TT-syntax",150);
-    renderCircleGraph("/wordpress/circle_TT_work_15.json","TT-work",100);
 
-    $.getJSON('/centrality/wordpress/15/developer/comment', function(ANS) {
+    $.getJSON('/centrality/wordpress/15/developer', function(ANS) {
         mixedParallelData(ANS);
         renderMainGraph("/wordpress/circle_developer_comment_15.json","graph",300);
-
+        renderCircleGraph("/wordpress/circle_developer_comment_15.json","developer-comment",100);
+        renderCircleGraph("/wordpress/circle_developer_commit_15.json","developer-commit",100);
+        renderCircleGraph("/wordpress/circle_developer_work_15.json","developer-work",100);
     });
 
 
-    // $.getJSON('/analysis/wordpress/15/developer/degree', function(ANS) {
-    //     parallelData(ANS);
-        
+    // $.getJSON('/analysis/wordpress/15/TT/degree', function(ANS) {
+    //     renderTabel(ANS);
     // });
 
-
-    $.getJSON('/analysis/wordpress/15/TT/degree', function(ANS) {
-        renderTabel(ANS);
-    });
-
     //表格数据图
-    $('#version-selector').on('change',function(){
-        $.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/developer/degree', function(ANS) {
-            var table_html = '';
-            table_html += table_base;
-            for( var i=0;i < ANS.DegreeCentrality.length; i++){
-                table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
-                '"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +
-                '</a></td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ 
-                ANS.DegreeCentrality[i].syntax +'</td><td>'+ 
-                ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
-            }
+    // $('#version-selector').on('change',function(){
+    //     $.getJSON('/analysis/wordpress/'+this.options[this.selectedIndex].value+'/developer/degree', function(ANS) {
+    //         var table_html = '';
+    //         table_html += table_base;
+    //         for( var i=0;i < ANS.DegreeCentrality.length; i++){
+    //             table_html += '<tr><td><a id="name-'+ANS.DegreeCentrality[i].name+
+    //             '"class="btn-choice developer" href="#graph">'+ ANS.DegreeCentrality[i].name +
+    //             '</a></td><td>'+ ANS.DegreeCentrality[i].logic +'</td><td>'+ 
+    //             ANS.DegreeCentrality[i].syntax +'</td><td>'+ 
+    //             ANS.DegreeCentrality[i].work +'</td><td>'+'</td></tr>';
+    //         }
 
-            $('#TT-analysis').html(table_html);
+    //         $('#TT-analysis').html(table_html);
 
-        });
+    //     });
 
-    });
+    // });
 
     //平行数据表格和版本迭代关系的融合图
     $('label.version').on('click',function(event) {
         var mixedData = mixedGraphData( ($(this).html().split("<")[0]), 'version', $(this).hasClass('active'));
-        // if($('label.TT.active').html())
-        //  renderMainGraph("/wordpress/circle_"+($('label.TT.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
         if($('label.developer.active').html()){
             if(mixedData.activeVersion.length == 1){
                 renderMainGraph("/wordpress/circle_"+($('label.developer.active').html().split("<")[0])+"_"+$(this).html().split("<")[0]+".json","graph",300);
@@ -387,32 +388,30 @@ $(document).ready(function(){
             }
         }
 
-        if( mixedData.activeVersion.length ){
-            document.location.href = "#parallel";
-            $.ajax({
-                url: '/analysis/mixed/wordpress/developer/degree',
-                type: 'POST',
-                dataType: 'json',
-                data: {mixedData: mixedData},
-            })
-            .done(function(ANS) {
-                parallelData(ANS);
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });           
-        }
+        $.getJSON("/centrality/wordpress/"+($(this).html().split("<")[0])+"/developer", function(ANS) {
+            mixedParallelData(ANS);
+        });
 
-        
-        // $.getJSON('/analysis/wordpress/'+$(this).html().split("<")[0]+'/developer/degree', function(ANS) {
-        //     
-        //     parallelData(ANS);
+        // if( mixedData.activeVersion.length ){
+        //     document.location.href = "#parallel";
+        //     $.ajax({
+        //         url: '/analysis/mixed/wordpress/developer/degree',
+        //         type: 'POST',
+        //         dataType: 'json',
+        //         data: {mixedData: mixedData},
+        //     })
+        //     .done(function(ANS) {
+        //         parallelData(ANS);
+        //         console.log("success");
+        //     })
+        //     .fail(function() {
+        //         console.log("error");
+        //     })
+        //     .always(function() {
+        //         console.log("complete");
+        //     });           
+        // }
 
-        // });
     });
 
 
@@ -443,8 +442,8 @@ $(document).ready(function(){
         }
     });
 
-    //$('#graph-tab a:first').tab('show');
-    $('#evolution-tab a:last').tab('show');
+    //$('#graph-tab a:last').tab('show');
+    //$('#evolution-tab a:last').tab('show');
 
 });
 
@@ -460,10 +459,6 @@ function mixedGraphData( clickedButton, type, isActive){
             activeVersion.push($(this).html().split("<")[0]);
         }
     });
-    // var activeTT = [];
-    // $('label.TT.active').each(function() {
-    //     activeTT.push($(this).html().split("<")[0]);
-    // });
     var activeDeveloper = [];
     $('label.developer.active').each(function() {
         if( $(this).html().split("<")[0] != clickedButton ){
@@ -498,20 +493,23 @@ function mixedParallelData(ANS){
     $("#parallel").html("");
     var parallel = [];
     var singleArray;
-    //ANS.DegreeCentrality = JSON.parse(ANS.DegreeCentrality);
+
     currentNetworkData = ANS;
 
-    for( var i=0;i < ANS.DegreeCentrality.length; i++){
+    for( var i=0;i < ANS.CommentCentrality.length; i++){
         singleArray = new Array(3);
-        singleArray[0] = "betweenness";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].betweenness;
+        singleArray[0] = "bc";
+        singleArray[1] = ANS.CommentCentrality[i].name;
+        singleArray[2] = ANS.CommentCentrality[i].betweenness;
+        singleArray[3] = ANS.CommitCentrality[i].betweenness;
+        singleArray[4] = ANS.WorkCentrality[i].betweennesss;
         parallel.push(singleArray);
         singleArray = new Array(3);
-        singleArray[0] = "closeness";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].closeness;
-        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        singleArray[0] = "clc";
+        singleArray[1] = ANS.CommentCentrality[i].name;
+        singleArray[2] = ANS.CommentCentrality[i].closeness;
+        singleArray[3] = ANS.CommitCentrality[i].closeness;
+        singleArray[4] = ANS.WorkCentrality[i].closeness;
         parallel.push(singleArray);
         // singleArray = new Array(3);
         // singleArray[0] = "communicability";
@@ -519,34 +517,38 @@ function mixedParallelData(ANS){
         // singleArray[2] = ANS.DegreeCentrality[i].communicability;
         // parallel.push(singleArray);
         singleArray = new Array(3);
-        singleArray[0] = "degree";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].degree;
-        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        singleArray[0] = "dc";
+        singleArray[1] = ANS.CommentCentrality[i].name;
+        singleArray[2] = ANS.CommentCentrality[i].degree;
+        singleArray[3] = ANS.CommitCentrality[i].degree;
+        singleArray[4] = ANS.WorkCentrality[i].degree;
         parallel.push(singleArray);
         singleArray = new Array(3);
-        singleArray[0] = "load";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].load;
-        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        singleArray[0] = "lc";
+        singleArray[1] = ANS.CommentCentrality[i].name;
+        singleArray[2] = ANS.CommentCentrality[i].load;
+        singleArray[3] = ANS.CommitCentrality[i].load;
+        singleArray[4] = ANS.WorkCentrality[i].load;
         parallel.push(singleArray);
         singleArray = new Array(3);
-        singleArray[0] = "current_flow_betweenness";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].current_flow_betweenness;
-        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        singleArray[0] = "cfbc";
+        singleArray[1] = ANS.CommentCentrality[i].name;
+        singleArray[2] = ANS.CommentCentrality[i].current_flow_betweenness;
+        singleArray[3] = ANS.CommitCentrality[i].current_flow_betweenness;
+        singleArray[4] = ANS.WorkCentrality[i].current_flow_betweenness;
         parallel.push(singleArray);
     }
 
-    var width = 1200, height = 610, margin ={b:50, t:50, l:50, r:0};
+    var width = 1200, height = 610, margin ={b:50, t:50, l:120, r:0};
 
     var svg = d3.select("#parallel")
         .append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
         .append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
 
     var data = [ 
-        {data:bP.partData(parallel,2), id:'DegreeCentrality', header:["中心度类别","开发者", "中心度分析"]},
-        //{data:bP.partData(parallel,3), id:'BetweenessCentrality', header:["Category","State", "Centrality Analysis"]}
+        {data:bP.partData(parallel,2), id:'CommentCentrality', header:["度量值","开发者", "交流关系网络"]},
+        {data:bP.partData(parallel,3), id:'CommitCentrality', header:["度量值","开发者", "协作关系网络"]}
+        //{data:bP.partData(parallel,4), id:'WorkCentrality', header:["度量值","开发者", "工作依赖网络"]}
     ];
 
     currentParallelData = data;
@@ -554,47 +556,6 @@ function mixedParallelData(ANS){
     
 }
 
-
-//渲染平行表格的数据
-function parallelData(ANS){
-    $("#parallel").html("");
-    var parallel = [];
-    var singleArray;
-    currentNetworkData = ANS;
-    for( var i=0;i < ANS.DegreeCentrality.length; i++){
-        singleArray = new Array(3);
-        singleArray[0] = "logic";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].logic;
-        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
-        parallel.push(singleArray);
-        singleArray = new Array(3);
-        singleArray[0] = "syntax";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].syntax;
-        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
-        parallel.push(singleArray);
-        singleArray = new Array(3);
-        singleArray[0] = "work";
-        singleArray[1] = ANS.DegreeCentrality[i].name;
-        singleArray[2] = ANS.DegreeCentrality[i].work;
-        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
-        parallel.push(singleArray);
-    }
-    var width = 1200, height = 610, margin ={b:50, t:50, l:300, r:0};
-
-    var svg = d3.select("#parallel")
-        .append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
-        .append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
-
-    var data = [ 
-        {data:bP.partData(parallel,2), id:'DegreeCentrality', header:["Category","State", "Centrality Analysis"]},
-        //{data:bP.partData(parallel,3), id:'BetweenessCentrality', header:["Category","State", "Centrality Analysis"]}
-    ];
-
-    currentParallelData = data;
-    bP.draw(data, svg);
-}
 
 //渲染分离版本的表格数据
 function renderTabel(ANS){
@@ -628,16 +589,7 @@ function selectVersion(){
 
     renderCircleGraph("/wordpress/circle_developer_comment_" + this.options[this.selectedIndex].value + ".json","developer-comment",100);
     renderCircleGraph("/wordpress/circle_developer_commit_" + this.options[this.selectedIndex].value + ".json","developer-commit",100);
-    renderCircleGraph("/wordpress/circle_developer_work_" + this.options[this.selectedIndex].value + ".json","developer-work",100);
-
-    //renderCircleGraph("/wordpress/circle_file_logic_" + this.options[this.selectedIndex].value + ".json","file-logic",10);
-    //renderCircleGraph("/wordpress/circle_file_syntax_" + this.options[this.selectedIndex].value + ".json","file-syntax",10);
-    //renderCircleGraph("/wordpress/circle_file_work_" + this.options[this.selectedIndex].value + ".json","file-work",10);
-
-    renderCircleGraph("/wordpress/circle_TT_logic_" + this.options[this.selectedIndex].value + ".json","TT-logic",250);
-    renderCircleGraph("/wordpress/circle_TT_syntax_" + this.options[this.selectedIndex].value + ".json","TT-syntax",150);
-    renderCircleGraph("/wordpress/circle_TT_work_" + this.options[this.selectedIndex].value + ".json","TT-work",100);
-
+    renderCircleGraph("/wordpress/circle_developer_work_" + this.options[this.selectedIndex].value + ".json","developer-work",100); 
 
 };
 
@@ -694,14 +646,16 @@ var renderMainGraph = function( jsonFile, divId, distance){
             .attr("data-placement","top")
             .attr("data-html",true)
             .attr("data-content",function(d){ 
-                // return "<div '>"+
-                // "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
-                // "</h3><table class='table table-responsive' style='text-align:left'>"+
-                // "<tr><th>Centrality</th><th>Degree</th></tr>"+
-                // "<tr class='info'><td>Comment</td><td>"+currentNetworkData.DegreeCentrality[d.group].degree+"</td></tr>"+
-                // "<tr class='success'><td>Commit</td><td>"+currentNetworkData.DegreeCentrality[d.group].degree+"</td></tr>"+
-                // "<tr class='warning'><td>Work</td><td>"+currentNetworkData.DegreeCentrality[d.group].degree+"</td></tr>"+
-                // "</table></div>"
+                return "<div '>"+
+                "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
+                "</h3><table class='table table-responsive' style='text-align:left'>"+
+                "<tr><th>Centrality</th><th>dc</th></tr>"+
+                "<tr class='info'><td>Comment</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].degree+"</td>"+
+                "</tr>"+
+                "<tr class='success'><td>Commit</td><td>"+currentNetworkData.CommitCentrality[d.group].degree+"</td></tr>"+
+                "<tr class='warning'><td>Work</td><td>"+currentNetworkData.WorkCentrality[d.group].degree+"</td></tr>"+
+                "</table></div>"
             })
             .on("mouseover", function(d){ 
                 $("#name-"+ activeNetworkNode +"").popover("hide");
@@ -792,10 +746,10 @@ var renderMixedGraph = function( jsonData, divId, distance){
             return "<div '>"+
                 "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
                 "</h3><table class='table table-responsive' style='text-align:left'>"+
-                "<tr><th>Centrality</th><th>Degree</th></tr>"+
-                "<tr class='info'><td>Comment</td><td>"+currentNetworkData.DegreeCentrality[d.group].logic+"</td></tr>"+
-                "<tr class='success'><td>Commit</td><td>"+currentNetworkData.DegreeCentrality[d.group].syntax+"</td></tr>"+
-                "<tr class='warning'><td>Work</td><td>"+currentNetworkData.DegreeCentrality[d.group].work+"</td></tr>"+
+                "<tr><th>度量值</th><th>dc</th></tr>"+
+                "<tr class='info'><td>交流关系</td><td>"+currentNetworkData.CommentCentrality[d.group].degree+"</td></tr>"+
+                "<tr class='success'><td>协作关系</td><td>"+currentNetworkData.CommitCentrality[d.group].degree+"</td></tr>"+
+                "<tr class='warning'><td>工作依赖</td><td>"+currentNetworkData.WorkCentrality[d.group].degree+"</td></tr>"+
                 "</table></div>"
         })
         .on("mouseover", function(d){ 
@@ -834,10 +788,10 @@ var renderMixedGraph = function( jsonData, divId, distance){
 }
 
 //分离数据网络使用的基本Circle关系网络渲染
-var renderCircleGraph = function( jsonFile, divId, distance){
+var renderCircleGraph = function( jsonFile, divId, distance, width, height){
 
-    var width = 500,
-        height = 500;
+    var width = width?width:350,
+        height = height?height:350;
 
     var color = d3.scale.category20();
 
@@ -847,7 +801,7 @@ var renderCircleGraph = function( jsonFile, divId, distance){
         .size([width, height]);
 
     /*clear the graph out*/
-    d3.select(document.getElementById(divId)).html("<label>"+divId+"-netwrok</label>");
+    d3.select(document.getElementById(divId)).html("");
 
     var svg = d3.select(document.getElementById(divId)).append("svg")
         .attr("width", width)
@@ -879,6 +833,30 @@ var renderCircleGraph = function( jsonFile, divId, distance){
             .enter().append("text")
             .style("fill", function(d) { return color(d.group); })
             .text(function(d) { return d.name ; })
+            .attr("id", function(d){return "name-"+d.name;})
+            .attr("data-container","body")
+            .attr("data-toggle","popover")
+            .attr("data-placement","top")
+            .attr("data-html",true)
+            .attr("data-content",function(d){ 
+                return "<div '>"+
+                    "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
+                    "</h3><table class='table table-responsive' style='text-align:left'>"+
+                    "<tr><th>度量值</th><th>dc</th></tr>"+
+                    "<tr class='info'><td>交流关系</td><td>"+currentNetworkData.CommentCentrality[d.group].degree+"</td></tr>"+
+                    "<tr class='success'><td>协作关系</td><td>"+currentNetworkData.CommitCentrality[d.group].degree+"</td></tr>"+
+                    "<tr class='warning'><td>工作依赖</td><td>"+currentNetworkData.WorkCentrality[d.group].degree+"</td></tr>"+
+                    "</table></div>"
+            })
+            .on("mouseover", function(d){ 
+                console.log(d.name+" over"); 
+                $("#name-"+ activeNetworkNode +"").popover("hide");
+                $(this).popover('show');
+            })
+            .on("mouseout", function(d){ 
+                console.log(d.name+" out"); 
+                $(this).popover('hide');
+            })
             .call(force.drag);
 
 
@@ -900,6 +878,46 @@ var renderCircleGraph = function( jsonFile, divId, distance){
 
 }
 
+//已弃用，渲染平行表格的数据
+function parallelData(ANS){
+    $("#parallel").html("");
+    var parallel = [];
+    var singleArray;
+    currentNetworkData = ANS;
+    for( var i=0;i < ANS.DegreeCentrality.length; i++){
+        singleArray = new Array(3);
+        singleArray[0] = "logic";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].logic;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        parallel.push(singleArray);
+        singleArray = new Array(3);
+        singleArray[0] = "syntax";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].syntax;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        parallel.push(singleArray);
+        singleArray = new Array(3);
+        singleArray[0] = "work";
+        singleArray[1] = ANS.DegreeCentrality[i].name;
+        singleArray[2] = ANS.DegreeCentrality[i].work;
+        //singleArray[3] = ANS.BetweenessCentrality[i].logic;
+        parallel.push(singleArray);
+    }
+    var width = 1200, height = 610, margin ={b:50, t:50, l:300, r:0};
+
+    var svg = d3.select("#parallel")
+        .append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+        .append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+
+    var data = [ 
+        {data:bP.partData(parallel,2), id:'DegreeCentrality', header:["Category","State", "Centrality Analysis"]},
+        //{data:bP.partData(parallel,3), id:'BetweenessCentrality', header:["Category","State", "Centrality Analysis"]}
+    ];
+
+    currentParallelData = data;
+    bP.draw(data, svg);
+}
 
 //不使用，测试使用的带标签渲染，后直接在renderCircle中添加text节点。
 var renderLabelGraph = function(jsonFile, divId){

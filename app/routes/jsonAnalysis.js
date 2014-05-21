@@ -2,6 +2,17 @@ var fs = require('fs');
 
 module.exports = function(app){
 
+    app.get('/centrality/:project/:version/developer', function(req, res){
+        var comment_row = fs.readFileSync('public/'+req.params.project+'/centrality_developer_comment_'+ req.params.version +'.json', 'utf-8');
+        var comment = JSON.parse(comment_row);
+        var commit_row = fs.readFileSync('public/'+req.params.project+'/centrality_developer_commit_'+ req.params.version +'.json', 'utf-8');
+        var commit = JSON.parse(commit_row);
+        var work_row = fs.readFileSync('public/'+req.params.project+'/centrality_developer_work_'+ req.params.version +'.json', 'utf-8');
+        var work = JSON.parse(work_row);
+        var SNA = { "CommentCentrality":comment, "CommitCentrality": commit, "WorkCentrality": work};
+        res.json(SNA);
+    });
+
     app.get('/centrality/:project/:version/developer/:relation', function(req, res){
         var centrality_row = fs.readFileSync('public/'+req.params.project+'/centrality_developer_'+ req.params.relation +'_'+ req.params.version +'.json', 'utf-8');
         var centrality = JSON.parse(centrality_row);

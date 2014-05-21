@@ -1,4 +1,4 @@
-#import MySQLdb
+import MySQLdb
 import urllib2
 import string
 #import re

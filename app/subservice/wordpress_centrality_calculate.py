@@ -19,17 +19,34 @@ def calculate_centrality(G):
 	
 	developer_centrality = []
 
-	for i in range (0, len(dc_sorted)):
-		# if ( not dc_sorted[i][0] == bc_sorted[i][0] == clc_sorted[i][0] == coc_sorted[i][0] == lc_sorted[i][0] == cfbc_sorted[i][0]):
-		# 	print 'false'
+	developer_file = file("public/wordpress/developer.json")
+	developers = json.load(developer_file)
+	for developer in developers:
+		degree = 0
+		betweenness = 0
+		closeness = 0
+		communicability = 0
+		load = 0
+		current_flow_betweenness = 0
+		for i in range (0, len(dc_sorted)):
+			# if ( not dc_sorted[i][0] == bc_sorted[i][0] == clc_sorted[i][0] == coc_sorted[i][0] == lc_sorted[i][0] == cfbc_sorted[i][0]):
+			# 	print 'false'
+			if( developer['developer'] == dc_sorted[i][0]):
+				degree = dc_sorted[i][1]
+				betweenness = bc_sorted[i][1]
+				closeness = clc_sorted[i][1]
+				communicability = coc_sorted[i][1]
+				load = lc_sorted[i][1]
+				current_flow_betweenness = cfbc_sorted[i][1]
+
 		developer_centrality.append({
-			'name': dc_sorted[i][0],
-		 	'degree': dc_sorted[i][1],
-			'betweenness': bc_sorted[i][1],
-			'closeness': clc_sorted[i][1],
-			'communicability': coc_sorted[i][1],
-			'load': lc_sorted[i][1],
-			'current_flow_betweenness': cfbc_sorted[i][1]
+			'name': developer['developer'],
+		 	'degree': degree,
+			'betweenness': betweenness,
+			'closeness': closeness,
+			'communicability': communicability,
+			'load': load,
+			'current_flow_betweenness': current_flow_betweenness
 		 })
 
 	return developer_centrality
@@ -38,7 +55,7 @@ def calculate_centrality(G):
 ### Function: write to file
 def writefile(developer_centrality, relation, version):
 	c_file = open("public/wordpress/centrality_developer_"+relation+"_"+version+".json","w")
-	#c_file = open('app/subservice/test.json','w')
+	# c_file = open('app/subservice/test.json','w')
 	c_file.write(json.dumps(calculate_centrality(G),sort_keys=True,indent=4))
 # Function: end
 
@@ -47,7 +64,10 @@ version = [ '15', '20', '21', '22', '23', '25', '26', '27', '28', '29', '30', '3
 relation = [ 'comment', 'commit', 'work']
 
 
-### Function: read source file
+### Main Function: read source file
+
+
+
 for i in range(0, len(version)):
 	for j in range(0, len(relation)):
 		d_file = file("public/wordpress/network_developer_"+relation[j]+"_"+version[i]+".json")

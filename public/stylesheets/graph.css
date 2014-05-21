@@ -41,7 +41,7 @@ section {
 	
 	background-color: #fff;
 	color:#428bca;
-	width: 980px;
+	width: 1080px;
 	margin: 30px auto;
 	box-shadow: 8px 8px 6px #aaa;
 	border-top: 2px solid #eee;
@@ -99,7 +99,7 @@ div.graph-section-content {
 	margin:10px auto;
 	max-width: 1100px; 
 	padding-top: 20px;
-	min-height: 1000px;
+	/*min-height: 1000px;*/
 }
 
 table.choice-section-table  td{
