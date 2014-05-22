@@ -15,6 +15,7 @@ def calculate_centrality(G):
 	coc_sorted = sorted(nx.communicability_centrality(G).items(), key=itemgetter(0), reverse=True)
 	lc_sorted = sorted(nx.load_centrality(G).items(), key=itemgetter(0), reverse=True)
 	cfbc_sorted = sorted(nx.current_flow_betweenness_centrality(G).items(), key=itemgetter(0), reverse=True)
+	cfcc_sorted = sorted(nx.current_flow_closeness_centrality(G).items(), key=itemgetter(0), reverse=True)
 	# print ec_sorted[0]
 	
 	developer_centrality = []
@@ -28,6 +29,7 @@ def calculate_centrality(G):
 		communicability = 0
 		load = 0
 		current_flow_betweenness = 0
+		current_flow_closeness = 0
 		for i in range (0, len(dc_sorted)):
 			# if ( not dc_sorted[i][0] == bc_sorted[i][0] == clc_sorted[i][0] == coc_sorted[i][0] == lc_sorted[i][0] == cfbc_sorted[i][0]):
 			# 	print 'false'
@@ -38,6 +40,7 @@ def calculate_centrality(G):
 				communicability = coc_sorted[i][1]
 				load = lc_sorted[i][1]
 				current_flow_betweenness = cfbc_sorted[i][1]
+				current_flow_closeness = cfcc_sorted[i][1]
 
 		developer_centrality.append({
 			'name': developer['developer'],
@@ -46,7 +49,8 @@ def calculate_centrality(G):
 			'closeness': closeness,
 			'communicability': communicability,
 			'load': load,
-			'current_flow_betweenness': current_flow_betweenness
+			'current_flow_betweenness': current_flow_betweenness,
+			'current_flow_closeness':current_flow_closeness
 		 })
 
 	return developer_centrality
@@ -54,8 +58,8 @@ def calculate_centrality(G):
 
 ### Function: write to file
 def writefile(developer_centrality, relation, version):
-	c_file = open("public/wordpress/centrality_developer_"+relation+"_"+version+".json","w")
-	# c_file = open('app/subservice/test.json','w')
+	#c_file = open("public/wordpress/centrality_developer_"+relation+"_"+version+".json","w")
+	c_file = open('app/subservice/test.json','w')
 	c_file.write(json.dumps(calculate_centrality(G),sort_keys=True,indent=4))
 # Function: end
 
@@ -65,30 +69,34 @@ relation = [ 'comment', 'commit', 'work']
 
 
 ### Main Function: read source file
-
-
-
-for i in range(0, len(version)):
-	for j in range(0, len(relation)):
-		d_file = file("public/wordpress/network_developer_"+relation[j]+"_"+version[i]+".json")
-		d = json.load(d_file)
-
-		G=nx.Graph()
-		# e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2)]
-		# G.add_weighted_edges_from(e)
-		# G.add_node("spam")
-		# G.add_edge(1,2)
-		# print(G.nodes())
-		# print(G.edges())
-
-		e = []
-		[ e.append( (edge['developer1'], edge['developer2'], edge['count']) )
-			for edge in d ]
-		G.add_weighted_edges_from(e)
-
-		writefile(calculate_centrality(G), relation[j], version[i])
+# for i in range(0, len(version)):
+# 	for j in range(0, len(relation)):
+# 		d_file = file("public/wordpress/network_developer_"+relation[j]+"_"+version[i]+".json")
+# 		d = json.load(d_file)
+# 		G=nx.Graph()
+# 		e = []
+# 		[ e.append( (edge['developer1'], edge['developer2'], edge['count']) )
+# 			for edge in d ]
+# 		G.add_weighted_edges_from(e)
+# 		writefile(calculate_centrality(G), relation[j], version[i])
 ### Function:end
 
+d_file = file("public/wordpress/network_developer_comment_15.json")
+d = json.load(d_file)
+
+G=nx.Graph()
+# e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2)]
+# G.add_weighted_edges_from(e)
+# G.add_node("spam")
+# G.add_edge(1,2)
+# print(G.nodes())
+# print(G.edges())
+
+e = []
+[ e.append( (edge['developer1'], edge['developer2'], edge['count']) )
+	for edge in d ]
+G.add_weighted_edges_from(e)
+writefile(calculate_centrality(G),'comment','15')
 
 
 
