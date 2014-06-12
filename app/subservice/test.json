@@ -6,6 +6,7 @@
         "current_flow_betweenness": 0.08876212023382246, 
         "current_flow_closeness": 2.9566681975650533, 
         "degree": 0.42857142857142855, 
+        "edge_betweenness_centrality": 0.020476190476190478, 
         "load": 0.004945054945054945, 
         "name": "anonymous"
     }, 
@@ -16,6 +17,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "azaozz"
     }, 
@@ -26,6 +28,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "dd32"
     }, 
@@ -36,6 +39,7 @@
         "current_flow_betweenness": 0.22437384614621494, 
         "current_flow_closeness": 3.008411234950259, 
         "degree": 0.7142857142857142, 
+        "edge_betweenness_centrality": 0.011904761904761906, 
         "load": 0.13809523809523808, 
         "name": "markjaquith"
     }, 
@@ -46,6 +50,7 @@
         "current_flow_betweenness": 0.6265868735939367, 
         "current_flow_closeness": 3.096994153060704, 
         "degree": 0.8571428571428571, 
+        "edge_betweenness_centrality": 0.02412698412698413, 
         "load": 0.45677655677655676, 
         "name": "matt"
     }, 
@@ -56,6 +61,7 @@
         "current_flow_betweenness": 0.047619047619047644, 
         "current_flow_closeness": 1.118165113616624, 
         "degree": 0.14285714285714285, 
+        "edge_betweenness_centrality": 0.032857142857142856, 
         "load": 0.0, 
         "name": "nacin"
     }, 
@@ -66,6 +72,7 @@
         "current_flow_betweenness": 0.461015072189355, 
         "current_flow_closeness": 3.0877957461722527, 
         "degree": 0.6428571428571428, 
+        "edge_betweenness_centrality": 0.021746031746031746, 
         "load": 0.17106227106227107, 
         "name": "ryan"
     }, 
@@ -76,6 +83,7 @@
         "current_flow_betweenness": 0.07442772013538418, 
         "current_flow_closeness": 2.769492468399158, 
         "degree": 0.42857142857142855, 
+        "edge_betweenness_centrality": 0.03285714285714286, 
         "load": 0.02967032967032967, 
         "name": "westi"
     }, 
@@ -86,6 +94,7 @@
         "current_flow_betweenness": 1.9520404828574182e-17, 
         "current_flow_closeness": 0.7990633950687783, 
         "degree": 0.07142857142857142, 
+        "edge_betweenness_centrality": 0.026984126984126985, 
         "load": 0.0, 
         "name": "mikelittle"
     }, 
@@ -96,6 +105,7 @@
         "current_flow_betweenness": 0.03211074093514689, 
         "current_flow_closeness": 2.883294249949691, 
         "degree": 0.3571428571428571, 
+        "edge_betweenness_centrality": 0.03333333333333334, 
         "load": 0.0, 
         "name": "nbachiyski"
     }, 
@@ -106,6 +116,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "rboren"
     }, 
@@ -116,6 +127,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "saxmatt"
     }, 
@@ -126,6 +138,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "wpmuguru"
     }, 
@@ -136,6 +149,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "iandstewart"
     }, 
@@ -146,6 +160,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "lancewillett"
     }, 
@@ -156,6 +171,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "duck_"
     }, 
@@ -166,6 +182,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "koopersmith"
     }, 
@@ -176,6 +193,7 @@
         "current_flow_betweenness": 0.047619047619047686, 
         "current_flow_closeness": 1.1181651136166235, 
         "degree": 0.14285714285714285, 
+        "edge_betweenness_centrality": 0.013333333333333334, 
         "load": 0.0, 
         "name": "scribu"
     }, 
@@ -186,6 +204,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "emc3"
     }, 
@@ -196,6 +215,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "jverber"
     }, 
@@ -206,6 +226,7 @@
         "current_flow_betweenness": 0.08729119058959861, 
         "current_flow_closeness": 2.5881557428365713, 
         "degree": 0.42857142857142855, 
+        "edge_betweenness_centrality": 0.020476190476190478, 
         "load": 0.02967032967032967, 
         "name": "rob1n"
     }, 
@@ -216,6 +237,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "michelvaldrighi"
     }, 
@@ -226,6 +248,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "iammattthomas"
     }, 
@@ -236,6 +259,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "alex_t_king"
     }, 
@@ -246,6 +270,7 @@
         "current_flow_betweenness": 1.171224289714451e-16, 
         "current_flow_closeness": 0.7984497002384255, 
         "degree": 0.07142857142857142, 
+        "edge_betweenness_centrality": 0.02412698412698413, 
         "load": 0.0, 
         "name": "donncha"
     }, 
@@ -256,6 +281,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "SergeyBiryukov"
     }, 
@@ -266,6 +292,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "PeteMall"
     }, 
@@ -276,6 +303,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "bumpbot"
     }, 
@@ -286,6 +314,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "helen"
     }, 
@@ -296,6 +325,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "uid26904"
     }, 
@@ -306,6 +336,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "josephscott"
     }, 
@@ -316,6 +347,7 @@
         "current_flow_betweenness": 0.0053007443554263555, 
         "current_flow_closeness": 2.099460100191204, 
         "degree": 0.21428571428571427, 
+        "edge_betweenness_centrality": 0.009523809523809525, 
         "load": 0.0, 
         "name": "dougal"
     }, 
@@ -326,6 +358,7 @@
         "current_flow_betweenness": 0, 
         "current_flow_closeness": 0, 
         "degree": 0, 
+        "edge_betweenness_centrality": 0, 
         "load": 0, 
         "name": "potbot"
     }

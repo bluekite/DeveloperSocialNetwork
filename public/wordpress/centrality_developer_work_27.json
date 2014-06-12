@@ -4,6 +4,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "anonymous"
@@ -13,6 +14,7 @@
         "closeness": 0.8333333333333334, 
         "communicability": 7.649702190043613, 
         "current_flow_betweenness": 0.2997517070142769, 
+        "current_flow_closeness": 2.9174212241941326, 
         "degree": 0.8, 
         "load": 0.1, 
         "name": "azaozz"
@@ -22,6 +24,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "dd32"
@@ -31,6 +34,7 @@
         "closeness": 0.7142857142857143, 
         "communicability": 5.9623207174764135, 
         "current_flow_betweenness": 0.030571073867163245, 
+        "current_flow_closeness": 2.442019099590723, 
         "degree": 0.6000000000000001, 
         "load": 0.0, 
         "name": "markjaquith"
@@ -40,6 +44,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "matt"
@@ -49,6 +54,7 @@
         "closeness": 0.625, 
         "communicability": 3.6216039846233845, 
         "current_flow_betweenness": 0.00530726256983236, 
+        "current_flow_closeness": 1.3676882587655999, 
         "degree": 0.4, 
         "load": 0.0, 
         "name": "nacin"
@@ -58,6 +64,7 @@
         "closeness": 1.0, 
         "communicability": 8.721300655782969, 
         "current_flow_betweenness": 0.7874456859093728, 
+        "current_flow_closeness": 3.0000000000000004, 
         "degree": 1.0, 
         "load": 0.5, 
         "name": "ryan"
@@ -67,6 +74,7 @@
         "closeness": 0.7142857142857143, 
         "communicability": 5.9623207174764135, 
         "current_flow_betweenness": 0.1261173184357541, 
+        "current_flow_closeness": 2.8193909695484773, 
         "degree": 0.6000000000000001, 
         "load": 0.0, 
         "name": "westi"
@@ -76,6 +84,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "mikelittle"
@@ -85,6 +94,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "nbachiyski"
@@ -94,6 +104,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "rboren"
@@ -103,6 +114,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "saxmatt"
@@ -112,6 +124,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "wpmuguru"
@@ -121,6 +134,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "iandstewart"
@@ -130,6 +144,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "lancewillett"
@@ -139,6 +154,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "duck_"
@@ -148,6 +164,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "koopersmith"
@@ -157,6 +174,7 @@
         "closeness": 0.5555555555555556, 
         "communicability": 1.8753572171600785, 
         "current_flow_betweenness": 0.0, 
+        "current_flow_closeness": 0.8823529411764706, 
         "degree": 0.2, 
         "load": 0.0, 
         "name": "scribu"
@@ -166,6 +184,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "emc3"
@@ -175,6 +194,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "jverber"
@@ -184,6 +204,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "rob1n"
@@ -193,6 +214,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "michelvaldrighi"
@@ -202,6 +224,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "iammattthomas"
@@ -211,6 +234,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "alex_t_king"
@@ -220,6 +244,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "donncha"
@@ -229,6 +254,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "SergeyBiryukov"
@@ -238,6 +264,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "PeteMall"
@@ -247,6 +274,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "bumpbot"
@@ -256,6 +284,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "helen"
@@ -265,6 +294,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "uid26904"
@@ -274,6 +304,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "josephscott"
@@ -283,6 +314,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "dougal"
@@ -292,6 +324,7 @@
         "closeness": 0, 
         "communicability": 0, 
         "current_flow_betweenness": 0, 
+        "current_flow_closeness": 0, 
         "degree": 0, 
         "load": 0, 
         "name": "potbot"

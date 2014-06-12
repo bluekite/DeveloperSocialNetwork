@@ -67,6 +67,18 @@ block content
 								input(type="checkbox") 
 							label.btn.developer.btn-choice developer_work
 								input(type="checkbox") 
+	section.explaination-section(style="padding:10px 10px")
+		h3 dc点度中心度(Degree Centrality) 
+			h4 定义：每个节点拥有的邻居数量，即与该点直接相连的点得个数。
+		h3 cc接近中心度(Closeness Centrality)
+			h4 定义：从当前节点到达其他所有（可到达的）节点的的最短路径。
+		h3 bc中间中心度(Betweenness Centrality)
+			h4 定义：表示一个节点 相对于节点对 和 的中间中心度，指经过 的所有两个连通的节点的最短路径中会经过该节点的次数河最短路径的总数之比。
+		h3 cfbc流中间中心度 (Current Flow Betweenness Centrality) 
+			h4 定义：中间中心度的一个变体，使用电流模型替换中间中心度中的最短路径。
+		h3 cfcc流接近中心度 (Current Flow Closeness Centrality) 
+			h4 定义：接近中心度的一个变体，使用电流模型替换接近中心度中的最短路径。
+
 	section.evolution-section
 		div.row(style="margin:10px auto;")
 			ul.nav.nav-tabs(id="evolution-tab")

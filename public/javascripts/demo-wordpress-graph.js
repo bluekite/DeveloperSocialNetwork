@@ -321,6 +321,22 @@ $(document).ready(function(){
 
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[0] + ".json","developer-evolution",300,868,868)},0);
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[1] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[2] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[3] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[4] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[5] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[6] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[7] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[8] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[9] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[10] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[11] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[12] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[13] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[14] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[15] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[16] + ".json","developer-evolution",300,868,868)},2000);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[17] + ".json","developer-evolution",300,868,868)},2000);
 
     });
 
@@ -537,6 +553,13 @@ function mixedParallelData(ANS){
         singleArray[3] = ANS.CommitCentrality[i].current_flow_betweenness;
         singleArray[4] = ANS.WorkCentrality[i].current_flow_betweenness;
         parallel.push(singleArray);
+        singleArray = new Array(3);
+        singleArray[0] = "cfcc";
+        singleArray[1] = ANS.CommentCentrality[i].name;
+        singleArray[2] = ANS.CommentCentrality[i].current_flow_closeness;
+        singleArray[3] = ANS.CommitCentrality[i].current_flow_closeness;
+        singleArray[4] = ANS.WorkCentrality[i].current_flow_closeness;
+        parallel.push(singleArray);
     }
 
     var width = 1200, height = 610, margin ={b:50, t:50, l:120, r:0};
@@ -649,12 +672,31 @@ var renderMainGraph = function( jsonFile, divId, distance){
                 return "<div '>"+
                 "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
                 "</h3><table class='table table-responsive' style='text-align:left'>"+
-                "<tr><th>Centrality</th><th>dc</th></tr>"+
+                "<tr><th>Centrality</th><th>dc</th><th>bc</th><th>cc</th><th>lc</th><th>cfbc</th><th>cfcc</th></tr>"+
                 "<tr class='info'><td>Comment</td>"+
-                "<td>"+currentNetworkData.CommentCentrality[d.group].degree+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
                 "</tr>"+
-                "<tr class='success'><td>Commit</td><td>"+currentNetworkData.CommitCentrality[d.group].degree+"</td></tr>"+
-                "<tr class='warning'><td>Work</td><td>"+currentNetworkData.WorkCentrality[d.group].degree+"</td></tr>"+
+                "<tr class='success'><td>Commit</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
+                "<tr class='warning'><td>Work</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
                 "</table></div>"
             })
             .on("mouseover", function(d){ 
@@ -743,15 +785,36 @@ var renderMixedGraph = function( jsonData, divId, distance){
         .attr("data-placement","top")
         .attr("data-html",true)
         .attr("data-content",function(d){ 
-            return "<div '>"+
+                return "<div '>"+
                 "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
                 "</h3><table class='table table-responsive' style='text-align:left'>"+
-                "<tr><th>度量值</th><th>dc</th></tr>"+
-                "<tr class='info'><td>交流关系</td><td>"+currentNetworkData.CommentCentrality[d.group].degree+"</td></tr>"+
-                "<tr class='success'><td>协作关系</td><td>"+currentNetworkData.CommitCentrality[d.group].degree+"</td></tr>"+
-                "<tr class='warning'><td>工作依赖</td><td>"+currentNetworkData.WorkCentrality[d.group].degree+"</td></tr>"+
+                "<tr><th>Centrality</th><th>dc</th><th>bc</th><th>cc</th><th>lc</th><th>cfbc</th><th>cfcc</th></tr>"+
+                "<tr class='info'><td>Comment</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
+                "<tr class='success'><td>Commit</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
+                "<tr class='warning'><td>Work</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
                 "</table></div>"
-        })
+            })
         .on("mouseover", function(d){ 
             console.log(d.name+" over"); 
             $("#name-"+ activeNetworkNode +"").popover("hide");
@@ -840,13 +903,34 @@ var renderCircleGraph = function( jsonFile, divId, distance, width, height){
             .attr("data-html",true)
             .attr("data-content",function(d){ 
                 return "<div '>"+
-                    "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
-                    "</h3><table class='table table-responsive' style='text-align:left'>"+
-                    "<tr><th>度量值</th><th>dc</th></tr>"+
-                    "<tr class='info'><td>交流关系</td><td>"+currentNetworkData.CommentCentrality[d.group].degree+"</td></tr>"+
-                    "<tr class='success'><td>协作关系</td><td>"+currentNetworkData.CommitCentrality[d.group].degree+"</td></tr>"+
-                    "<tr class='warning'><td>工作依赖</td><td>"+currentNetworkData.WorkCentrality[d.group].degree+"</td></tr>"+
-                    "</table></div>"
+                "<h3 style='color:"+color(d.group)+"'>开发者: "+d.name+
+                "</h3><table class='table table-responsive' style='text-align:left'>"+
+                "<tr><th>Centrality</th><th>dc</th><th>bc</th><th>cc</th><th>lc</th><th>cfbc</th><th>cfcc</th></tr>"+
+                "<tr class='info'><td>Comment</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommentCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
+                "<tr class='success'><td>Commit</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.CommitCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
+                "<tr class='warning'><td>Work</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].degree.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].closeness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].load.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].current_flow_betweenness.toExponential(1)+"</td>"+
+                "<td>"+currentNetworkData.WorkCentrality[d.group].current_flow_closeness.toExponential(1)+"</td>"+
+                "</tr>"+
+                "</table></div>"
             })
             .on("mouseover", function(d){ 
                 console.log(d.name+" over"); 

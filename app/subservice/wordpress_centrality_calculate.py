@@ -50,7 +50,7 @@ def calculate_centrality(G):
 			'communicability': communicability,
 			'load': load,
 			'current_flow_betweenness': current_flow_betweenness,
-			'current_flow_closeness':current_flow_closeness
+			'current_flow_closeness':current_flow_closeness,
 		 })
 
 	return developer_centrality
@@ -58,8 +58,8 @@ def calculate_centrality(G):
 
 ### Function: write to file
 def writefile(developer_centrality, relation, version):
-	#c_file = open("public/wordpress/centrality_developer_"+relation+"_"+version+".json","w")
-	c_file = open('app/subservice/test.json','w')
+	c_file = open("public/wordpress/centrality_developer_"+relation+"_"+version+".json","w")
+	#c_file = open('app/subservice/test.json','w')
 	c_file.write(json.dumps(calculate_centrality(G),sort_keys=True,indent=4))
 # Function: end
 
@@ -69,34 +69,34 @@ relation = [ 'comment', 'commit', 'work']
 
 
 ### Main Function: read source file
-# for i in range(0, len(version)):
-# 	for j in range(0, len(relation)):
-# 		d_file = file("public/wordpress/network_developer_"+relation[j]+"_"+version[i]+".json")
-# 		d = json.load(d_file)
-# 		G=nx.Graph()
-# 		e = []
-# 		[ e.append( (edge['developer1'], edge['developer2'], edge['count']) )
-# 			for edge in d ]
-# 		G.add_weighted_edges_from(e)
-# 		writefile(calculate_centrality(G), relation[j], version[i])
+for i in range(0, len(version)):
+	for j in range(0, len(relation)):
+		d_file = file("public/wordpress/network_developer_"+relation[j]+"_"+version[i]+".json")
+		d = json.load(d_file)
+		G=nx.Graph()
+		e = []
+		[ e.append( (edge['developer1'], edge['developer2'], edge['count']) )
+			for edge in d ]
+		G.add_weighted_edges_from(e)
+		writefile(calculate_centrality(G), relation[j], version[i])
 ### Function:end
 
-d_file = file("public/wordpress/network_developer_comment_15.json")
-d = json.load(d_file)
+# d_file = file("public/wordpress/network_developer_comment_15.json")
+# d = json.load(d_file)
 
-G=nx.Graph()
-# e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2)]
+# G=nx.Graph()
+# # e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2)]
+# # G.add_weighted_edges_from(e)
+# # G.add_node("spam")
+# # G.add_edge(1,2)
+# # print(G.nodes())
+# # print(G.edges())
+
+# e = []
+# [ e.append( (edge['developer1'], edge['developer2'], edge['count']) )
+# 	for edge in d ]
 # G.add_weighted_edges_from(e)
-# G.add_node("spam")
-# G.add_edge(1,2)
-# print(G.nodes())
-# print(G.edges())
-
-e = []
-[ e.append( (edge['developer1'], edge['developer2'], edge['count']) )
-	for edge in d ]
-G.add_weighted_edges_from(e)
-writefile(calculate_centrality(G),'comment','15')
+# writefile(calculate_centrality(G),'comment','15')
 
 
 
