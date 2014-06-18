@@ -2,6 +2,8 @@ var exec = require('child_process').exec;
 var demo_path_base = 'public/files/';
 var maxBuffer = 1024 * 1024;
 
+var fs = require('fs');
+
 module.exports = function(app){
 
 	app.post('/scrawler/scripts/:file', function(req, res){
@@ -23,7 +25,9 @@ module.exports = function(app){
 	});
 
 	app.get('/demo', function(req, res){
-		res.render('dsn',{title:'Demo'});
+		var demo = fs.readFileSync('public/demo.html');
+		res.write(demo,{title:'Demo'});
+		//res.render('dsn',{title:'Demo'});
 	})
 
     app.get('/demo/wordpress', function(req, res){

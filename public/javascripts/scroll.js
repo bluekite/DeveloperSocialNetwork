@@ -1,11 +1,16 @@
  $(document).ready(function(){
 
- 	$(window).stellar();
-	$(".spacer").css("height",$(window).height()+'px');
-	$(".block-title").attr("height",$(window).height()+'px');
-	$( window ).resize(function() {
-  		$(".spacer").css("height",$(window).height()+'px');
-  		$(".block-title").attr("height",$(window).height()+'px');
+ // 	$(window).stellar();
+	// $(".spacer").css("height",$(window).height()+'px');
+	// $(".block-title").attr("height",$(window).height()+'px');
+	// $( window ).resize(function() {
+ //  		$(".spacer").css("height",$(window).height()+'px');
+ //  		$(".block-title").attr("height",$(window).height()+'px');
+	// });
+
+	$.stellar({
+		horizontalScrolling: false,
+		verticalOffset: 40
 	});
 
  	$('.scrollTo').click(function(e) {
@@ -40,7 +45,7 @@
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[6] + ".json","developer-evolution",300,666,666,versions[6])},12000);
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[7] + ".json","developer-evolution",300,666,666,versions[7])},14000);
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[8] + ".json","developer-evolution",300,666,666,versions[8])},16000);
-        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[9] + ".json","developer-evolution",300,666,666,versions[9])},1800);
+        setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[9] + ".json","developer-evolution",300,666,666,versions[9])},18000);
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[10] + ".json","developer-evolution",300,666,666,versions[10])},20000);
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[11] + ".json","developer-evolution",300,666,666,versions[11])},22000);
         setTimeout(function(){renderCircleGraph("/wordpress/circle_developer_comment_" + versions[12] + ".json","developer-evolution",300,666,666,versions[12])},24000);
