@@ -7,7 +7,6 @@ var express = require('express');
 
 
 //Server function control
-var webcrawler = require('./app/routes/webcrawler.js');
 var mysqlToJson = require('./app/routes/mysqlToJson');
 var jsonToGraph = require('./app/routes/jsonToGraph');
 var jsonAnalysis = require('./app/routes/jsonAnalysis');
@@ -65,7 +64,6 @@ if ('development' == app.get('env')) {
 }
 
 
-webcrawler(app);
 mysqlToJson(app);
 jsonToGraph(app);
 jsonAnalysis(app);
